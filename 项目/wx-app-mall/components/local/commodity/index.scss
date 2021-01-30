@@ -1,0 +1,96 @@
+.commodity-wrapper {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  .commidity-box {
+    padding: 30rpx;
+    min-height: 900rpx;
+    position: relative;
+    .commidity-close {
+      position: absolute;
+      right: 30rpx;
+      top: 30rpx;
+      font-size: 36rpx;
+    }
+    .commidity-top {
+      display: flex;
+      .commidity-img {
+        width: 160rpx;
+        height: 160rpx;
+        border-radius: 8rpx;
+        image {
+          width: 100%;
+          height: 100%;
+          border-radius: 8rpx;
+        }
+      }
+      .commidity-title-box {
+        flex: 1;
+        margin-left: 32rpx;
+        padding-top: 20rpx;
+        .commidity-price {
+          margin-bottom: 10rpx;
+          color: var(--primary-color);
+          font-size: 36rpx;
+          text {
+            font-size: 20rpx;
+          }
+        }
+        .commidity-title {
+          font-size: 28rpx;
+          color: #333;
+          margin-bottom: 10rpx;
+        }
+        .commidity-params {
+          font-size: 24rpx;
+          color: #999;
+        }
+      }
+    }
+    .commidity-content {
+      margin-top: 52rpx;
+      .commidity-c-name {
+        font-size: 24rpx;
+        color: #999;
+        margin-bottom: 10rpx;
+      }
+      .commidity-text {
+        text {
+          padding: 14rpx 26rpx;
+          border-radius:4px;
+          background-color: #F5F5F5;
+          font-size: 20rpx;
+          color: #333;
+          margin-right: 20rpx;
+          border: 2rpx solid transparent;
+          display: inline-block;
+          margin-top: 20rpx;
+        }
+        .selectedStyle {
+          color: var(--primary-color);
+          border: 2rpx solid var(--primary-color);
+        }
+      }
+    }
+    .commidity-count {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 44rpx;
+      .commidity-count-name {
+        font-size: 24rpx;
+        color: #999;
+      }
+    }
+  }
+  .commidity-btn {
+    width: 100%;
+    height: 100rpx;
+    color: #fff;
+    font-size: 32rpx;
+    background-color: var(--primary-color);
+    line-height: 100rpx !important;
+    border-radius: 0;
+    padding: 0;
+  }
+}

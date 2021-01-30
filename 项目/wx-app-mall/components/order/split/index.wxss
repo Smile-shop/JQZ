@@ -1,0 +1,5 @@
+/* components/order/split/index.wxss */
+.split {
+  height:20rpx;
+  background:#F8F8F8;
+}

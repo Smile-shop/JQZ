@@ -1,0 +1,30 @@
+<!--pages/logisticsDetail/logistics/index.wxml-->
+<view class='g_con'>
+  <view class='expressRecord'>
+    
+    <view class='expressRecord-single-close' wx:for="{{steps}}" wx:key="{{index}}">
+      <view class='expressRecord-single-noReach-online-top-close'>
+        <view class="online-top-close {{index == 0 ? 'online-bottom-start' : ''}}"></view>
+        <view class="dot-close {{index == 0 ? 'dot-closing' : ''}}">
+          <van-icon wx:if="{{index == 0}}" class="icon" name="success" />
+        </view>
+        <view class="online-bottom {{index == steps.length - 1 ? 'online-bottom-start' : ''}}"></view>
+      </view>
+
+      <view class='expressRecord-text'>
+        <view class='expressRecord-status'>{{item.stepTitle}}</view>
+        <view class='expressRecord-status-address'>{{item.step}}</view>
+      </view>
+
+      <view class='expressRecord-date'>
+        <view class='expressRecord-date-text'>
+          {{timeFilter.timer(item.time)[0]}}
+        </view>
+        <view class='expressRecord-date-time'>
+          13:50
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<wxs src="./index.wxs" module="timeFilter"></wxs>

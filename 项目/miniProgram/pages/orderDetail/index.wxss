@@ -1,0 +1,264 @@
+/* pages/mine/orderDetail/index.wxss */
+
+.head, .goods, .order-info {
+  background: rgba(255,255,255,1);
+}
+
+.head {
+  display: flex;
+}
+
+.icon {
+  margin: 53rpx 26rpx 50rpx 54rpx;
+}
+
+.head-title {
+  height:36rpx;
+  font-size:36rpx;
+  font-weight:600;
+  color:rgba(77,77,77,1);
+  line-height:36rpx;
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.head-info {
+  height:24rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(163,170,183,1);
+  line-height:24rpx;
+  margin-bottom: 40rpx;
+}
+
+.split {
+  height:20rpx;
+  background:rgba(245,245,245,1);
+}
+
+.info-title {
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size:28rpx;
+  font-weight:bold;
+  color:rgba(77,77,77,1);
+}
+
+.info-content {
+  display: inline-block;
+  height: 64rpx;
+  line-height: 64rpx;
+  margin: 2rpx 0;
+  width:126rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(163,170,183,1);
+  line-height:24px;
+}
+
+.info-text {
+  display: inline-block;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  overflow: hidden;
+}
+.info-cancel {
+  display: flex;
+  align-items: flex-start;
+}
+.info-cancel-content {
+  line-height: inherit;
+}
+.info-cancel-text {
+  flex: 1;
+}
+.goods {
+  display: flex;
+  flex-direction: column;
+}
+
+.goods-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88rpx;
+  margin: 0 30rpx;
+}
+
+.goods-title-name {
+  font-size:29rpx;
+  font-weight:bold;
+  color:rgba(77,77,77,1);
+}
+
+.goods-all {
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(163,170,183,1);
+}
+
+.goods-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.tip {
+  text-align: center;
+  width:80rpx;
+  height:36rpx;
+  line-height: 36rpx;
+  background:rgba(255,255,255,1);
+  border-radius:18rpx;
+  font-size:20rpx;
+  font-weight:400;
+  color:rgba(236,124,104,1);
+  margin-top: 12rpx;
+  margin-left: 12rpx;
+}
+
+.goods-img {
+  width:216rpx;
+  height:216rpx;
+  background:rgba(245,245,245,1);
+  border-radius:12rpx;
+  border:2rpx solid rgba(245,245,245,1);
+  margin-right: 30rpx;
+}
+
+.goods-content-title {
+  margin-top: 4rpx;
+}
+
+.goods-content-code, .goods-content-arg, .goods-content-certificate {
+  margin: 6rpx 0;
+}
+
+.goods-content-price {
+  margin-top: 16rpx;
+}
+
+.goods-total {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height:28rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(77,77,77,1);
+  line-height:28prx;
+  margin: 38rpx 30rpx;
+  align-items: center;
+}
+
+.sum-goods {
+  display: inline-block;
+}
+
+.sum-price {
+  display: inline-block;
+  margin-left: 12rpx;
+}
+
+.footer-all {
+  text-align: center;
+  height:24rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(163,170,183,1);
+  line-height:24rpx;
+  margin-top: 16rpx;
+  margin-bottom: 46rpx;
+}
+
+.cancel {
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.cancel-text {
+  display: flex;
+  justify-content: center;
+  height:80rpx;
+  line-height: 80rpx;
+  background:rgba(77,77,77,1);
+  border-radius:40rpx;
+  margin: 0rpx 30rpx;
+  text-align: center;
+  font-size:29prx;
+  font-weight:600;
+  color:rgba(255,255,255,1);
+}
+
+.order-info {
+  padding: 0 30rpx 98rpx 30rpx;
+}
+
+/* 钻石版 */
+.cancel-text-diamand {
+  display: flex;
+  justify-content: center;
+  height:80rpx;
+  line-height: 80rpx;
+  background:rgba(77,77,77,1);
+  border-radius:40rpx;
+  margin: 0rpx 30rpx;
+  text-align: center;
+  font-size:29prx;
+  font-weight:600;
+  color:rgba(255,255,255,1);
+}
+
+.cancel-text-diamand {
+  display: flex;
+  justify-content: center;
+  height:80rpx;
+  line-height: 80rpx;
+  background:rgba(77,77,77,1);
+  border-radius:40rpx;
+  margin: 0rpx 30rpx;
+  text-align: center;
+  font-size:29prx;
+  font-weight:600;
+  color:rgba(255,255,255,1);
+  margin-bottom: 10rpx;
+}
+
+.sum-unit-diamand, .sum-totalPrice-diamand {
+  color:rgba(77,77,77,1);
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+/* 黄金版 */
+.goods-gold {
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  margin-top: -20rpx;
+  background-color: rgba(255, 255, 255, 255);
+}
+
+.cancel-text-gold {
+  display: flex;
+  justify-content: center;
+  height:80rpx;
+  line-height: 80rpx;
+  background:linear-gradient(90deg,rgba(221,178,127,1) 0%,rgba(219,176,81,1) 100%);
+  border-radius:80rpx;
+  margin: 0rpx 30rpx;
+  text-align: center;
+  font-size:29prx;
+  font-weight:600;
+  color:rgba(255,255,255,1);
+  margin-bottom: 10rpx;
+}
+
+.sum-unit-gold, .sum-totalPrice-gold {
+  color:rgba(193,17,17,1);
+  font-size: 28rpx;
+  font-weight: 600;
+}

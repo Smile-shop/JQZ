@@ -1,0 +1,13 @@
+/* custom-tab-bar/index.wxss */
+.tabber-img-hidden {
+  display: none !important;
+}
+.text-0-style {
+  color: #4D4D4D;
+}
+.text-1-style {
+  color: #DBB051;
+}
+.van-tabbar-item__icon{
+  margin-bottom: var(--tabbar-item-margin-bottom,4rpx);
+}

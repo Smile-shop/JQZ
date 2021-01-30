@@ -1,0 +1,21 @@
+<view>
+  <view class="jqz-logo">
+    <image src="../../images/jqz-logo.png"></image>
+  </view>
+  <button class="wx-auth" lang="zh_CN" open-type="getUserInfo" bindgetuserinfo = "bindgetuserinfo" wx:if='{{auth}}'>
+    <view class="wx-logo">
+      <image src="../../images/jqz-wx.png"></image>
+    </view>
+    <view class="wx-auth-text">微信授权</view>
+  </button>
+  <button class="wx-auth" open-type="getPhoneNumber" bindgetphonenumber = "bindgetphonenumber" wx:if="{{phone}}">
+    <view class="wx-logo">
+      <image src="../../images/jqz-wx.png"></image>
+    </view>
+    <view class="wx-auth-text">绑定手机号</view>
+  </button>
+  <view class="reject" bindtap="reject">
+    <text wx:if="{{auth}}">暂不注册</text>
+    <text wx:if="{{phone}}">暂不注册</text>
+  </view>
+</view>

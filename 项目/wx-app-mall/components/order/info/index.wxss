@@ -1,0 +1,34 @@
+/* components/order/info/index.wxss */
+.order-info {
+  padding: 30rpx;
+  background: rgba(255,255,255,1);
+}
+.info-container{
+  display: flex;
+  line-height: 55rpx;
+}
+
+.info-content {
+  width:96px;
+  font-size:24rpx;
+  color:#999;
+}
+
+.info-text {
+  flex: 1;
+  font-size:24rpx;
+  font-weight:400;
+  color:#333;
+}
+.copy{
+  font-size: 20rpx;
+  color: #333;
+  background: #eee;
+  display: inline-block;
+  border-radius: 5rpx;
+  height: 32rpx;
+  width: 60rpx;
+  line-height: 32rpx;
+  text-align: center;
+  margin-left: 16rpx;
+}

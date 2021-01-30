@@ -1,0 +1,29 @@
+<!--components/order/shopInfo/index.wxml-->
+<view class="box">
+  <view class="shopInfo" wx:for="{{list}}" wx:key="index">
+    <view class="shopInfo-box" bindtap="goDetail" data-item="{{ item }}">
+      <view class="shopName">
+        <text class="shopName-name">{{item.name}}</text>
+        <text class="shopInfo-mi" catchtap="stop" wx:if="{{item.longitude && item.latitude}}">{{item.distance}}km</text>
+      </view>
+      <view class="shopInfo-item">
+        <view class="shopInfo-item-left">
+          <image class="shopInfo-item-left-icon" src="/images/icon-address.png"></image>
+          <!-- <van-icon name="location" /> -->
+        </view>
+        <text class="shopInfo-item-right">{{item.address}}</text>
+      </view>
+      <view class="shopInfo-item">
+        <view class="shopInfo-item-left">
+          <image class="shopInfo-item-left-icon" src="/images/icon-tel.png"></image>
+          <!-- <van-icon name="phone" /> -->
+        </view>
+        <text class="shopInfo-item-right">{{item.tel || '-'}}</text>
+      </view>
+    </view>
+    <view class="shopInfo-btn">
+      <view class="btn" data-item="{{item}}" bindtap="lookMap">查看地图</view>
+      <view class="btn" bindtap="look" data-data="{{item}}">进店看看</view>
+    </view>
+  </view>
+</view>

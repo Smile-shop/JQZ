@@ -1,0 +1,149 @@
+/* pages/shop/index.wxss */
+page {
+  background: #f5f5f5;
+}
+.mine-wrapper {
+  background: #ffffff;
+  position: relative;
+  top: 100rpx;
+  margin: 0 30rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+.bak-top {
+  width: 200vw;
+  height: 100vw;
+  background-color: var(--primary-color);
+  border-radius: 0 0 200vw 200vw;
+  position: fixed;
+  margin-left: -50vw;
+  top: -55vw;
+}
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  line-break: 100rpx;
+  background: #FFFFFF;
+  padding: 0 30rpx;
+  border-bottom: 1px solid #eee;
+}
+.shop-item {
+  height: auto;
+  padding: 30rpx 30rpx 30rpx 30rpx;
+}
+.info-item-title {
+  min-width: 130rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #333333;
+}
+.info-item-content {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #999999;
+}
+.content-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  margin-bottom: 20rpx;
+}
+.cell-view {
+  width: 100%;
+}
+
+.btn-view {
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
+.label-field {
+  color: rgba(153, 153, 153, 1) !important;
+}
+.cancel-text-gold {
+  display: flex;
+  justify-content: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: var(--primary-color);
+  text-align: center;
+  font-size: 29prx;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+}
+.title {
+  display: flex;
+  height: 44rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  line-height: 44rpx;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+.member-level {
+  width: 92rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  background: #FF4646;
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-align: center;
+  margin-top: 16rpx;
+}
+.mine-img {
+  display: flex;
+  width: 150rpx;
+  height: 150rpx;
+  align-items: center;
+  justify-content: center;
+  margin-top: -60rpx;
+}
+.mine-img .m-image {
+  display: inline-block;
+  width: 120rpx;
+  height: 120rpx;
+}
+.m-image image {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+.m-avatar-url image {
+  border: 4rpx solid rgba(245, 245, 245, 1);
+}
+
+.user-info {
+  position: absolute;
+  top: 100rpx;
+  left: 50%;
+  display: flex;
+  margin-top: 50rpx;
+  width: 140rpx;
+  height: 140rpx;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transform: translateX(-70rpx);
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.user-info .m-image {
+  display: inline-block;
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.m-image image {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}

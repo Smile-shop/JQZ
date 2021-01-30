@@ -1,0 +1,23 @@
+{
+  "entryPagePath": "pages/index/index",
+  "pages": [
+    "pages/index/index",
+    "pages/top/top",
+    "pages/my-prize/my-prize",
+    "pages/my-prize/prize-verification/prize-verification",
+    "pages/prize-receive/prize-receive",
+    "pages/forbidden/forbidden"
+  ],
+  "window": {
+    "navigationBarTitleText": "人气值千金PLUS",
+    "enablePullDownRefresh": false
+  },
+  "debug": true,
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于定位"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

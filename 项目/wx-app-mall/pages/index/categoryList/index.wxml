@@ -1,0 +1,22 @@
+<!--pages/index/categoryList/index.wxml-->
+  <!-- 分类 -->
+  <view class="classify-container">
+    <view
+      class="classify-container-item"
+      wx:for="{{ categoryList }}"
+      wx:key="index"
+      bindtap="getClassifyDetail"
+      data-item="{{ item }}"
+    >
+      <view class="classify-container-item-img">
+        <img
+          height="100%"
+          width="100rpx"
+          radius="50%"
+          mode="widthFix"
+          lazy-load
+          src="{{ item.imgUrl }}"></img>
+      </view>
+      <view class="classify-container-item-text">{{ item.remark || '' }}</view>
+    </view>
+  </view>

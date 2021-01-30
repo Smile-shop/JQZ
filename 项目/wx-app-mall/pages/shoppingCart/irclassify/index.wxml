@@ -1,0 +1,140 @@
+<!--pages/shoppingCart/irclassify/index.wxml-->
+<wxs src="../../../wxsGroup/common.wxs" module="common"></wxs>
+<pullRefresh bindpullrefresh="refresh" bindhandleMore="handleMore" pullRefresh="{{pullRefresh}}" content-style="height: calc(100vh - 220rpx - 50px);height: calc(100vh - 220rpx - 50px - constant(safe-area-inset-bottom));height: calc(100vh - 220rpx - 50px - env(safe-area-inset-bottom));">
+  <view slot="content">
+    <!-- 正常商品 -->
+    <view class="shopping-cart-catery" wx:if="{{ shopppingCartList.length }}" style="margin-top:{{pullRefresh ? 0 : '20rpx'}}">
+      <view class="shoppping-list">
+        <view wx:for="{{ shopppingCartList }}" wx:for-index="idx" wx:for-item="shoppingItem" wx:key="idx">
+          <slide-view right-button-width="{{300}}">
+            <view class="shopping-item">
+              <van-checkbox
+                style="margin:50rpx 0 0 15rpx"
+                checked-color="var(--primary-color)"
+                data-goodsIndex="{{ idx }}"
+                value="{{ shoppingItem.isSelect }}"
+                bind:change="itemOnChange"
+                data-type="n"
+                id="{{ shoppingItem.id }}"
+              ></van-checkbox>
+              <view bindtap="goodsDetail" style="display:flex" data-goods="{{ shoppingItem }}">
+                <view>
+                  <!-- 商品图片 -->
+                  <view class="shopping-item-img">
+                    <img mode="scaleToFill" lazy-load src="{{ shoppingItem.imgUrl }}"></img>
+                  </view>
+                </view>
+                <!-- 商品信息 -->
+                <view class="shopping-item-info">
+                  <view class="shopping-item-name more-show-ellipsis">{{ shoppingItem.title || '' }}</view>
+                  <view class="shopping-item-detail more-show-ellipsis">
+                    <text style="padding-right:12rpx">{{ common.join(shoppingItem.attrList) }}</text>
+                    <view wx:if="{{shoppingItem.quantity == shoppingItem.stock}}" class="stockNum">仅剩{{shoppingItem.stock}}件</view>
+                  </view>
+                </view>
+                <view class="shopping-item-number">
+                  <view class="item-price">
+                    ￥{{ common.cutToFixed(shoppingItem.price, 3) }}
+                  </view>
+                  <view catchtap="stop">
+                    <van-stepper
+                      class="my-class"
+                      input-class="input"
+                      disable-input
+                      value="{{ shoppingItem.quantity }}"
+                      data-goodsIndex="{{ idx }}"
+                      data-goods="{{ shoppingItem }}"
+                      bind:change="stepperOnChange"
+                      min="1"
+                      max="{{shoppingItem.stock}}"
+                      disable-plus="{{shoppingItem.quantity >= shoppingItem.stock}}"
+                      disable-minus="{{shoppingItem.quantity == 1}}" 
+                    />
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view slot="right" class="button btn" id="{{ 'item' + shoppingItem.id }}" data-goods="{{ shoppingItem }}">
+              <view class="collect" bindtap="moveCollect" data-goods="{{ shoppingItem }}" data-type="n" data-index="{{ idx }}">移入收藏</view>
+              <view class="delbtn" bindtap="onDel" data-goods="{{ shoppingItem }}" data-type="n" data-index="{{ idx }}">删除</view>
+            </view>
+          </slide-view>
+        </view>
+      </view>
+      <split wx:if="{{isValidList.length}}" />
+    </view>
+    <!-- 下架/缺货/失效商品 -->
+    <view class="shopping-cart-catery" wx:if="{{isValidList.length}}">
+      <view class="shoppping-list">
+        <view class="shoppping-list-bottom">
+          <view class="title">下架/缺货/失效商品</view>
+          <view class="clear" bindtap="clearCollect">清空</view>
+        </view>
+        <view wx:for="{{ isValidList }}" wx:for-index="idx" wx:for-item="shoppingItem" wx:key="idx">
+          <slide-view right-button-width="{{300}}">
+            <view class="shopping-item">
+              <van-checkbox
+                style="margin:50rpx 0 0 15rpx"
+                checked-color="var(--primary-color)"
+                disabled="{{!isEdit}}"
+                data-goodsIndex="{{ idx }}"
+                value="{{ shoppingItem.isSelect }}"
+                bind:change="itemOnChange"
+                id="{{ shoppingItem.id }}"
+              ></van-checkbox>
+              <view bindtap="goodsDetail" data-goods="{{ shoppingItem }}" style="display:flex">
+                <view>
+                  <!-- 商品图片 -->
+                  <view class="shopping-item-img">
+                    <img mode="scaleToFill" lazy-load src="{{ shoppingItem.imgUrl }}"></img>
+                    <view
+                      class="shopping-item-img-mask">
+                      <view class="shopping-item-img-mask-title">{{shoppingItem.skuStatus }}</view>
+                    </view>
+                  </view>
+                  </view>
+                  <!-- 商品信息 -->
+                  <view class="shopping-item-info">
+                    <view class="shopping-item-name more-show-ellipsis shopping-item-name-novalid">
+                      {{ shoppingItem.title || '' }}
+                    </view>
+                    <view class="shopping-item-detail more-show-ellipsis">
+                      <text style="padding-right:12rpx">{{ common.join(shoppingItem.attrList || '') }}</text>
+                    </view>
+                </view>
+                <view catchtap="stop" class="shopping-item-number collectBox">
+                  <view class="collectBtn" bindtap="moveCollect">移入收藏夹</view>
+                </view>
+              </view>
+            </view>
+            <view slot="right" class="button" id="{{ 'item' + shoppingItem.id }}">
+              <view class="collect" bindtap="moveCollect" data-goods="{{ shoppingItem }}" data-type="v" data-index="{{ idx }}">移入收藏</view>
+              <view class="delbtn" bindtap="onDel" data-goods="{{ shoppingItem }}" data-type="v" data-index="{{ idx }}">删除</view>
+            </view>
+          </slide-view>
+        </view>
+      </view>
+    </view>
+  </view>
+</pullRefresh>
+<view class="submit-bar">
+  <view class="submit-bar-select">
+    <van-checkbox
+      checked-color="var(--primary-color)"
+      value="{{ allSelect }}"
+      disabled="{{ !allList.length || !isEdit && !shopppingCartList.length }}"
+      bind:change="allOnChange"
+    >全选</van-checkbox>
+  </view>
+  <view class="submit-bar-info" wx:if="{{ !isEdit }}">
+    <view class="submit-bar-money">总计：<text class="submit-bar-price">￥{{ common.toFix(shoppingCartMoney, 2) }}</text></view>
+  </view>
+  <button wx:if="{{!isEdit}}" class="submit-bar-button {{shoppingCartNumber ? '' : 'disable-btn' }}" bindtap="settlement" open-type="{{bindPhone&&shoppingCartNumber?'getPhoneNumber' : ''}}"  bindgetphonenumber="bindgetphonenumber">去结算({{shoppingCartNumber}})</button>
+  <view wx:if="{{isEdit}}" class="submit-bar-button collect-btn {{ seletedData.length ? '' : 'disable-btn' }}" bindtap="moveCollect" data-type="all">移入收藏</view>
+  <view wx:if="{{isEdit}}" class="submit-bar-button {{ seletedData.length ? '' : 'disable-btn' }}" bindtap="onDel" data-type="all">删除</view>
+
+</view>
+
+<confirm show="{{showConfirm}}" title="提示" content="确认删除选中商品吗？" asyncClose bind:confirm="confirm" />
+<confirm show="{{showCollConfirm}}" title="提示" content="确定把选中商品移入收藏夹吗？" asyncClose bind:confirm="collectConfirm" />
+<confirm show="{{clearCollectConfirm}}" asyncClose title="提示" content="确定清空所有下架/缺货/失效商品吗？" bind:confirm="confirmClearCollect" />

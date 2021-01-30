@@ -1,0 +1,110 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/helpContent/index",
+    "pages/my/helpCenter/index",
+    "pages/my/integralRecord/index",
+    "pages/my/myProfile/index",
+    "pages/shoppingCart/index",
+    "pages/goodsCategory/index",
+    "pages/my/index",
+    "pages/shop/index",
+    "pages/order/index",
+    "pages/orderDetail/index",
+    "pages/confirmOrder/index",
+    "pages/logisticsDetail/index",
+    "pages/pageSuccess/index",
+    "pages/shoppingAddress/index",
+    "pages/addAddress/index",
+    "pages/search/index",
+    "pages/my/coupons/index",
+    "pages/my/collect/index",
+    "pages/goodsList/index",
+    "pages/goodsDetail/index",
+    "pages/login/index",
+    "pages/login/loginAddress/index",
+    "pages/shopDetails/index",
+    "pages/untie/index",
+    "pages/shopCoupons/index",
+    "pages/webView/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "微商城",
+    "navigationStyle": "default",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#ffffff",
+    "onReachBottomDistance": 50,
+    "pageOrientation": "portrait"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8F99A7",
+    "selectedColor": "#4BC99B",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index-1-selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/goodsCategory/index",
+        "iconPath": "images/classify.png",
+        "selectedIconPath": "images/classify-1-selected.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/shoppingCart/index",
+        "iconPath": "images/shopping.png",
+        "selectedIconPath": "images/shopping-1-selected.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/shop/index",
+        "iconPath": "images/shopping.png",
+        "selectedIconPath": "images/shopping-1-selected.png",
+        "text": "店铺"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine-1-selected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "debug": false,
+  "resizable": false,
+  "usingComponents": {},
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": false
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "plugins": {
+    "wxparserPlugin": {
+      "version": "0.3.1",
+      "provider": "wx9d4d4ffa781ff3ac"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<!--components/order/address/index.wxml-->
+<view>
+  <view class="address-content">
+    <view class="FMS-content" bindtap="getLogisticsDetail" wx:if="{{!logisticsIsEmpty}}">
+      <view class="FMS-content-left">
+        <van-icon class="icon" name="logistics" />
+      </view>
+      <view class="FMS-content-info">
+        <view class="info">快递已离开深圳，正在发往上海</view>
+        <view class="time">2020-03-28 09:06:08</view>
+      </view>
+      <view class="FMS-content-right">
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view class="FMS-content" wx:if="{{!addressIsEmty}}" bindtap="chooseAddress">
+        <view class="FMS-content-left">
+          <van-icon class="icon" name="location-o" />
+        </view>
+        <view class="FMS-content-info">
+          <view class="info">
+            <text class="text">{{address.receiver}}</text>
+            <text class="tel">{{address.phone}}</text>
+          </view>
+          <view class="time address">{{address.address}}</view>
+        </view>
+    </view>
+    <view class="no-address" wx:else bindtap="chooseAddress">
+        <view class="no-address-icon">
+          <van-icon class="icon" name="location-o" />
+          <text class="no-address-text">请选择收货地址</text>
+        </view>
+    </view>
+  </view>
+  <addressLine />
+</view>

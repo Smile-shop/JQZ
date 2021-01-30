@@ -1,0 +1,10 @@
+<!--components/sharePost/index.wxml-->
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class="share-post-wrapper" wx:if="{{showSharePost}}" catchtouchmove='ture'>
+  <view class="share-bg" catchtap="hiddenBg" ></view>
+  <view class="share-post-content">
+    <!-- <image src="http://ftpimage.jqzjop.com/LocalUser/7015/Jewel/YZTZS003[1].jpg" class="post-img" mode="aspectFill"></image> -->
+    <image show-menu-by-longpress="true"  src="{{postList}}" class="post-img" mode="aspectFill"></image>
+    <button class="post-btn" bindtap="saveImg">保存至相册</button>
+  </view>
+</view>

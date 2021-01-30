@@ -1,0 +1,41 @@
+<!--pages/mine/orderDetail/index.wxml-->
+<wxs src="../../wxsGroup/common.wxs" module="common"></wxs>
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <navBar navbarData="{{navbarData}}" />
+  <view>
+    <view class="top-head">
+      <tabs tabs="{{tabs}}" bind:change="onChangeTabs" />
+    </view>
+    <view class="message">
+      <shopInfo wx:if="{{parmName != 'STORE_EXPRESS'}}" showType />
+      <address address="{{address}}" bind:saveMessage="saveMessage" fromOrder wx:else />
+      <split />
+      <goodsListInfo bind:goodsList="handleDetail" list="{{list}}" info="{{ info }}" />
+      <split />
+      <remark bind:blur="changeRamark" remark="{{remark}}" />
+      <split />
+      <van-cell title-class="coupon-title" bindtap="selete" value-class="coupon-value" title="优惠券" is-link value="暂无优惠券" />
+      <split />
+      <view class="order-info">
+        <view class="info-container info-cancel">
+          <view class="info-content info-cancel-content">商品小计（{{ quantity }}件）</view>
+          <view class="info-text info-cancel-text allPrice allPrice1">￥{{common.cutToFixed(amount, 3)}}</view>
+        </view>
+        <view class="info-container info-cancel">
+          <view class="info-content info-cancel-content">运费</view>
+          <view class="info-text info-cancel-text allPrice">0.00</view>
+        </view>
+      </view>
+      <split />
+    </view>
+    <view class="cancel">
+      <view class='sum'>
+        <text class="text">应付金额：</text>
+        <text class="num">￥{{common.cutToFixed(amount, 3)}}</text>
+      </view>
+      <view class='submit-btn' bindtap="submitOrder">立即支付</view>
+    </view>
+  </view>
+  <payPop show="{{showPay}}" from="comfirm" orderId="{{ orderId }}" amount="{{common.cutToFixed(amount, 3)}}" bindpay="payment" />
+  <couponsPopup bind:seleted="seleted" emptyTop="0" showCoupon="{{ showCoupon }}" itemList="{{[]}}" />
+</page-meta>

@@ -1,0 +1,28 @@
+<!--components/order/info/index.wxml-->
+<view class="order-info">
+  <view class="info-title">订单信息</view>
+  <view class="info-container">
+    <view class="info-content">订单号</view>
+    <view class="info-text">JQZ202003311000</view>
+  </view>
+  <view class="info-container">
+    <view class="info-content">下单时间</view>
+    <view class="info-text">2020-01-03 10:10:10</view>
+  </view>
+  <view class="info-container">
+    <view class="info-content">订货人</view>
+    <view class="info-text">曹操</view>
+  </view>
+  <view class="info-container">
+    <view class="info-content">联系电话</view>
+    <view class="info-text">15999999999</view>
+  </view>
+  <view class="info-container">
+    <view class="info-content">下单备注</view>
+    <view class="info-text">国检、不挂签、确保正品哦</view>
+  </view>
+  <view class="info-container">
+    <view class="info-content">商家审核</view>
+    <view class="info-text">同意，尽快安排</view>
+  </view>
+</view>

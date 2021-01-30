@@ -1,0 +1,60 @@
+<!--pages/order/index.wxml-->
+<view>
+<scroll-view scroll-x scroll-into-view="{{currentIndex}}" class="{{globalStyle === '1' ? 'header-gold' : ''}}">
+<head catchtap="handlItem" class="header" wx:if="{{globalStyle === '1'}}">
+  <view id="all" class="{{activeItem == 'all' ? 'activeItem-gold case': 'case'}}">全部</view>
+  <view id="waiting" class="{{activeItem == 'waiting' ?  'activeItem-gold case': 'case'}}">待确认</view>
+  <view id="confirm" class="{{activeItem == 'confirm' ?  'activeItem-gold case': 'case'}}">已确认</view>
+  <view id="increase" class="{{activeItem == 'increase' ?  'activeItem-gold case': 'case'}}">配货中</view>
+  <view id="cancel" class="{{activeItem == 'cancel' ?  'activeItem-gold case': 'case'}}">已取消</view>
+  <view id="finish" class="{{activeItem == 'finish' ?  'activeItem-gold case': 'case'}}">已完成</view>
+ </head>
+  <head catchtap="handlItem" class="header" wx:else>
+  <view id="all" class="{{activeItem == 'all' ? 'activeItem case': 'case'}}">全部</view>
+  <view id="waiting" class="{{activeItem == 'waiting' ?  'activeItem case': 'case'}}">待确认</view>
+  <view id="confirm" class="{{activeItem == 'confirm' ?  'activeItem case': 'case'}}">已确认</view>
+  <view id="increase" class="{{activeItem == 'increase' ?  'activeItem case': 'case'}}">配货中</view>
+  <view id="cancel" class="{{activeItem == 'cancel' ?  'activeItem case': 'case'}}">已取消</view>
+  <view id="finish" class="{{activeItem == 'finish' ?  'activeItem case': 'case'}}">已完成</view>
+ </head>
+</scroll-view>
+<scroll-view
+  scroll-y
+  class = 'scroll-container'
+  bindscrolltolower="handleMore"
+  wx:if="{{list.length > 0}}"
+>
+ <view wx:for="{{list}}" wx:key="title">
+    <split />
+    <view wx:if="{{item.products.length > 4}}">
+      <mulitOrder bindtap="handleDetail" 
+        bind:cancelMulitOrder="handleMulit" 
+        list="{{item.products}}" 
+        orderId="{{item.orderId}}" 
+        count="{{item.total}}" 
+        price="{{item.totalAmount}}" 
+        form="{{globalStyle}}"
+        title="{{item.orderStatus}}" />
+    </view>
+    <view wx:else>
+      <singleOrder bindtap="handleDetail" 
+        bind:cancelOrder="handleSingle" 
+        list="{{item.products}}" 
+        orderId="{{item.orderId}}" 
+        count="{{item.total}}" 
+        price="{{item.totalAmount}}" 
+        form="{{globalStyle}}"
+        title="{{item.orderStatus}}" />
+    </view>
+  </view>
+  <view class="load-more" bindtap="handleMore">{{loadMore}}</view>
+</scroll-view>
+<orderEmpty wx:else />
+<confirm wx:if="{{modal}}" 
+  bind:cancelOrder="modalCancelOrder" 
+  bind:hiddenMask="modalHidden" 
+  bind:handleInput="writeValue"
+  form="{{globalStyle}}"
+  writeNum="{{writeNum}}"
+  bind:wirteInput="wirteInput" />
+</view>

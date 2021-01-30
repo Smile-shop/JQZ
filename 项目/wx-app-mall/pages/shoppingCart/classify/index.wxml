@@ -1,0 +1,129 @@
+<!--pages/shoppingCart/classify/index.wxml-->
+<wxs src="../../../wxsGroup/common.wxs" module="commonWXS"></wxs>
+<wxs src="../../../wxsGroup/goodsArticle.wxs" module="goods"></wxs>
+<wxs src="../../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<scroll-view
+  class="shopping-cart"
+  bindtouchstart="onCloseSwipe"
+  scroll-y>
+  <view
+    wx:for="{{ shopppingCartList }}"
+    wx:key="index"
+    class="shopping-cart-catery {{gs.type('shopping-cart-catery', globalStyle)}}">
+    <view class="select-content-title">
+      <van-checkbox
+        style="font-size:32rpx"
+        checked-color="var(--primary-color)"
+        value="{{ item.isSelect }}"
+        bind:change="catOnChange"
+        id="{{ item.name }}">
+        <view style="width: 500rpx" class="more-show-ellipsis">{{ item.name }}</view>
+      </van-checkbox>
+      <view style="color:#333">{{ item.number }}款</view>
+    </view>
+    <view class="shoppping-list">
+      <view
+        wx:for="{{ item.list }}"
+        wx:for-index="idx"
+        wx:for-item="shoppingItem"
+        wx:key="idx"
+        id="{{ shoppingItem.id }}"
+        bindtouchstart="onSwipeOpen">
+        <van-swipe-cell
+          right-width="{{ 146 }}"
+          left-width="{{ 0 }}"
+          async-close
+          id="{{ 'item-' + shoppingItem.id }}"
+          data-goods="{{ shoppingItem }}">
+          <view class="shopping-item">
+            <van-checkbox
+              style="padding:70rpx 0 0 15rpx"
+              checked-color="var(--primary-color)"
+              data-i="{{ index }}"
+              data-goodsIndex="{{ idx }}"
+              value="{{ shoppingItem.isSelect }}"
+              bind:change="itemOnChange"
+              id="{{ shoppingItem.id }}"
+            ></van-checkbox>
+            <view catchtap="goodsDetail" data-goods="{{ shoppingItem }}" style="display:flex">
+              <view class="shopping-item-img">
+                <image style="width:100%;height:100%" mode="scaleToFill" lazy-load src="{{ shoppingItem.photo }}"></image>
+                <!-- <view
+                  class="shopping-item-img-mask"
+                  wx:if="{{ goods.shopppingCartTag(shoppingItem.count, shoppingItem.stockNum, shoppingItem.valid, shoppingItem.isNullStock).title == '下架' }}">
+                  <view class="shopping-item-img-mask-title">已下架</view>
+                </view> -->
+              </view>
+                <view class="shopping-goods-tag global-buy" wx:if="{{goods.shopppingCartTag(shoppingItem.count, shoppingItem.stockNum, shoppingItem.valid, shoppingItem.isNullStock).title == '预订' && globalStyle === '1'}}">{{ goods.shopppingCartTag(shoppingItem.count, shoppingItem.stockNum, shoppingItem.valid, shoppingItem.isNullStock).title }}</view>
+              <!-- 商品详情 -->
+              <view class="shopping-item-info">
+                <view class="shopping-item-name more-show-ellipsis">
+                  {{ shoppingItem.name }}
+                </view>
+                <view class="shopping-item-code more-show-ellipsis" wx:if="{{ shoppingItem.code }}">
+                  条码号：{{ shoppingItem.code }}
+                </view>
+                <view class="shopping-item-detail more-show-ellipsis">
+                  <text
+                    wx:if="{{ shoppingItem.goldWeight }}"
+                    style="padding-right:12rpx"
+                  >{{ shoppingItem.goldWeight }}g</text>
+                  <text
+                    wx:if="{{ shoppingItem.mainStoneWeight }}"
+                    style="padding-right:12rpx"
+                  >{{ commonWXS.toFix(shoppingItem.mainStoneWeight, 2) }}ct</text>
+                  <text
+                    wx:if="{{ shoppingItem.mainStoneColor }}"
+                    style="padding-right:12rpx"
+                  >{{ shoppingItem.mainStoneColor }}</text>
+                  <text
+                    wx:if="{{ shoppingItem.mainStoneQuality }}"
+                    style="padding-right:12rpx"
+                  >{{ shoppingItem.mainStoneQuality }}</text>
+                  <text wx:if="{{ shoppingItem.handInch }}">{{ shoppingItem.handInch }}#</text>
+                </view>
+                <view class="shopping-item-credentials more-show-ellipsis" wx:if="{{ shoppingItem.credentials }}">
+                  证书：{{ shoppingItem.credentials }}
+                </view>
+              </view>
+            </view>
+            <view class="shopping-item-number">
+              <view class="item-price">
+                ￥{{ commonWXS.toFix(shoppingItem.orderedPrice, 2) }}
+              </view>
+              <van-stepper
+                class="my-class {{gs.type('jwelry-number', globalStyle)}}"
+                wx:if="{{ isEdit }}"
+                value="{{ shoppingItem.count }}"
+                disabled="{{ goods.shopppingCartTag(shoppingItem.count, shoppingItem.stockNum, shoppingItem.valid, shoppingItem.isNullStock).title == '下架' }}"
+                data-i="{{ index }}"
+                data-goodsIndex="{{ idx }}"
+                bind:change="stepperOnChange"
+                min="1"
+                max="999"
+                disable-minus="{{shoppingItem.count == 1}}" />
+              <view class="shopping-cart-number" wx:else>x{{ shoppingItem.count }}</view>
+            </view>
+          </view>
+          <view slot="right" class="button" id="{{ shoppingItem.id }}" data-goods="{{ shoppingItem }}" >
+            <view class="collect">移入收藏</view>
+            <view class="delbtn" catchtap="onSwipeClose">删除</view>
+          </view>
+        </van-swipe-cell>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="submit-bar" bindtouchstart="onCloseSwipe">
+  <view class="submit-bar-select">
+    <van-checkbox
+      checked-color="var(--primary-color)"
+      value="{{ allSelect }}"
+      bind:change="allOnChange"
+    >全选</van-checkbox>
+  </view>
+  <view class="submit-bar-info" wx:if="{{ !isEdit }}">
+    <view class="submit-bar-money">总计：<text class="submit-bar-price">￥{{ commonWXS.toFix(shoppingCartMoney, 2) }}</text></view>
+  </view>
+  <view class="submit-bar-button" bindtap="deleteOrEditMethods">{{ isEdit ? "删除" : "去结算" }}({{shoppingCartNumber}})</view>
+</view>

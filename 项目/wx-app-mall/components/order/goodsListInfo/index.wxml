@@ -1,0 +1,20 @@
+<!--components/order/goodsList/index.wxml-->
+<view class="goods">
+    <view class="goods-title">
+      <!-- <van-icon name="shop-o" /> -->
+      <image class="shop-icon" mode="widthFix" src="/images/shop.png"></image>
+      <view class="goods-title-name">{{info.storeName || ''}}</view>
+      <!-- <van-icon name="arrow" custom-style="top:5rpx; color:#A3AAB7; font-size: 24rpx" /> -->
+      <!-- <view bindtap="handleAll" wx:if="{{more}}" data-orderId="{{orderId}}">
+        <text class="goods-all">查看全部</text>
+        <van-icon name="arrow" custom-style="top:5rpx; color:#A3AAB7" />
+      </view> -->
+    </view>
+    <view class="goods-content">
+      <goodsContent bind:goodsList="handleDetail" fromOrder="{{fromOrder}}" info="{{ info }}" list="{{list}}" />
+    </view>
+
+    <!-- <view class="footer-all" bindtap="handleAll" wx:if="{{more}}" data-orderId="{{orderId}}">
+      <text>查看全部</text>
+    </view> -->
+  </view>

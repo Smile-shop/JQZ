@@ -1,0 +1,47 @@
+<!--components/local/hotGoods/index.wxml-->
+<wxs src="../../../wxsGroup/goodsArticle.wxs" module="goods"></wxs>
+<wxs src="../../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class="hot-content" bindtap="goodsDetail">
+  <!-- 商品图片 -->
+  <view class="hot-goods-img">
+    <image style="width:100%;height:100%;border-radius:10rpx 10rpx 0 0" mode="aspectFill" lazy-load src="{{ hotGoodsInfo.photo }}"></image>
+  </view>
+  <!-- 标签-->
+  <view 
+    class="hot-goods-tag {{ gs.type('tag', globalStyle) }}" 
+    style="color: {{ goods.goodsTag(hotGoodsInfo.jMPStockCount).color }}"
+    wx:if="{{ goods.goodsTag(hotGoodsInfo.jMPStockCount).title == '预订' }}"
+  >{{ goods.goodsTag(hotGoodsInfo.jMPStockCount).title }}</view>
+  <!-- 商品信息 -->
+  <view class="hot-goods-name">{{ hotGoodsInfo.name }}</view>
+  <view class="hot-goods-info">
+    <view class="hot-goods-info-left" style="font-size:24rpx;color:#A3AAB7;min-height: 32rpx">
+      <text wx:if="{{ hotGoodsInfo.goldWeightStart }}" style="padding-right:12rpx">{{ hotGoodsInfo.goldWeightStart }}g</text>
+      <text wx:if="{{ hotGoodsInfo.mainStoneWeightStart }}" style="padding-right:12rpx">{{ hotGoodsInfo.mainStoneWeightStart }}ct</text>
+      <text wx:if="{{ hotGoodsInfo.mainStoneColor }}" style="padding-right:12rpx">{{ hotGoodsInfo.mainStoneColor }}</text>
+      <text wx:if="{{ hotGoodsInfo.mainStoneQuality }}" style="padding-right:12rpx">{{ hotGoodsInfo.mainStoneQuality }}</text>
+      <text wx:if="{{ hotGoodsInfo.handInch }}">{{ hotGoodsInfo.handInch }}#</text>
+    </view>
+    <view class="hot-goods-info-right" 
+      style="font-size:20rpx;color:#4D4D4D;width:80rpx;text-align:right" 
+      wx:if="{{ hotGoodsInfo.jMPStockCount > 0 && globalStyle !== '1'}}">
+      <text style="font-size:24rpx;">{{ hotGoodsInfo.jMPStockCount || 0 }}</text>件
+    </view>
+  </view>
+  <view class="hot-goods-info" style="font-size:20rpx;color:#4D4D4D;padding-top:10rpx">
+    <view class="hot-goods-info-left">
+      <text wx:if="{{ type }}">
+        <text class="{{ gs.type('price', globalStyle) }}" style="font-size:24rpx;">￥</text>
+        <text class="{{ gs.type('price', globalStyle) }}" style="font-size:28rpx;font-weight:600">{{ goods.priceBetween(hotGoodsInfo.smallOfflinePrice, hotGoodsInfo.largeOfflinePrice) }}</text>
+      </text>
+    </view>
+    <view class="hot-goods-info-right">
+      <!-- <van-icon style="font-size:34rpx;" name="shopping-cart-o" data-goods="{{ hotGoodsInfo }}" bindtap="addCart" /> -->
+    </view>
+  </view>
+  <view
+      style="font-size:20rpx;color:#4D4D4D;padding-left:14rpx;" 
+      wx:if="{{ hotGoodsInfo.jMPStockCount > 0 && globalStyle === '1' }}">
+    <text style="font-size:20rpx;color: #999">库存：{{ hotGoodsInfo.jMPStockCount || 0 }}</text>
+  </view>
+</view>

@@ -1,0 +1,108 @@
+<!--pages/scrollList/index.wxml-->
+<wxs src="../../wxsGroup/goodsArticle.wxs" module="goods"></wxs>
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class="list-container">
+
+<!-- 头部导航 -->
+ <view class="header">
+  <view catchtap="selectedAll">
+    <van-checkbox value="{{ checked }}" checked-color="#4D4D4D" wx:if="{{globalStyle === '0'}}">全选</van-checkbox>
+    <van-checkbox value="{{ checked }}" checked-color="#DBB051" wx:if="{{globalStyle === '1'}}">全选</van-checkbox>
+  </view>
+  <view class="mulit-selected-content" catchtap="handleSort" data-text="{{priceText}}">
+    <text class="mulit-selected-text" wx:if="{{priceText.ascending.checked}}">价格{{priceText.ascending.text}}</text>
+    <text class="mulit-selected-text" wx:else>价格{{priceText.descending.text}}</text>
+    <image class="price-image" wx:if="{{priceText.ascending.checked && globalStyle === '0'}}" src="../../images/price.png" />
+    <image class="price-image" wx:if="{{priceText.ascending.checked && globalStyle === '1'}}" src="../../images/price-gold.png" />
+    <image class="price-image" wx:if="{{!priceText.ascending.checked && globalStyle === '0'}}" src="../../images/price-mini.png" />
+    <image class="price-image" wx:if="{{!priceText.ascending.checked && globalStyle === '1'}}" src="../../images/price-gold-mini.png" />
+  </view>
+ </view>
+
+<!-- 滚动区域 -->
+  <scroll-view class="scroll" scroll-y="true" bindscrolltolower="loadMore">
+    <view class="mulit-goods-content">
+    <view wx:for="{{list}}" class="goods-more" wx:key="productCodeId">
+      <view class="goods-more-icon" catchtap="handleSingleIcon" data-single="{{item}}">
+        <van-checkbox value="{{ item.single }}" checked-color="#4D4D4D" wx:if="{{globalStyle === '0'}}"/>
+        <van-checkbox value="{{ item.single }}" checked-color="#DBB051" wx:if="{{globalStyle === '1'}}"/>
+      </view>
+       <view class="goods-more-img">
+         <image class="goods-more-img" src="{{item.photo}}" bindload="" binderror="" />
+       </view>
+       <view class="shopping-books" wx:if="{{item.selected > item.stockNum && globalStyle === '0'}}">
+         预订
+       </view>
+        <view class="shopping-books gb-tag" wx:if="{{item.selected > item.stockNum && globalStyle === '1'}}">
+         预订
+       </view>
+      <view class="goods-more-content">
+        <view class="goods-more-contentTop">
+            <text class="goods-more-title" wx:if="{{item.code}}">条码号 {{item.code}}</text>
+            <text class="goods-more-tip {{ gs.type('goods-more-tip', globalStyle) }}"  wx:if="{{item.inShoppingCart === 1}}">已选购</text>
+        </view>
+        <view class="goods-more-contentMiddle">
+          <view class="goods-more-contentMiddle-content {{ item.stockNum ? gs.type('goods-more-contentMiddle', globalStyle) : '' }}">
+            <text class="goods-more-item" wx:if="{{item.goldWeight}}">{{item.goldWeight}}g</text>
+            <text class="goods-more-item" wx:elif="{{item.largeGoldWeight}}">{{goods.priceBetween(item.smallGoldWeight, item.largeGoldWeight)}}g</text>
+            <text class="goods-more-item" wx:if="{{item.largeMainStoneWeight}}">{{goods.priceBetween(item.smallMainStoneWeight, item.largeMainStoneWeight)}}ct</text>
+            <text class="goods-more-item" wx:if="{{item.mainStoneColor}}" >{{item.mainStoneColor || ''}}</text>
+            <text class="goods-more-item" wx:if="{{item.mainStoneQuality}}">{{item.mainStoneQuality || ''}}</text>
+            <text class="goods-more-item" wx:if="{{item.handInch}}">{{item.handInch || ''}}#</text>
+            <view class="goods-more-credentials" wx:if="{{item.credentials}}">证书 {{item.credentials}}</view>
+          </view>
+          <view class="goods-more-contentMiddle-stack" wx:if="{{item.stockNum && globalStyle === '0'}}">
+            <text style="width: 50rpx; overflow: hidden; text-overflow: ">{{item.stockNum}}</text>
+            <text class="contentMiddle-stack-unit">件</text>
+          </view>
+        </view>
+        <view class="goods-more-contentBottom">
+          <view class = "goods-more-price">
+            <view wx:if="{{item.orderedPrice}}">
+            <text class="goods-more-price-unit {{ gs.type('goods-more-price-unit', globalStyle) }}">￥</text>
+            <text class="goods-more-price-content {{ gs.type('goods-more-price', globalStyle) }}">{{item.orderedPrice}}</text>
+            </view>
+            <view wx:if="{{item.smallOrderedPrice}}">
+            <text class="goods-more-price-unit {{ gs.type('goods-more-price-unit', globalStyle) }}">￥</text>
+            <text class-="goods-more-price-content {{ gs.type('goods-more-price', globalStyle) }}">{{goods.priceBetween(item.smallOrderedPrice, item.largeOrderedPrice)}}</text>
+            </view>
+          </view>
+          <view class="goods-more-operating {{item.stockNum ? gs.type('goods-more-operating', globalStyle) : ''}}">
+            <van-stepper
+              class="{{gs.type('jwelry-number', globalStyle)}}"
+              value="{{ item.selected }}"
+              data-detail="{{ item }}"
+              bind:change="handleOnChange"
+              min="1"
+              max="999" />
+          </view>
+        </view>
+        <view class="goods-stock" wx:if="{{item.stockNum && globalStyle === '1'}}">
+          库存：{{item.stockNum}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <text class="moreText" bindtap="loadMore">{{moreText}}</text>
+  </scroll-view>
+  <view class="footer">
+   <view class="footer-content" catchtap="handleCart">
+     <view class="add-shopcart {{'add-shopcart-' + formatStyle[globalStyle]}}" id="shopcart">
+        加入购物车
+     </view>
+     <view class="buy-now {{'buy-now-' + formatStyle[globalStyle]}}" id='order'>
+        立即下单
+     </view>
+   </view>
+  </view>
+
+  <view wx:if="{{successTip}}" class="success-tip">
+  <view class="success-icon">
+    <image mode="aspectFit" src="../../images/success.png" />
+  </view>
+  <view class="success-text">{{successTipText}}</view>
+</view>
+
+</view>
+
+<van-toast id="van-toast" />

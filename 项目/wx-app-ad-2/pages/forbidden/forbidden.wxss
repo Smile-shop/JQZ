@@ -1,0 +1,45 @@
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.dialog {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin: auto;
+  height: 50vw;
+  width: 80vw;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+  border-radius: 5vw;
+  background-color: #FFF;
+}
+
+.dialog > .tip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  font-size: 4.5vw;
+  color: rgba(0,0,0,0.5);
+}
+
+.dialog > .control > navigator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #ccc;
+  height: 15vw;
+  color: #576B95;
+  font-size: 5vw;
+  font-weight: bold;
+}

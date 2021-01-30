@@ -1,0 +1,127 @@
+
+<view class="container">
+  <view class="prize">
+    <view class="left">
+      <image src="{{prize.icon}}"></image>
+    </view>
+    <view class="right">
+      <view class="name">
+        {{prize.giftName}}
+      </view>
+      <view class="attribute">
+        需人气值：{{prize.popularValue}}
+      </view>
+      <view class="attribute">
+        剩余库存：{{prize.activeStorageNum}}
+      </view>
+    </view>
+  </view>
+  
+  <view class="tip">
+    请正确填写以下兑换信息，填写后不可更改
+  </view>
+
+  <view class="form">
+    <view bindtap="showSelectShop" class="form-item">
+      <view class="left">
+        领取门店
+      </view>
+      <view class="right">
+        <view wx:if="{{isShowOutShopName == 0}}" class="control">
+          {{form.shopName}}
+        </view>
+        <view wx:else class="control">
+          {{form.nameOut || form.shopName}}
+        </view>
+        <i class="iconfont icon-fanhui"></i>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="left">
+        领奖人
+      </view>
+      <view class="right">
+        <input
+          class="control"
+          placeholder="请输入领奖人姓名"
+          maxlength="{{10}}"
+          bindinput="nameInput"
+          value="{{form.username}}"
+        >
+        </input>
+        <i class="iconfont icon-fanhui"></i>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="left">
+        手机号
+      </view>
+      <view class="right">
+        <input
+          type="number"
+          class="control"
+          placeholder="请点击获取手机号"
+          value="{{form.mobile}}"
+          disabled
+        >
+        </input>
+        <button wx:if="{{form.mobile}}" bindgetphonenumber="getPhonenumber" open-type="getPhoneNumber">
+          更换手机号
+        </button>
+        <button wx:else bindgetphonenumber="getPhonenumber" open-type="getPhoneNumber">
+          获取手机号
+        </button>
+      </view>
+    </view>
+    <view class="controls">
+      <button bindtap="submitForm">
+        提交
+      </button>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{isShowShops}}" bindtap="hideSelectShop" class="dialog">
+  <scroll-view
+    scroll-y="{{true}}" 
+    class="radio-list"
+  >
+    <radio-group>
+      <view 
+        wx:for="{{shops}}"
+        wx:key="index"
+        class="radio-list-item"
+        catchtap="selectShop"
+        data-index="{{index}}"
+      >
+        <view class="left">
+          <view wx:if="{{isShowOutShopName == 0}}" class="title">
+            {{item.shopName}}
+          </view>
+          <view wx:else class="title">
+            {{item.nameOut || item.shopName}}
+          </view>
+          <view class="attribute">
+            <i class="iconfont icon-dizhi"></i>
+            {{item.address}}
+          </view>
+          <view class="attribute">
+            <i class="iconfont icon-phone"></i>
+            {{item.phone}}
+          </view>
+        </view>
+        <view class="right">
+          <span class="distance">
+            {{item.distant}}
+          </span>
+          <radio
+            color="#FC4C39"
+            value="{{item.shopName}}"
+            checked="{{item.shopName == form.shopName}}"
+          >
+          </radio>
+        </view>
+      </view>
+    </radio-group>
+  </scroll-view>
+</view>

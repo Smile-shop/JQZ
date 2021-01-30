@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-icon": "../../vant-weapp/icon/index",
+    "split": "../../components/order/split",
+    "listContent": "../../components/order/content",
+    "sheet": "../../components/sheet/index"
+  },
+  "navigationBarTitleText": "我的订单"
+}

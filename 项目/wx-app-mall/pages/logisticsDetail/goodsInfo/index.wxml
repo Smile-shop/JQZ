@@ -1,0 +1,20 @@
+<!--pages/logisticsDetail/goodsInfo/index.wxml-->
+<view class="goodsInfo">
+  <view class="goodsInfo-img">
+    <image mode="scaleToFill" src="http://ftpimage.jqzjop.com/LocalUser/7015/Jewel/YZTZS006[1].jpg"></image>
+    <view class="total">共2件</view>
+  </view>
+  <view class="goodsInfo-content">
+    <view class="name">顺丰快递</view>
+    <view class="info">
+      <view class="left">订单编号：</view>
+      <view class="right">465478932154
+        <view class="copy" bindtap="copy">复制</view>
+      </view>
+    </view>
+    <view class="info">
+      <view class="left">官方电话：</view>
+      <view class="right">465478932154</view>
+    </view>
+  </view>
+</view>

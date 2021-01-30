@@ -1,0 +1,9 @@
+<!--pages/pageSuccess/index.wxml-->
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <navBar navbarData="{{navbarData}}" />
+  <view>
+    <success amount="{{amount}}" />
+  </view>
+  <split wx:if="{{ dataList.length }}" />
+  <recommend recommendList="{{dataList}}" />
+</page-meta>

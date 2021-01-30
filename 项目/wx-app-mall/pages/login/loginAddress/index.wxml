@@ -1,0 +1,26 @@
+<!--pages/login/loginAddress/index.wxml-->
+<view class="page-container">
+  <block wx:for="{{addressList}}" wx:key="name">
+    <view class="content">
+      <view class="head" bindtap="handleShop" data-shop="{{item}}">
+        <view class="icon-select" wx:if="{{item.selected}}">
+          <image src="../../../images/address-selected.png"></image>
+        </view>
+        <view class="icon-select" wx:else>
+          <image src="../../../images/address-select.png"></image>
+        </view>
+      </view>
+      <view class="address-right">
+        <view class="top-container">
+        <view class="name">{{item.name}}</view>
+        <view class="distance">{{item.distance}}</view>
+        </view>
+        <view class="phone">电话: {{item.tel}}</view>
+        <view class="address">地址: {{item.address}}</view>
+      </view>
+    </view>
+  </block>
+  <view class="footer" bindtap="selectedAddress">确定</view>
+  <sendModal show="{{show}}" msg="{{msg}}" />
+  <modal wx:if="{{modal}}" bind:registerSuc="handleMy" />
+</view>

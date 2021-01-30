@@ -1,0 +1,25 @@
+<!--pages/confirmOrder/couponsPopup/index.wxml-->
+<van-popup
+  show="{{ showCoupon }}"
+  round
+  closeable
+  close-icon="close"
+  position="bottom"
+  custom-style="height: 1000rpx;"
+  bind:close="onClose"
+  custom-class="van-popup1"
+>
+  <view class="popup">
+    <view class="popup-title">优惠券</view>
+    <van-tabs id="tabs" active="{{ active }}" bind:change="onChange" color="var(--primary-color)" titleActiveColor="var(--primary-color)">
+      <van-tab title-style="font-size: 24rpx" title="{{item.name}}" wx:for="{{ tabs }}" wx:key="index">
+        <view class="popup-cotent">
+          <view class="popup-cotent-box">
+            <item showCheckBox emptyTop="{{ emptyTop }}"  bind:change="changeCheckBox" tabData="{{ itemList }}" />
+          </view>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+  <view class="popupbtn" bindtap="save" >确定</view>
+</van-popup>

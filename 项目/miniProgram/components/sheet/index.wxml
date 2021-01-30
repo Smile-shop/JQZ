@@ -1,0 +1,10 @@
+<!--components/sheet/index.wxml-->
+<view class="container-sheet" catchtouchmove='ture' catchtap="confirm" wx:if="{{show}}">
+  <view class="sheet">
+    <view class="shee-title">
+      <view class="cancel" catchtap="handleClose">取消</view>
+      <view class="confirm" catchtap="confirm">确定</view>
+    </view>
+    <van-picker columns="{{range}}" default-index="{{initPage - 1}}" bindchange="onChange" />
+  </view>
+</view>

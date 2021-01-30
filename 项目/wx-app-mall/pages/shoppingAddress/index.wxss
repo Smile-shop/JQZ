@@ -1,0 +1,32 @@
+.shoppingAddress {
+  padding-bottom: 120rpx;
+}
+
+.shoppingAddress-add {
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  color: #fff;
+  background-color: var(--primary-color);
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  width: 100%;
+}
+
+.shoppingAddress-add-icon {
+  font-size: 26rpx;
+  margin-right: 10rpx;
+}
+
+.disabled {
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  color: #fff;
+  background-color: rgba(77, 77, 77, 1);
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  width: 100%;
+}

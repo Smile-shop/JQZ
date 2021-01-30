@@ -1,0 +1,6 @@
+<!--pages/shoppingAddress/empty/empty.wxml-->
+<view class="empty">
+  <image class="empty-img" src="/images/not-open.png" mode="widthFix"></image>
+  <view class="empty-text">抱歉！您所在的门店暂未开放</view>
+  <button class="go-shopping-button" bindtap="chooseOther">选择其他门店</button>
+</view>

@@ -1,0 +1,10 @@
+<!--components/order/orderStatus/index.wxml-->
+<view class="head" wx:if="{{ orderDetail.userStatus }}">
+  <view class="icon">
+    <image class="icon-img" src="{{statusInfo[orderDetail.userStatus].icon}}" mode="widthFix"></image>
+  </view>
+  <view class="goods-status">
+    <view class="head-title">{{statusInfo[orderDetail.userStatus].text}}</view>
+    <view class="head-info">{{orderDetail.userStatusDesc || statusInfo[orderDetail.userStatus].tips}}</view>
+  </view>
+</view>

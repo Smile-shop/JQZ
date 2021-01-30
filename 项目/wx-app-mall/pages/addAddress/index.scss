@@ -1,0 +1,45 @@
+.save{
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  color: #fff;
+  background-color: var(--primary-color);
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  width: 100%;
+}
+.textarea{
+  position: relative;
+  &-tips{
+    position: absolute;
+    top: 10.5px;
+    left: 114.5px;
+    font-size: 14px;
+    color: #ccc;
+  }
+  .textHot {
+    height: 30rpx !important;
+  }
+}
+
+.edit-save {
+  margin: 0 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #FF4646;
+  border-radius: 6rpx;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.edit-remove {
+  margin: 0 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #FFFFFF;
+  border-radius: 6rpx;
+  border: 1rpx solid #CCCCCC;
+  text-align: center;
+  margin-top: 30rpx;
+}

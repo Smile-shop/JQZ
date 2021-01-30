@@ -1,0 +1,74 @@
+<!--pages/writeOrder/index.wxml-->
+<wxs src="../../wxsGroup/common.wxs" module="commonWXS"></wxs>
+<view>
+  <scroll-view class="scroll" scroll-y="true" bindscrolltolower="handleMore">
+    <view class="{{globalStyle === '1' ? 'header-gold' : 'header'}}">
+      <view class="header-icon">
+       <image mode="scaleToFill" class="" src="../../images/position-gold.png" bindload="" binderror="" wx:if="{{globalStyle === '1'}}" />
+       <image mode="scaleToFill" class="" src="../../images/position.png" bindload="" binderror="" wx:else />
+      </view>
+      <view class="header-text">
+        <view class="{{globalStyle === '1' ? 'header-name-gold' : 'header-name' }}">{{principal}} {{customerPhone}}</view>
+        <view class="{{globalStyle === '1' ? 'header-address-gold' : 'header-address' }}">{{customerName}}</view>
+      </view>
+    </view>
+    <view class="split" wx:if="{{globalStyle === '0'}}"></view>
+    <view class="{{globalStyle === '1' ? 'note-gold': 'note'}}">
+      <view class="note-title">下单备注</view>
+      <view class="note-write">
+        <input type="text" maxlength="50" placeholder-class="input-placeholder" placeholder="您可在此输入挂签、证书、快递等下单要求" bindinput="handleNote"></input>
+      </view>
+    </view>
+    <view class="split"></view>
+    <view class="goods">
+      <view class="goods-name">货品清单</view>
+
+      <view class="goods-content" wx:for="{{perOrderList}}" wx:key="code">
+        <view class="goods-img">
+          <view class="book {{'book-' + formatStyle[globalStyle]}}" wx:if="{{item.productCount > item.stockNum}}">预订</view>
+          <view class="goods-img-region">
+             <image mode="scaleToFill" src="{{item.photo}}" />
+          </view>
+        </view>
+        <view class="goods-text">
+          <view class="text-name">{{item.productName}}</view>
+          <view class="text-code">条码号：{{item.code}}</view>
+          <view class="text-arg">
+            <text class="text-space" wx:if="{{item.goldWeight}}">{{item.goldWeight}}g</text>
+            <text class="text-space" wx:if="{{item.mainStoneWeight}}">{{ commonWXS.toFix(item.mainStoneWeight, 2) }}ct</text>
+            <text class="text-space" wx:if="{{item.mainStoneColor}}">{{item.mainStoneColor}}</text>
+            <text class="text-space" wx:if="{{item.mainStoneQuality}}">{{item.mainStoneQuality}}</text>
+            <text class="text-space" wx:if="{{item.handInch}}">{{ item.handInch }}#</text>
+          </view>
+          <view class="text-certificate" wx:if="{{item.credentials}}">证书：{{item.credentials}}</view>
+          <view class="text-certificate" wx:else></view>
+          <view class="text-total">
+            <view>
+              <text class="total-unit {{'price-unit-' + formatStyle[globalStyle]}}">¥</text>
+              <text class="count-price {{'count-price-' + formatStyle[globalStyle]}}">{{ commonWXS.toFix(item.orderedPrice, 2) }}</text>
+            </view>
+            <view>
+              <text class="total-unit">x</text>
+              <text class="count-nun {{ 'count-nun-' + formatStyle[globalStyle]}}">{{item.productCount}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="load-more" wx:if="{{perTotal.length > pageNumberr}}" bindtap="handleMore">{{footerStatus}}</view>
+    </view>
+  </scroll-view>
+  <view class="footer">
+    <view class="top"></view>
+    <view class="total">
+      <view class="total-text">
+        <text>共{{totalCount}}件商品</text> 
+        <view class="sum-price">
+          <text>合计:</text> 
+          <text class="{{'price-unit-' + formatStyle[globalStyle]}}">￥</text>
+          <text class="{{'sum-price-' + formatStyle[globalStyle]}}">{{totalPrice}}</text>
+        </view>
+      </view>
+      <view class="total-buy {{'total-buy-' + formatStyle[globalStyle]}}" bindtap="ordernow">提交订单</view>
+    </view>
+  </view>
+</view>

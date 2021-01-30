@@ -1,0 +1,31 @@
+/* components/local/goodsParam/index.wxss */
+
+/* 表格 */
+.goods-param {
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.goods-tr {
+  display: flex;
+  align-items: center;
+  border: 2rpx solid rgba(238,238,238,1);
+  border-bottom: 0;
+}
+.goods-tr:last-child{
+  border-bottom: 2rpx solid rgba(238,238,238,1);
+}
+.goods-td {
+  width: 168rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 36rpx;
+  font-size: 24rpx;
+}
+.goods-td-title {
+  color: #999999;
+  border-right: 2rpx solid rgba(238,238,238,1);
+}
+.goods-td-content {
+  color: #333333;
+  flex: 1;
+}

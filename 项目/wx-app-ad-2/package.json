@@ -1,0 +1,20 @@
+{
+  "name": "wx-app-ad-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "dayjs": "^1.9.6",
+    "miniprogram-computed": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.jqzms.com:5680/enterprise/wx-app-ad-2.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

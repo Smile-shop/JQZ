@@ -1,0 +1,137 @@
+<wxs src="../../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class="collection-wrapper {{gs.type('collection-wrapper', globalStyle)}}">
+<!-- 黄金版头部背景 -->
+<view class="collection-bground" wx:if="{{globalStyle === '1' && listArr.length > 0}}">
+  <image class="collection-gold-img" src="../../../images/global-bg.png"></image>
+</view>
+<!-- 暂无收藏商品 -->
+  <block wx:if="{{listArr.length == 0 }}">
+    <view class="collection-box" wx:if="{{globalStyle === '0'}}">
+      <image src="../../../images/collect-null.png"></image>
+    </view>
+    <view class="collection-gold-box" wx:if="{{globalStyle === '1'}}">
+      <view class="collect-box-image">
+        <image src="../../../images/collect-gold-null.png"></image>
+      </view>
+    </view>
+    <view class="collection-text {{gs.type('collection-text', globalStyle)}}">目前还没有收藏商品哦～</view>
+    <!-- <button class="collection-button">赶紧去收藏</button> -->
+  </block>
+<!-- 收藏的商品列表 -->
+  <block wx:else>
+    <view class="collection-goods {{gs.type('collection-goods', globalStyle)}}" bindtouchstart="onSwipeClose">
+    <!-- 商品列表 bind:close="onClose"-->
+      <view class="collection-goods-w" wx:for="{{listArr}}" wx:key="index" bindtouchstart="onSwipeOpen" id="{{item.productId}}">
+          <van-swipe-cell class="collection-swipe" data-index="{{ item.productId }}" left-width="{{ 1 }}" right-width="{{ 65 }}" async-close="true"   id="{{ 'item-' + item.productId }}">
+          <!-- 下架不可查看详情 -->
+            <block wx:if="{{item.isNullStock === 1 && item.stockNum === 0 || item.valid === 0}}">
+              <view class="collection-content {{gs.type('collection-content', globalStyle)}}" data-storageType='{{item.storageType}}' data-proId="{{item.productId}}">
+                <view class="collection-left">
+                  <image src="{{item.photo}}"></image>
+                  <text class="collection-huo colletcion-huo-color" wx:if="{{item.stockNum === 0 && item.isNullStock === 0 && item.valid !== 0}}">预订</text>
+                  <!-- <text class="collection-huo colletcion-huo-color" wx:if="{{item.stockNum > 0}}">现货</text> -->
+                </view>
+                <view class="collection-right">
+                  <view class="goods-title">{{item.name}}</view>
+                  <view class="goods-param {{gs.type('goods-param', globalStyle)}}">
+                    <view style="width:380rpx;float:left;">
+                      <text wx:if="{{item.smallGoldWeight > 0 && item.shelvesRule === 1}}">{{item.smallGoldWeight}}g</text>
+                      <text wx:if="{{item.smallGoldWeight > 0 && item.shelvesRule !== 1 && item.smallGoldWeight !== item.largeGoldWeight}}">{{item.smallGoldWeight}}~{{item.largeGoldWeight}}g</text>
+                      <text wx:if="{{item.smallGoldWeight > 0 && item.shelvesRule !== 1 && item.smallGoldWeight === item.largeGoldWeight}}">{{item.smallGoldWeight}}g</text>
+                      <text wx:if="{{item.goldWeight > 0}}">{{item.goldWeight}}g</text>
+                      <text wx:if="{{item.smallMainStoneWeight > 0 && item.shelvesRule === 1 && item.smallMainStoneWeight === item.largeMainStoneWeight}}">{{item.smallMainStoneWeight}}ct</text>
+                      <text wx:if="{{item.smallMainStoneWeight > 0 && item.shelvesRule !== 1 && item.smallMainStoneWeight !== item.largeMainStoneWeight}}">{{item.smallMainStoneWeight}}~{{item.largeMainStoneWeight}}ct</text>
+                      <text wx:if="{{item.smallMainStoneWeight > 0 && item.shelvesRule !== 1 && item.smallMainStoneWeight === item.largeMainStoneWeight}}">{{item.smallMainStoneWeight}}ct</text>
+                      <text>{{item.mainStoneColor}}</text>
+                      <text>{{item.mainStoneQuality}}</text>
+                    </view>
+                    <!-- <span style="float:left;" wx:if="{{item.stockNum > 0}}">{{item.stockNum}}件</span> -->
+                  </view>
+                  <view class="goods-price {{(item.isNullStock === 1 && item.stockNum === 0) || item.valid === 0 ? gs.type('price-null', globalStyle) : gs.type('goods-price', globalStyle)}}">
+                    <text wx:if="{{item.shelvesRule !== 1 && item.smallOrderedPrice !== item.largeOrderedPrice}}">¥ <text class="goods-price-num">{{item.smallOrderedPrice}}～{{item.largeOrderedPrice}}</text></text>
+                    <text wx:if="{{item.shelvesRule !== 1 && item.smallOrderedPrice === item.largeOrderedPrice}}">¥ <text class="goods-price-num">{{item.smallOrderedPrice}}</text></text>
+                    <text wx:if="{{item.shelvesRule === 1}}">¥ <text class="goods-price-num">{{item.largeOrderedPrice}}</text></text>
+                    <!-- 多品加入购物车 -->
+                    <van-icon wx:if="{{item.shelvesRule !== 1}}" data-shelvesrule="{{item.shelvesRule}}"  data-goodsName="{{item.name}}" data-productid="{{item.productId}}" name="cart-o" class="goods-cart-icon {{(item.isNullStock === 1 && item.stockNum === 0) || item.valid === 0 ? '' : gs.type('cart-o', globalStyle)}}" catchtap="onActionOpen"/>
+                    <!-- 不是多品加入购物车 -->
+                    <van-icon wx:else name="cart-o" data-shelvesrule="{{item.shelvesRule}}" data-productid="{{item.productId}}"  data-code="{{item.code}}" class="goods-cart-icon {{(item.isNullStock === 1 && item.stockNum === 0) || item.valid === 0 ? '' : gs.type('cart-o', globalStyle)}}" catchtap="goBuy"/>
+                  </view>
+                  <!-- 库存数量 -->
+                  <view wx:if="{{globalStyle === '1'}}" class="goods-stock">库存：{{item.stockNum > 0 ? item.stockNum : 0}}</view>
+                </view>
+                <!-- 下架遮罩 -->
+                <view class="offShelves-box" wx:if="{{(item.isNullStock === 1 && item.stockNum === 0) || item.valid === 0}}">
+                  <view class="offShelves-view">
+                    <view class="offShelves-p">
+                      <text>已下架</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </block>
+            <!-- 可以查看详情 -->
+           
+            <view slot="right" class="delete {{gs.type('delete', globalStyle)}}" id="{{ item.productId }}" catchtap="onCloseSwipe" data-index="{{ item.productId }}"><text>删除</text></view>
+          </van-swipe-cell>
+      </view>
+
+      <!-- 没有更多 -->
+      <view class="no-more" wx:if="{{listArr.length > 0 && listArr.length == total && globalStyle === '0'}}">
+        <text>没有更多了</text>
+      </view>
+      <!-- 加入购物车 -->
+      <view style="width: 100%;height: 100%;position:relative;">
+      <van-action-sheet show="{{ showAction }}" title="{{goodsName}}" class="show_action" bind:close="onActionClose">
+      <scroll-view scroll-y style="height: 80vh" bindscrolltolower="bindDownLoad">
+        <view style="min-height:80vh;position: relative;padding-bottom: 120rpx;">
+          <view class="action-top">
+            <van-checkbox data-name="{{ index }}" class="action-check" style="font-size:32rpx" checked-color="#4D4D4D" value="{{ checked }}" bind:change="onChange"></van-checkbox><text style="margin-left: 20rpx;">全选</text>
+            <view class="action-price">售价：<span bindtap="sortPrice" data-sort="{{1}}" data-productid="{{productMoreId}}"><text wx:if="{{priceStatus}}">由高到低</text><text wx:else>由低到高</text>
+            <!-- <span class="action-arrow"><i class="arrow-up {{priceStatus ? 'up-sected-color' : 'up-unsected-color'}}"></i><i class="arrow-down {{priceStatus ? 'down-unsected-color' : 'down-sected-color'}}"></i></span></span> -->
+            <span class="action-arrow"><i class="arrow-up {{priceStatus ? 'up-unsected-color' : 'up-sected-color'}}"></i><i class="arrow-down {{priceStatus ? 'down-sected-color' : 'down-unsected-color'}}"></i></span></span>
+            </view>
+          </view>
+          <view class="shopping-list"  wx:for="{{productCodeList}}" wx:key="index">
+            <van-checkbox-group class="checkbox" data-key='{{item.productCodeId}}'  value="{{ result }}" bind:change="onChangeAll">
+              <view class="shopping-item">
+                  <van-checkbox  style="margin-top:70rpx" checked-color="#4D4D4D" name="{{item.productCodeId}}"></van-checkbox>
+                  <image class="shopping-item-img" src="{{item.photo}}"></image>
+                  <view class="shopping-item-info">
+                    <view class="shopping-bug" wx:if="{{item.inShoppingCart === 1}}">已选购</view>
+                    <view class="shopping-item-name">条码号{{item.code}}</view>
+                    <view class="shopping-item-detail">
+                      <!-- {{item.smallGoldWeight}}g {{item.quality}} {{item.includeGoldWeight}} {{item.goldWeight}} {{item.mainStoneStandard}}
+                      {{item.mainStoneColor}} {{item.mainStoneQuality}} -->
+                    <text wx:if="{{item.smallGoldWeight > 0 && item.shelvesRule === 1}}">{{item.smallGoldWeight}}g</text>
+                    <text wx:if="{{item.smallGoldWeight > 0 && item.shelvesRule !== 1 && item.smallGoldWeight !== item.largeGoldWeight}}">{{item.smallGoldWeight}}~{{item.largeGoldWeight}}g</text>
+                    <text wx:if="{{item.smallGoldWeight > 0 && item.shelvesRule !== 1 && item.smallGoldWeight === item.largeGoldWeight}}">{{item.smallGoldWeight}}g</text>
+                    <text wx:if="{{item.goldWeight > 0}}">{{item.goldWeight}}g</text>
+                    <text wx:if="{{item.smallMainStoneWeight > 0 && item.shelvesRule === 1}}">{{item.smallMainStoneWeight}}ct</text>
+                    <text wx:if="{{item.smallMainStoneWeight > 0 && item.shelvesRule !== 1 && item.smallMainStoneWeight !== item.largeMainStoneWeight}}">{{item.smallMainStoneWeight}}~{{item.largeMainStoneWeight}}ct</text>
+                    <text wx:if="{{item.smallMainStoneWeight > 0 && item.shelvesRule !== 1 && item.smallMainStoneWeight === item.largeMainStoneWeight}}">{{item.smallMainStoneWeight}}ct</text>
+                    <text>{{item.mainStoneColor}}</text>
+                    <text>{{item.mainStoneQuality}}</text>
+                    </view>
+                    <view class="shopping-item-number">
+                      <view style="font-size:24rpx;color:#4D4D4D">￥<text style="font-size:28rpx">{{ item.orderedPrice }}</text></view>
+                      <van-stepper value="{{ value }}" data-key="{{item.productCodeId}}" bind:change="goStepper"/>
+                    </view>
+                  </view>
+                </view>
+            </van-checkbox-group>
+          </view>
+        </view>
+      </scroll-view>
+      </van-action-sheet>
+          <view class="add-shopCart" wx:if="{{ showAction }}">
+            <button data-productid="{{productMoreId}}" bindtap="goBuy">加入购物车</button>
+          </view>
+      </view>
+
+    </view>
+  </block>
+  <!-- 没有更多 -->
+    <view class="no-more 22" wx:if="{{listArr.length > 0 && listArr.length == total && globalStyle === '1'}}">
+      <text>没有更多了</text>
+    </view>
+</view>

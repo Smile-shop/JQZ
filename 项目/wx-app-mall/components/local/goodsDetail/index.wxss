@@ -1,0 +1,9 @@
+/* components/local/goodsDetail/index.wxss */
+.goods-detail {
+  width: 100%;
+  /* height: 100vh; */
+}
+
+.rich-bottom {
+  height: 120rpx;
+}

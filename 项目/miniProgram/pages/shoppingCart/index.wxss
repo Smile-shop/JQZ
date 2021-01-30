@@ -1,0 +1,91 @@
+/* pages/shoppingCart/index.wxss */
+.select-all {
+  background-color: #fff;
+}
+.select-content-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28rpx;
+  height: 100rpx;
+}
+.select-all-edit-btn {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+.title-selected {
+  color: #4D4D4D;
+}
+.title-unselect {
+  color: #A3AAB7;
+}
+.select-content-item {
+  width: 150rpx;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.price-image {
+  width: 12rpx;
+  height: 22rpx;
+  margin-left: 10rpx;
+}
+.data-loading {  
+  height: 50rpx;  
+  line-height: 50rpx;  
+  background-color: #eee;  
+  text-align: center;  
+  font-size: 24rpx;  
+} 
+/* 购物车为空 */
+.no-goods {
+  background-color: #fff;
+  width: 100vw;
+  height: calc(100vh - 103rpx);
+}
+.no-goods-icon {
+  /* padding: 24rpx 0 134rpx 148rpx; */
+  padding: 24rpx 0 134rpx 0;
+  text-align: center;
+}
+.no-goods-info {
+  font-size: 28rpx;
+  text-align: center;
+  color: #4D4D4D;
+  padding-bottom: 80rpx;
+}
+.go-shopping-button {
+  width: 320rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #4D4D4D;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 80rpx;
+}
+.select-all-1-style{
+  border-radius:0rpx 0rpx 20rpx 20rpx;
+}
+.go-shopping-button-1-style{
+  background:linear-gradient(90deg,rgba(221,178,127,1) 0%,rgba(219,176,81,1) 100%);
+}
+.jwelry-number-1-style .van-stepper__input{
+  width:76rpx;
+  height:48rpx;
+  background:rgba(245,245,245,1);
+  border-radius:2rpx;
+  font-size: 24rpx;
+  color: #4D4D4D;
+}
+.jwelry-number-1-style .van-stepper__minus, .jwelry-number-1-style .van-stepper__plus{
+  background-color: inherit;
+  color: #000;
+}
+.jwelry-number-1-style .van-stepper__minus--disabled, .jwelry-number-1-style .van-stepper__plus--disabled {
+  color: #c8c9cc;
+  color: var(--stepper-button-disabled-icon-color,#c8c9cc);
+  font-weight: 400;
+}
+
+

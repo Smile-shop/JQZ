@@ -1,0 +1,164 @@
+/* pages/order/index.wxss */
+
+head {
+  display: block;
+  white-space:nowrap;
+}
+.header {
+  height: 92rpx;
+  line-height: 92rpx;
+  background:rgba(255,255,255,1);
+}
+.case {
+  display: inline-block;
+  text-align: center;
+  width: 134rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(163,170,183,1);
+  background:rgba(255,255,255,1);
+}
+.activeItem {
+  font-weight:600;
+  color:rgba(77,77,77,1);
+}
+.scroll-container {
+  height: calc(100vh - 92rpx);
+}
+.order {
+  height:460rpx;
+  background:rgba(255,255,255,1);
+}
+.order-header {
+  display: flex;
+  align-items: center;
+  height: 87rpx;
+  line-height: 87rpx;
+  margin: 0 30rpx;
+}
+.order-mark {
+  display: inline-block;
+  width:6rpx;
+  height:20rpx;
+  background:rgba(77,77,77,1);
+  margin-right: 30rpx;
+}
+.order-num {
+  display: inline-block;
+  height:24rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(77,77,77,1);
+  line-height:24rpx;
+}
+.order-status {
+  height:24rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(236,124,104,1);
+  line-height:24rpx;
+  margin-left: auto;
+}
+.line {
+  height:1px;
+  background:rgba(238,238,238,1);
+  margin: 0 30rpx;
+}
+.order-content {
+  display: flex;
+}
+.content-img {
+  width:176rpx;
+  height:176rpx;
+  background:rgba(245,245,245,1);
+  border-radius:12rpx;
+  border:2rpx solid rgba(245,245,245,1);
+  margin: 20rpx 20rpx 30rpx 30rpx;
+}
+.tip {
+  width:80rpx;
+  height:36rpx;
+  background:rgba(255,255,255,1);
+  border-radius:18rpx;
+  margin-top: 12rpx;
+  margin-left: 12rpx;
+  padding: 4rpx 20rpx;
+  font-size:20rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(236,124,104,1);
+}
+.order-footer {
+  margin: 0 20rpx;
+}
+.order-total {
+  display: flex;
+  justify-content: flex-end;
+  height:28rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(77,77,77,1);
+  line-height:28rpx;
+}
+.container-cancel {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 28rpx;
+}
+.order-cancel {
+  width:172rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  background:rgba(255,255,255,1);
+  border-radius:30rpx;
+  border:1rpx solid rgba(204,204,204,1);
+  text-align: center;
+}
+.order-cancel-text {
+  width:96rpx;
+  height:34rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(163,170,183,1);
+  line-height:34rpx;
+}
+.content-img-confirm {
+  width:216rpx;
+  height:216rpx;
+  background:rgba(245,245,245,1);
+  border-radius:12rpx;
+  border:2rpx solid rgba(245,245,245,1);
+  margin: 30rpx;
+}
+.content-text-confirm {
+  margin: 30rpx 30rpx 30rpx 0;
+}
+.content-code, .content-certificate {
+  margin: 6rpx 0rpx;
+}
+.order-footer-confirm {
+  margin: 30rpx 30rpx auto auto;
+}
+
+.load-more {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(255,255,255,1);
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 24rpx;
+}
+
+/* 黄金版 */
+.header-gold {
+  border-radius:0px 0px 20rpx 20rpx;
+  overflow: hidden;
+}
+.activeItem-gold {
+  font-weight:600;
+  color:rgba(219,176,81,1);
+}

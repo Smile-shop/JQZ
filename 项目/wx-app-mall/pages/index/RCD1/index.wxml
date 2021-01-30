@@ -1,0 +1,32 @@
+<!--pages/index/RCD1/index.wxml-->
+<view class="rcd1" wx:if="{{ list.length }}">
+  <view class="rcd1-title">
+    <view class="rcd1-title-name">
+      <image class="rcd1-title-name-icon" src="/images/hot.png" mode="widthFix"></image>
+      {{ rcd1Data.title }}
+    </view>
+    <view class="rcd1-title-more" bindtap="getMore">
+      更多
+      <image class="rcd1-title-more-icon" src="/images/more.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="rcd1-poster" wx:if="{{ rcd1Data.imgUrl }}" bindtap="getMore">
+    <img mode="scaleToFill" custom-class="rcd1-poster-image" src="{{ rcd1Data.imgUrl }}" />
+  </view>
+  <scroll-view
+    class="rcd1-content"
+    scroll-x="true"
+    style="width: 100%"
+    wx:if="{{ list.length }}"
+  >
+    <view wx:for="{{ list }}" wx:key="id" class="rcd1-content-item">
+      <hotGoods hotGoodsInfo="{{ item }}" data-item="{{ item }}" bindgoodsDetail="goodsDetail"></hotGoods>
+    </view>
+    <view class="rcd1-content-moreB" bindtap="getMore" wx:if="{{ moreThen20 }}">
+      <view class="rcd1-content-moreB-more">
+        查看更多
+        <image class="rcd1-content-moreB-more-icon" src="/images/more.png" mode="widthFix"></image>
+      </view>
+    </view>
+  </scroll-view>
+</view>

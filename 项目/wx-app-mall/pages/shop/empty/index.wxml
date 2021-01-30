@@ -1,0 +1,6 @@
+<!--pages/shoppingAddress/empty/empty.wxml-->
+<view class="empty">
+  <image class="empty-img" src="../../../images/no-shop.png" mode="widthFix"></image>
+  <view class="empty-text">抱歉！没有搜索到相关门店</view>
+  <button class="go-shopping-button" bindtap="lookAllShop">查看所有门店</button>
+</view>

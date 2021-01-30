@@ -1,0 +1,16 @@
+<!--pages/pageSuccess/success/index.wxml-->
+<wxs module="common" src="../../../wxsGroup/common.wxs" />
+<view class="success-box">
+  <view class="success-box-icon-box">
+    <van-icon class="success-box-icon-box-icon" name="checked" />
+  </view>
+  <view class="success-box-paystatus">支付成功</view>
+  <view class="success-box-money">
+    <text class="success-box-money-before">￥</text>
+    <text class="success-box-money-after">{{ common.cutToFixed(amount) }}</text>
+  </view>
+  <view class="success-box-btn">
+    <view class="btn" bindtap="goHome">返回首页</view>
+    <view class="btn" bindtap="lookOrder">查看订单</view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "sendModal": "../../../components/sendModal/index",
+    "modal": "../../../components/modal/index"
+  },
+  "navigationBarTitleText": "绑定门店"
+}

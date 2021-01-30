@@ -1,0 +1,36 @@
+<!--pages/shopDetails/index.wxml-->
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <navBar navbarData = "{{navbarData}}" />
+  <view class="shopDetail">
+    <view class="shopDetail-bac"></view>
+    <view class="shopDetail-content">
+      <view class="shopDetail-content-logo">
+        <image class="shopDetail-content-logo-img" src="{{storeInfo.logo}}" mode="widthFix"></image>
+      </view>
+      <view class="shopDetail-content-title">{{storeInfo.name}}</view>
+      <view class="shopDetail-content-jianjie jianjie">店铺简介</view>
+      <view class="shopDetail-content-neirong">
+        {{storeInfo.description || ''}}
+      </view>
+    </view>
+    <view class="shopDetail-content">
+      <view class="shopDetail-content-jianjie">门店电话</view>
+      <view class="shopDetail-content-neirong">
+        <text>{{storeInfo.tel || ''}}</text>
+        <view class="shopDetail-content-neirong-icon" data-tel="{{storeInfo.tel}}" bindtap="call">
+          <van-icon class="shopDetail-content-neirong-icon-d" name="phone" />
+        </view>
+      </view>
+    </view>
+    <view class="shopDetail-content">
+      <view class="shopDetail-content-jianjie">门店地址</view>
+      <view class="shopDetail-content-mi" wx:if="{{style.distance}}">{{storeInfo.distance}}</view>
+      <view class="shopDetail-content-neirong">
+        <text class="shopDetail-content-neirong-address">{{storeInfo.address}}</text>
+        <view class="shopDetail-content-neirong-icon" bindtap="lookMap">
+          <van-icon class="shopDetail-content-neirong-icon-d" name="location" />
+        </view>
+      </view>
+    </view>
+  </view>
+</page-meta>

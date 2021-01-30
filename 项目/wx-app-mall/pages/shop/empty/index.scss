@@ -1,0 +1,22 @@
+.empty{
+  text-align: center;
+  margin-top: 180rpx;
+  &-img{
+    width: 319rpx;
+    margin-bottom: 80rpx;
+  }
+  &-text{
+    font-size: 28rpx;
+    color: #AAAAAA;
+  }
+  .go-shopping-button {
+    width: 320rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 28rpx;
+    margin-top: 40rpx;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-icon": "../../vant-weapp/icon/index",
+    "van-action-sheet": "../../vant-weapp/action-sheet/index",
+    "van-checkbox": "../../vant-weapp/checkbox/index",
+    "van-toast": "../../vant-weapp/toast/index",
+    "van-stepper": "../../vant-weapp/stepper/index"
+  },
+  "navigationBarTitleText": "首饰列表"
+}

@@ -1,0 +1,78 @@
+.dialog {
+  width: 560rpx;
+  border-radius: 15rpx;
+  overflow: hidden;
+  top: 40% !important;
+}
+
+.dialog .confirm-content {
+  text-align: center;
+  color: #333;
+}
+
+.dialog .confirm-content-title {
+  font-size: 32rpx;
+  padding-top: 30rpx;
+}
+
+.dialog .confirm-content-amount {
+  font-size: 72rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  padding: 20rpx 0;
+}
+
+.dialog .confirm-content-con {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.dialog .confirm-content-con-payType {
+  display: flex;
+  align-items: center;
+}
+
+.dialog .confirm-content-con-payType-arrow {
+  margin-left: 10rpx;
+  font-size: 22rpx;
+}
+
+.dialog .pwd_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30rpx 0;
+}
+
+.dialog .pwd_box .itemStyle {
+  width: 80rpx;
+  height: 80rpx;
+  background: #fff;
+  border: 1rpx solid #dadada;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rpx;
+}
+
+.dialog .pwd_box .itemStyle .PwdStyle {
+  width: 20rpx;
+  height: 20rpx;
+  background: black;
+  border-radius: 10rpx;
+}
+
+.dialog .pwd_box .itemStyle:not(:first-child) {
+  border-left: none;
+}
+
+.dialog .pas_input {
+  width: 0;
+  height: 0;
+}

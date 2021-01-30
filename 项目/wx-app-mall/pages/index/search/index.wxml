@@ -1,0 +1,6 @@
+<!--pages/index/search/index.wxml-->
+<view bindtap="handleSearch" class="search-container {{ showPicturesS.length > 0 ? 'float-search-container' : '' }}" >
+    <view class="left-content">
+      <image src="/images/search.png" class="img"></image>
+    </view>
+  </view>

@@ -1,0 +1,35 @@
+<!--components/rowList/index.wxml-->
+<wxs src="../../../wxsGroup/common.wxs" module="common"></wxs>
+<view bindtap="handleDetail" data-row="{{row}}">
+  <view class="head-img">
+    <!-- <image mode="aspectFill" src="{{row.imgUrl}}"></image> -->
+    <img class = "img" src="{{row.imgUrl}}" />
+    <view class="shop-tag" wx:if="{{!row.haveStock}}">
+      <view class="shop-text">缺货中</view>
+    </view>
+  </view>
+  <view class="content">
+    <view class="name">
+      <text>{{row.title}}</text>
+    </view>
+    <view class="tags" wx:if="{{tags.length > 0}}">
+      <text class="tag-item" wx:for="{{tags}}" wx:key="index">{{item}}</text>
+    </view>
+    <view class="footer">
+      <view class="price">
+        <view class="now-price">
+          <view class="unit">￥</view>
+          <view class="price-num">{{common.cutToFixed(row.price, 0)}}</view>
+          <view class="precise">{{common.cutToFixed(row.price, 1)}}</view>
+        </view>
+        <view class="origin-price">
+          ¥{{common.cutToFixed(row.origPrice)}}
+        </view>
+      </view>
+      <view class="cart">
+        <!-- <van-icon name="cart-o" class="cart-icon"></van-icon> -->
+        <image mode="widthFix" style="width: 36rpx; height: 36rpx;" src="/images/cart.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

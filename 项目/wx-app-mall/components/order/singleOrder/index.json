@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "confirm": "/components/confirm",
+    "img": "/components/img"
+  }
+}

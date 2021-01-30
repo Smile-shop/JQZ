@@ -1,0 +1,47 @@
+<wxs src="../../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class="showSetting-wrapper" wx:if="{{globalStyle === '0'}}">
+  <view style="height: 70vh;" class="showSetting-v">
+    <view class="showSetting-box" >
+      <view class="showSetting-title">商城名称：</view>
+      <view class="showSetting-input"><input bindinput="shopNameFun" value="{{shopName}}" type="text" placeholder="请输入商城名称"/></view>
+    </view>
+    <view class="showSetting-box">
+      <view class="showSetting-title">价格展示倍率：</view>
+      <view class="showSetting-input"><input type="digit" value="{{price}}" bindinput="priceRatio"   bindblur="priceFun" placeholder="请输入倍率"></input></view>
+      <view class="showSetting-tip">注：可填范围0.1-10；0.1即为1折</view>
+    </view>
+    <view class="showSetting-use">
+      <view class="showSetting-use-tip">功能使用说明：</view>
+      <view class="showSetting-use-tip">您可以更改商城名称、价格展示倍率，用于展厅内给进店顾客展示使用。</view>
+    </view>
+    <view class="showSetting-save">
+      <!-- <button wx:if="{{shopNameAll && priceAll || shopName && price}}" class="save-button" bindtap="saveMethod">保存</button> -->
+      <button wx:if="{{ priceAll || price}}" class="save-button" bindtap="saveMethod">保存</button>
+      <button wx:else>保存</button>
+    </view>
+  </view>
+</view>
+
+<!-- 黄金版 -->
+<view class="showSetting-wrapper showSetting-1-wrapper" wx:if="{{globalStyle === '1'}}">
+  <view class="showSetting-v showSetting-1-v">
+    <view class="showSetting-1-box">
+      <view class="showSetting-1-title">商城名称</view>
+      <view class="showSetting-1-input"><input bindinput="shopNameFun" value="{{shopName}}" type="text" placeholder="请输入商城名称"/></view>
+    </view>
+    <view class="showSetting-1-box">
+      <view class="showSetting-1-title">价格展示倍率</view>
+      <view class="showSetting-1-input"><input type="digit" value="{{price}}" bindinput="priceRatio"   bindblur="priceFun" placeholder="请输入倍率"></input></view>
+    </view>
+    <view class="showSetting-tip showSetting-1-tip">注：可填范围0.1-10；0.1即为1折</view>
+    <view class="showSetting-use">
+      <view class="showSetting-use-tip showSetting-use-1-title">功能使用说明</view>
+      <view class="showSetting-use-tip showSetting-use-1-tip">您可以更改商城名称、价格展示倍率，用于展厅内给进店顾客展示使用。</view>
+    </view>
+  </view>
+  <view class="showSetting-save showSetting-1-save">
+      <!-- <button wx:if="{{shopNameAll && priceAll || shopName && price}}" class="save-button" bindtap="saveMethod">保存</button> -->
+    <button wx:if="{{ priceAll || price}}" class="save-1-button" bindtap="saveMethod">保存</button>
+    <button wx:else>保存</button>
+  </view>
+</view>

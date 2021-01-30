@@ -1,0 +1,47 @@
+<!--pages/shop/index.wxml-->
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <view class="shop-list">
+    <!-- <van-search
+      value="{{ value }}"
+      placeholder="请输入门店名称"
+      use-action-slot
+      bind:change="getInputValue"
+      bind:search="onSearch"
+      bind:cancel="onCancel"
+      use-left-icon-slot
+      field-class="fileClass"
+      input-class="inputClass"
+    >
+      <image slot="left-icon" src="../../images/search-icon.png" style="width:32rpx;height:32rpx;margin:10rpx 20rpx 0 5rpx;flex-shrink:0"></image>
+      <view slot="action" class="search-action" bind:tap="onSearch">搜索</view>
+    </van-search> -->
+    <view class="search">
+      <view class="search-container">
+        <view class="left-content">
+          <image src="/images/search-icon.png" style="width:32rpx;height:32rpx;margin:0 20rpx 0 5rpx;flex-shrink:0"></image>
+          <input 
+            type="text"
+            confirm-type="search"
+            bindconfirm="onSearch"
+            confirm-type="搜索"
+            value="{{ value }}"
+            bindinput="getInputValue"
+            class="input-content" 
+            placeholder-class="input-placeholder" 
+            placeholder="搜索" />
+          <van-icon name="clear" bindtap="onCancel" wx:if="{{ name }}" style="margin-right:20rpx;height:72rpx" />
+        </view>
+        <view class="right-content" bindtap="onSearch" >搜索</view>
+      </view>
+    </view>
+    <loading top="{{420}}" wx:if="{{ loading }}" />
+    <empty bindgetAllShop="getAllShop" wx:if="{{ list.length == 0 && !loading }}" />
+    <pullRefresh wx:if="{{ !loading && list.length !== 0 }}" bindpullrefresh="refresh" bindhandleMore="handleMore" pullRefresh="{{pullRefresh}}" content-style="height: calc(100vh - 108rpx - 50px);height: calc(100vh - 108rpx - 50px - constant(safe-area-inset-bottom));height: calc(100vh - 108rpx - 50px - env(safe-area-inset-bottom));">
+      <view slot="content">
+        <shopCard list="{{list}}" wx:if="{{ list.length }}" />
+        <loadMore wx:if="{{ !noMore }}" />
+        <noMore wx:if="{{ list.length !== 0 && noMore }}" />
+      </view>
+    </pullRefresh>
+  </view>
+</page-meta>

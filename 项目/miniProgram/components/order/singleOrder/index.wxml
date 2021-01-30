@@ -1,0 +1,59 @@
+<!--components/order/singleOrder/index.wxml-->
+<wxs src="../../../wxsGroup/common.wxs" module="commonWXS"></wxs>
+ <view class="order {{'order-' + formatStyle[form]}}">
+    <view class="order-header" catchtap="handleDetail" data-id="{{orderId}}">
+     <view class="order-mark {{'order-mark-' + formatStyle[form]}}"></view>
+     <view class="order-num">订单号: {{orderId}}</view>
+     <view class="{{'order-status-' + formatStyle[form]}}">{{titleText[title]}}</view>
+   </view>
+   <view class="line"></view>
+   <view class="order-content" catchtap="handleDetail" wx:for="{{list}}" data-id="{{orderId}}" wx:key="code">
+     <view class="content-img-confirm">
+       <text class="tip {{'tip-' + formatStyle[form]}}" wx:if="{{item.productStatus == 0}}">预订</text>
+       <image mode="scaleToFill" class="" src="{{item.photo}}" />
+     </view>
+     <view class="content-text-confirm">
+        <view class="content-name">
+          {{item.productName}}
+        </view>
+        <view class="content-code">
+          条码号: {{item.code}}
+        </view>
+        <view class="content-tag">
+          <text class="tag-item" wx:if="{{item.goldWeight}}">{{item.goldWeight}}g</text>
+          <text class="tag-item" wx:if="{{item.mainStoneWeight}}">{{commonWXS.toFix(item.mainStoneWeight, 2)}}ct</text>
+          <text class="tag-item" wx:if="{{item.mainStoneColor}}">{{item.mainStoneColor}}</text>
+          <text class="tag-item" wx:if="{{item.mainStoneQuality}}">{{item.mainStoneQuality}}</text>
+          <text class="tag-item" wx:if="{{item.handInch}}">{{item.handInch}}#</text>
+        </view>
+        <view class="content-certificate" >
+          <text wx:if="{{item.credentials}}">证书: {{item.credentials}}</text>
+        </view>
+        <view class="content-price">
+          <view class='price-container'>
+            <text class="price-unit {{'price-unit-' + formatStyle[form]}}">￥</text>
+            <text class="price-num {{'price-num-' + formatStyle[form]}}">{{commonWXS.toFix(item.orderedPrice, 2)}}</text>
+          </view>
+          <view class='count-container'>
+            <text class='count-unit'>x</text>
+            <text class="count-num">{{item.productCount}}</text>
+          </view>
+        </view>
+     </view>
+   </view>
+   <view class="order-footer-confirm">
+     <view class='order-total' catchtap="handleDetail" data-id="{{orderId}}">
+       <text>共{{count}}件商品</text>
+       <view class="sum-price">
+         <text>合计: </text>
+         <text class="sum-unit {{'sum-unit-' + formatStyle[form]}}">￥</text>
+         <text class="sum-totalPrice {{'sum-tottalPrice-' + formatStyle[form]}}">{{commonWXS.toFix(price, 2)}}</text>
+       </view>
+     </view>
+     <view class="container-cancel" wx:if="{{title == 0}}">
+       <view class='order-cancel' bindtap="handleCancelOrder" data-id="{{orderId}}">
+        <text class='order-cancel-text'>取消订单</text>
+       </view>
+     </view>
+   </view>
+ </view>

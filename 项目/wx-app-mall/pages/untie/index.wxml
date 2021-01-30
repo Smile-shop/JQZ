@@ -1,0 +1,4 @@
+<!--pages/untie/index.wxml-->
+<view>
+  <view class="untie" bindtap="handleUntieUser">解除绑定</view>
+</view>

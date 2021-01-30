@@ -1,0 +1,7 @@
+.colog {
+  color: #ccc;
+}
+
+.colog .aaa {
+  color: #ccc;
+}

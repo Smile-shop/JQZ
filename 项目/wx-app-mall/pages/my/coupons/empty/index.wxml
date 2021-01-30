@@ -1,0 +1,5 @@
+<!--pages/shoppingAddress/empty/empty.wxml-->
+<view class="empty" style="margin-top: {{emptyTop}}rpx">
+  <image class="empty-img" src="/images/no-coupons.png" mode="widthFix"></image>
+  <view class="empty-text">目前没有优惠券哦</view>
+</view>

@@ -1,0 +1,13 @@
+<!--pages/confirmOrder/remark/index.wxml-->
+<view class="remark-box">
+  <view class="title">买家留言</view>
+  <text class="summary">{{value.length}} / 100</text>
+  <van-field
+    value="{{ value }}"
+    placeholder="请输入您的留言，建议提前协商，100字以内"
+    placeholder-style="font-size: 24rpx"
+    border="{{ false }}"
+    bind:change="change"
+    maxlength="100"
+  />
+</view>

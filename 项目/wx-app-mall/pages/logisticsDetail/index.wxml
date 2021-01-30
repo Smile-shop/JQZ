@@ -1,0 +1,8 @@
+<!--pages/logisticsDetail/index.wxml-->
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <view>
+    <goodsInfo />
+    <split />
+    <steps />
+  </view>
+</page-meta>

@@ -1,0 +1,8 @@
+<!--components/order/empty/index.wxml-->
+<view class="empty-container">
+  <view class="split"></view>
+  <view class="empty-img">
+    <cover-image src="../../../images/orderEmpty.png" />
+  </view>
+  <view class="empty-text">目前还没有相关订单哦</view>
+</view>

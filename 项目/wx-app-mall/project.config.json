@@ -1,0 +1,122 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": false,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "bundle": false,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": true,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "useApiHostProcess": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.12.2",
+  "appid": "wx9b8c944208f85687",
+  "projectname": "mall",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "开发环境",
+          "pathName": "pages/index/index",
+          "query": "env=dev",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "商品详情",
+          "pathName": "pages/goodsDetail/index",
+          "query": "env=dev",
+          "scene": null
+        },
+        {
+          "id": 2,
+          "name": "随意搞模式",
+          "pathName": "pages/index/index",
+          "query": "env=fuck",
+          "scene": null
+        },
+        {
+          "id": 3,
+          "name": "local",
+          "pathName": "pages/index/index",
+          "query": "env=local",
+          "scene": null
+        },
+        {
+          "id": 4,
+          "name": "输出日志",
+          "pathName": "pages/index/index",
+          "query": "env=log",
+          "scene": null
+        },
+        {
+          "id": 5,
+          "name": "解绑会员",
+          "pathName": "pages/untie/index",
+          "query": "env=untie",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "测试mini_token",
+          "pathName": "pages/index/index",
+          "query": "env=test",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<!--pages/shoppingAddress/index.wxml-->
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <navBar navbarData="{{navbarData}}" />
+  <view class="shoppingAddress">
+    <empty wx:if="{{ !addressList.length }}" />
+    <list fromOrder="{{ fromOrder }}" edit="{{ edit }}" wx:else list="{{addressList}}" bind:reloadAddressList="reloadAddressList" />
+    <view class="{{addNewAddress ? 'shoppingAddress-add': 'disabled'}}" bindtap="addAddress">
+      + 新建收货地址
+    </view>
+  </view>
+</page-meta>

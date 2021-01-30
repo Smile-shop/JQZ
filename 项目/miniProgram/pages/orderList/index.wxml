@@ -1,0 +1,85 @@
+<!--pages/orderList/index.wxml-->
+<wxs src="../../wxsGroup/common.wxs" module="commonWXS"></wxs>
+<view>
+  <view class="nav {{globalStyle === '1' ? 'nav-gold' : ''}}" wx:if="{{globalStyle === '1'}}">
+    <view id ="assort"  class="{{activeItem == 'assort' ? 'activeItem-gold case': 'case'}}" bindtap="handleAssort">分类</view>
+    <view id = "spot"  class="{{activeItem == 'spot' ? 'activeItem-gold case': 'case'}}" bindtap="handleSpot">现货</view>
+    <view id = "price" class="{{activeItem == 'price' ? 'activeItem-gold case': 'case'}}" bindtap="handleSort">
+      <text>价格</text>
+      <view class="price-icon" wx:if="{{priceSort == 1}}">
+        <image class="" src="../../images/no-price.png" bindload="" binderror="" />
+      </view>
+      <view class="price-icon" wx:if="{{priceSort == 2}}">
+        <image class="" src="../../images/price-gold.png" bindload="" binderror="" />
+      </view>
+      <view class="price-icon" wx:if="{{priceSort == 3}}">
+        <image class="" src="../../images/price-gold-mini.png" bindload="" binderror="" />
+      </view>
+    </view>
+  </view>
+  <view class="nav" wx:else>
+    <view id ="assort"  class="{{activeItem == 'assort' ? 'activeItem case': 'case'}}" bindtap="handleAssort">分类</view>
+    <view id = "spot"  class="{{activeItem == 'spot' ? 'activeItem case': 'case'}}" bindtap="handleSpot">现货</view>
+    <view id = "price" class="{{activeItem == 'price' ? 'activeItem case': 'case'}}" bindtap="handleSort">
+      <text>价格</text>
+      <view class="price-icon" wx:if="{{priceSort == 1}}">
+        <image class="" src="../../images/no-price.png" bindload="" binderror="" />
+      </view>
+      <view class="price-icon" wx:if="{{priceSort == 2}}">
+        <image class="" src="../../images/price.png" bindload="" binderror="" />
+      </view>
+      <view class="price-icon" wx:if="{{priceSort == 3}}">
+        <image class="" src="../../images/price-mini.png" bindload="" binderror="" />
+      </view>
+    </view>
+  </view>
+  <scroll-view 
+    scroll-into-view="{{firstItem}}"
+    scroll-y
+    class="scroll-container"
+  >
+    <view>
+      <split />
+      <view class="list {{globalStyle === '1' ? 'list-gold' : ''}}" wx:if="{{activeItem == 'assort'}}">
+        <view class="list-content-container"  wx:for="{{typeList}}" wx:key="name">
+          <view class="child-title">
+            <view class="list-name-title">{{item.name}}</view>
+            <view class="list-name-num">{{item.list.length}}款</view>
+          </view>
+          <listContent context="{{item.list}}" form="{{globalStyle}}" />
+          <split />
+        </view>
+      </view>
+      <view class="{{globalStyle === '1' ? 'list-gold' : ''}}" wx:else>
+        <view class="placeholder" />
+        <listContent context="{{list}}" form="{{globalStyle}}" />
+      </view>    
+    </view>
+  </scroll-view>
+  <sheet bind:closePage="turnPage" bind:confirmPage="handleNewPage" show="{{pagination}}" range="{{paginationNum}}" initPage="{{pageNum}}" />
+  <view class="page-total">
+    <view class="pagination">
+      <view class="{{activePagePre ? 'activePage pre': 'pre'}}" bindtap="prePage">
+        上一页
+      </view>
+      <view class="turnPage">
+        <view class="turn-page-info" bindtap="handlePage">
+          <text class="turn-page-num">{{pageNum}}/{{totalPages}}</text>
+          <van-icon name="arrow-up" custom-style="top:5rpx; color:#A3AAB7" />
+        </view>
+      </view>
+      <view class="{{activePageNext ? 'activePage next': 'next'}}" bindtap="nextPage">
+        下一页
+      </view>
+    </view>
+    <view class="bottom-split"></view>
+    <view class="page-info">
+      <text>共{{totalNum}}件商品</text>
+      <view class="sum-price">
+        <text>合计: </text>
+        <text class="price-unit {{'price-unit-' + formatStyle[globalStyle]}}">￥</text>
+        <text class="sum-totalPrice {{'sum-totalPrice-' + formatStyle[globalStyle]}}">{{commonWXS.toFix(totalAmount, 2)}}</text>
+      </view>
+    </view>
+  </view>
+</view>

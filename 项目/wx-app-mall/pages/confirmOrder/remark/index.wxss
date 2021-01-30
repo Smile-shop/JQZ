@@ -1,0 +1,19 @@
+/* pages/confirmOrder/remark/index.wxss */
+.remark-box{
+  padding: 0rpx 0rpx 15rpx 0rpx;
+  background-color: #fff;
+  position: relative;
+}
+.summary{
+  font-size: 22rpx;
+  color: #ccc;
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+}
+.remark-box .title{
+  padding: 30rpx 30rpx 0 30rpx;
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: bold;
+}

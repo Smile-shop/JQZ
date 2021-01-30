@@ -1,0 +1,124 @@
+<!--custom-tab-bar/index.wxml-->
+<van-tabbar 
+  active="{{ active }}" 
+  bind:change="onChange" 
+  active-color="{{ activeColor }}"
+  inactive-color="#8F99A7"
+  safe-area-inset-bottom 
+  fixed>
+  <van-tabbar-item>
+    <image
+      slot="icon"
+      src="/images/index.png"
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    <image
+      wx:if="{{ globalStyle == 1 }}"
+      slot="icon-active"
+      src="/images/index-1-selected.png"
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    <image
+      wx:else
+      slot="icon-active"
+      src=""
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    首页 
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image
+      slot="icon"
+      src="/images/classify.png"
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    <image
+       wx:if="{{ globalStyle == 1 }}"
+      slot="icon-active"
+      src="/images/classify-1-selected.png"
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    <image
+      wx:else
+      slot="icon-active"
+      src=""
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    分类
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image
+      slot="icon"
+      src="/images/shopping.png"
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    <image
+       wx:if="{{ globalStyle == 1 }}"
+      slot="icon-active"
+      src="/images/shopping-1-selected.png"
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    <image
+      wx:else
+      slot="icon-active"
+      src=""
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    购物车
+  </van-tabbar-item>
+    <van-tabbar-item>
+    <image
+      slot="icon"
+      src="/images/shop.png"
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    <image
+      wx:if="{{ globalStyle == 1 }}"
+      slot="icon-active"
+      src="/images/shop-1-selected.png"
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    <image
+      wx:else
+      slot="icon-active"
+      src=""
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    店铺
+  </van-tabbar-item>
+  <van-tabbar-item>
+    <image
+      slot="icon"
+      src="/images/mine.png"
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    <image
+      wx:if="{{ globalStyle == 1 }}"
+      slot="icon-active"
+      src="/images/mine-1-selected.png"
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    <image
+      wx:else
+      slot="icon-active"
+      src=""
+      mode="aspectFit"
+      style="width: 30px; height: 25px;"
+    />
+    我的
+  </van-tabbar-item>
+</van-tabbar>

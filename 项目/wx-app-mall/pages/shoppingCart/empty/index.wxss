@@ -1,0 +1,25 @@
+/* pages/shoppingCart/empty/index.wxss */
+.no-goods {
+  background-color: #fff;
+  width: 100vw;
+  height: calc(100vh - 103rpx);
+}
+.no-goods-icon {
+  padding: 180rpx 0 42rpx 0;
+  text-align: center;
+}
+.no-goods-info {
+  font-size: 28rpx;
+  text-align: center;
+  color: #aaa;
+  padding-bottom: 42rpx;
+}
+.go-shopping-button {
+  width: 320rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 28rpx;
+}

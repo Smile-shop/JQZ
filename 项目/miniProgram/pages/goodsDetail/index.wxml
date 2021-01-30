@@ -1,0 +1,221 @@
+<!--pages/goodsDetail/index.wxml-->
+<wxs src="../../wxsGroup/goodsArticle.wxs" module="goods"></wxs>
+
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class="goodsDetail">
+  <view wx:if="{{shareIdentification !== '1'}}" class="goods-share" bindtap="goShowSheet"><image class="share-img" src="../../images/share-to.png"></image></view>
+  <swiper class="images" autoplay="{{autoplay}}" bindchange="changeSwiper" bindtap="handleSwiper">
+  <block wx:for="{{address}}" wx:key="index">
+    <swiper-item>
+      <!-- <image  lazy-load src="{{item.url}}"></image> -->
+      <view class="backImg" style="background-image: url({{item.url}});"></view>
+    </swiper-item>
+  </block>
+</swiper>
+<text class="swiper-number {{ gs.type('swiper-number', globalStyle) }}" wx:if="{{swiperTotal > 0}}">{{current}}/{{swiperTotal}}</text>
+
+  <view class = "card-container" wx:if="{{globalStyle === '0'}}">
+    <view class="article-card">
+      <view class="article-card-name">{{jewelryParams.name}}</view>
+      <view class="article-card-content" wx:if="{{jewelryParams.stockStatus === 0}}">
+        <text wx:if="{{jewelryParams.stockStatus === 0}}" class="article-card-tipBook">预订</text>
+      </view>
+      <view class="{{jewelryParams.stockStatus === 0 ? 'article-card-price' : 'article-card-price article-card-price-noBook'}}">
+      <text class="article-card-unit {{ gs.type('article-card-num', globalStyle) }}">￥</text>
+      <text class="article-card-num {{ gs.type('article-card-num', globalStyle) }}" wx:if="{{jewelryParams.sumPrice}}">{{jewelryParams.sumPrice}}</text>
+      <text class="article-card-num {{ gs.type('article-card-num', globalStyle) }}" wx:if="{{jewelryParams.smallOrderedPrice > 0 && !isVisitor}}">{{goods.priceBetween(jewelryParams.smallOrderedPrice, jewelryParams.largeOrderedPrice)}}</text>
+      <text class="article-card-num card-money" wx:if="{{jewelryParams.smallOrderedPrice > 0 && isVisitor}}">{{goods.priceBetween(jewelryParams.minOrderedPrice, jewelryParams.maxOrderedPrice)}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 黄金版 -->
+  <view class="card-container-2" wx:if="{{globalStyle === '1'}}">
+    <view class="card-box {{jewelryParams.stockStatus === 0 ? 'article-card-price card-box-1' : 'article-card-price article-card-price-noBook'}}">
+      <view class="article-tip-text" wx:if="{{jewelryParams.stockStatus === 0}}">
+        <text wx:if="{{jewelryParams.stockStatus ===0}}" class="article-card-tipBook">预订</text>
+      </view>
+      <text class="article-card-unit card-unit">￥</text>
+      <text class="article-card-num card-money" wx:if="{{jewelryParams.sumPrice}}">{{jewelryParams.sumPrice}}</text>
+      <text class="article-card-num card-money" wx:if="{{jewelryParams.smallOrderedPrice > 0 && !isVisitor}}">{{goods.priceBetween(jewelryParams.smallOrderedPrice, jewelryParams.largeOrderedPrice)}}</text>
+      <text class="article-card-num card-money" wx:if="{{jewelryParams.smallOrderedPrice > 0 && isVisitor}}">{{goods.priceBetween(jewelryParams.minOrderedPrice, jewelryParams.maxOrderedPrice)}}</text>
+    </view>
+    <view class="jwelry-card-name">{{jewelryParams.name}}</view>
+  </view>
+
+  <scroll-view class="article {{ gs.type('article', globalStyle) }}">
+    <view class="article-production {{ gs.type('article-production', globalStyle) }}">
+      <view class="article-production-title {{gs.type('article-production-title', globalStyle)}}">首饰参数</view>
+      <view class="article-production-line" wx:if="{{globalStyle === '0'}}">
+        <view class="article-production-lineText">
+          <view class="article-production-lineImg">
+             <image src="../../images/production.png" />
+          </view>
+          <view class="article-production-text">
+            <text>PRODUCT PARAMETERS</text>
+          </view>
+        </view>
+        <view class="article-production-line">
+          <view class="article-production-lineImg-line">
+          </view>
+          <view class="article-production-lineImg-icon">
+            <image src="../../images/triangle.png" />
+          </view>
+        </view>
+      </view>
+      <view class="article-production-list {{ gs.type('article-production-list', globalStyle) }}">
+        <view class="article-production-listItem" wx:if="{{production.code.value}}">
+          {{production.code.name}}：{{production.code.value}}
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.largeCategory.value}}">
+          {{production.largeCategory.name}}：{{production.largeCategory.value}}
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.category.value}}">
+          {{production.category.name}}：{{production.category.value}}
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.styleSeries.value}}">
+          {{production.styleSeries.name}}：{{production.styleSeries.value}}
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.texture.value}}">
+          {{production.texture.name}}：{{production.texture.value}}
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.quality.value}}">
+          {{production.quality.name}}：{{production.quality.value}}
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.jewelrySeries.value}}">
+          {{production.jewelrySeries.name}}：{{production.jewelrySeries.value}}
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.credentials.value}}">
+          {{production.credentials.name}}：{{production.credentials.value}}
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.goldWeight.value.smallGoldWeight}}">
+          {{production.goldWeight.name}}：{{goods.priceBetween(production.goldWeight.value.smallGoldWeight, production.goldWeight.value.largeGoldWeight)}}g
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.mainStoneWeight.value.smallMainStoneWeight}}">
+          {{production.mainStoneWeight.name}}：{{goods.priceBetween(production.mainStoneWeight.value.smallMainStoneWeight, production.mainStoneWeight.value.largeMainStoneWeight)}}ct
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.mainStoneColor.value}}">
+          {{production.mainStoneColor.name}}：{{production.mainStoneColor.value}}
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.mainStoneQuality.value}}">
+          {{production.mainStoneQuality.name}}：{{production.mainStoneQuality.value}}
+        </view>
+        <view class="article-production-listItem" wx:if="{{production.handInch.value}}">
+          {{production.handInch.name}}：{{production.handInch.value}}#
+        </view>
+      </view>
+    </view>
+    <view class="article-single {{ gs.type('article-single', globalStyle) }}" wx:if="{{ jewelryParams.isQueryOther === 0}}">
+      <view class="article-single-text">
+        首饰数量
+      </view>
+       <view class="article-single-operating">
+       <van-stepper
+          class="{{gs.type('jwelry-number', globalStyle)}}"
+          value="{{ jewelryParams.shoppingCount }}"
+          data-detail="{{ jewelryParams }}"
+          bind:change="stepperOnChange"
+          min="1"
+          max="999" />
+       </view>
+    </view>
+    <view class="article-more {{ gs.type('article-more', globalStyle) }}" bindtap="handlMoreStyle" wx:if="{{ jewelryParams.isQueryOther === 1}}">
+      <text class="article-more-title">更多款式</text>
+      <text class="icon ICONxuanze_gengduo more-icon"></text>
+     </view>
+
+     <view class="production-reichText {{ gs.type('production-reichText', globalStyle) }}" wx:if="{{1}}">
+       <view class="richText-article-production {{ gs.type('richText-article-production', globalStyle) }}">
+          <view class="article-production-title {{gs.type('article-production-title', globalStyle)}}">首饰介绍</view>
+          <view class="RichText-article-production-line" wx:if="{{globalStyle === '0'}}">
+            <view class="article-production-lineText">
+              <view class="article-production-lineImg">
+                <image src="../../images/production.png" />
+              </view>
+              <view class="article-production-text">
+                <text>PRODUCT INTRODUCTION</text>
+              </view>
+            </view>
+            <view class="richText-article-production-line">
+              <view class="article-production-lineImg-line">
+              </view>
+              <view class="article-production-lineImg-icon">
+                <image src="../../images/triangle.png" />
+              </view>
+            </view>
+          </view>
+          <view class="rich-content {{ gs.type('rich-content', globalStyle) }}">
+            <wxparser rich-text="{{productionRichText}}" />
+          </view>
+       </view>
+     </view>
+  </scroll-view>
+  
+  <view class="footer {{ gs.type('footer', globalStyle) }}" wx:if="{{shareIdentification !== '1' || shareIdentification =='1' && shareLimit}}">
+    <view class="footer-container">
+      <view class="footer-item"  bindtap="goCart">
+        <view class="footer-icon {{ gs.type('footer-icon', globalStyle) }}">
+          <van-icon name='cart-o' class="cart-icon {{ gs.type('gb-icon', globalStyle) }}" info="{{initNumber > 999 ? '999+' : initNumber}}" />
+        </view>
+        <view class="footer-text {{ gs.type('footer-text', globalStyle) }}">购物车</view>
+      </view>
+      <view class="footer-item {{ gs.type('footer-item', globalStyle) }}" bindtap="handleCollection" data-collection = "{{jewelryParams.isCollec}}">
+        <view class="footer-icon {{ gs.type('footer-icon', globalStyle) }}">
+           <van-icon wx:if="{{jewelryParams.isCollec === 1}}" name="like" class="collect-icon default-icon {{ gs.type('collect-icon', globalStyle) }}" />
+           <!-- <view class="view-icon" wx:if="{{globalStyle === '1' && jewelryParams.isCollec !== 1}}"><image src="../../images/like-gold.png"></image></view> -->
+           <van-icon wx:if="{{jewelryParams.isCollec !== 1}}" name='like-o' class="collect-icon {{ gs.type('gb-icon', globalStyle) }}" />
+        </view>
+        <view class="footer-text collect-selected" wx:if="{{jewelryParams.isCollec === 1 && globalStyle === '1'}}">已收藏</view>
+        <view class="footer-text {{ gs.type('footer-text', globalStyle) }}" wx:else>收藏</view>
+      </view>
+      <view class="footer-item">
+        <view class="addCart {{ gs.type('addCart', globalStyle) }}" catchtap="handleCart">
+          <view class="add-shopcart {{ gs.type('addCart-btn', globalStyle) }}" id ="cart">
+            加入购物车
+          </view>
+          <view class="order-now {{ gs.type('order-btn', globalStyle) }}" id="order">
+            立即下单
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+<view wx:if="{{showTip}}" class="collection-tip">
+  <view class="collection-icon">
+    <van-icon name='like' class="selected-icon" />
+  </view>
+  <view class="top-text">{{collectionTip}}</view>
+</view>
+
+<view wx:if="{{successTip}}" class="success-tip">
+  <view class="success-icon">
+    <image mode="aspectFit" src="../../images/success.png" />
+  </view>
+  <view class="success-text">{{successTipText}}</view>
+</view>
+
+<!-- 轮播详情展示 -->
+<view class="{{showSwiper ? 'swiperBigShow': 'swiperBigHidden'}}">
+ <view class="wrapper">
+   <view class="top-item">
+     {{current}}
+    <text class="split-swiper">/</text>
+     {{swiperTotal}}
+   </view>
+   <view class="swiper-content">
+      <swiper class="images" autoplay="{{autoplay}}" bindchange="changeSwiper" bindtap="closeSwiper">
+        <block wx:for="{{address}}" wx:key="index">
+          <swiper-item>
+            <image mode="aspectFit" lazy-load src="{{item.url}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+   </view>
+ </view>
+</view>
+<!-- 分享海报 -->
+<share-post globalStyle="{{globalStyle}}" showSharePost="{{showSharePost}}" postList="{{postList}}"></share-post>
+</view>
+<!-- 分享弹窗面板 -->
+<share globalStyle="{{globalStyle}}" showActionsheet="{{showSheet}}" bindgetPostList="getPostList" bindcustomevent="myEventListener"></share>
+<van-toast id="van-toast" />

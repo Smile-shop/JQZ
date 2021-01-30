@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "item": "./item",
+    "split": "../../../components/order/split",
+    "empty": "./empty",
+    "navBar": "/components/navBar"
+  },
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom"
+}

@@ -1,0 +1,20 @@
+{
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "rowList": "../../components/goods/rowList/index",
+    "columList": "../../components/goods/columList/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "popup": "../../components/goods/popup/index",
+    "van-stepper": "@vant/weapp/stepper/index",
+    "no-goods": "../../components/goods/noGoods/index",
+    "loading": "../../components/loading/index",
+    "navBar": "/components/navBar/index",
+    "noMore": "/components/noMore"
+  },
+  "navigationBarTitleText": "商品列表",
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom"
+}

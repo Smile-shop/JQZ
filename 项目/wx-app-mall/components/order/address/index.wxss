@@ -1,0 +1,57 @@
+/* components/order/address/index.wxss */
+.address-content{
+  padding: 30rpx;
+  background-color: #fff;
+}
+.FMS-content{
+  display: flex;
+  align-items: center;
+}
+.FMS-content-left{
+  width: 50rpx;
+  color: #999;
+}
+.FMS-content-left .icon{
+  position: relative;
+  top: -20rpx;
+}
+.FMS-content-info{
+  flex: 1;
+  line-height: 50rpx;
+}
+.FMS-content-info .info{
+  font-size: 28rpx;
+  color: #333;
+  display: flex;
+}
+.FMS-content-info .info .text{
+  color: #333;
+  font-weight: bold;
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+.FMS-content-info .info .tel{
+  margin-left: 20rpx;
+}
+.FMS-content-info .time{
+  font-size: 24rpx;
+  color: #999;
+}
+.FMS-content-right{
+  width: 14rpx;
+  color: #ccc;
+}
+.no-address-text{
+  font-size: 24rpx;
+  color: #333;
+  margin-left: 18rpx;
+}
+.no-address .icon{
+  position: relative;
+  top: 7rpx;
+}

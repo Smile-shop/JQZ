@@ -1,0 +1,24 @@
+/* components/sendModal/index.wxss */
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10rpx;
+  color: #fff;
+  font-size: 24rpx;
+}

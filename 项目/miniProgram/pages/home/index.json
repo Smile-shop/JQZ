@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "homePage": "/components/homePage/index",
+    "slide": "/components/local/slide/index"
+  }
+}

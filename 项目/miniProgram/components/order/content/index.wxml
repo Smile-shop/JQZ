@@ -1,0 +1,33 @@
+<!--components/order/content/index.wxml-->
+<wxs src="../../../wxsGroup/common.wxs" module="commonWXS"></wxs>
+<view class="{{'radius-' + formatStyle[form]}}">
+<view class="list-content" bindtap="handleDetail" wx:for="{{context}}" wx:key="code">
+  <view class="container-img">
+    <view class="img-tip {{'img-tip-' + formatStyle[form]}}" wx:if="{{item.productStatus == 0}}">预订</view>
+    <image mode="scaleToFill" src="{{item.photo}}" />
+  </view>
+  <view class="content-text">
+    <view class="text-name">{{item.productName}}</view>
+    <view class="text-code">条码号 {{item.code}}</view>
+    <view class="text-arg">
+      <text class="tag-item" wx:if="{{item.goldWeight}}">{{item.goldWeight}}g</text>
+      <text class="tag-item" wx:if="{{item.mainStoneWeight}}">{{commonWXS.toFix(item.mainStoneWeight, 2)}}ct</text>
+      <text class="tag-item" wx:if="{{item.mainStoneColor}}">{{item.mainStoneColor}}</text>
+      <text class="tag-item" wx:if="{{item.mainStoneQuality}}">{{item.mainStoneQuality}}</text>
+      <text class="tag-item" wx:if="{{item.handInch}}">{{item.handInch}}#</text>
+    </view>
+    <view class="text-certificate" wx:if="{{item.credentials}}">证书 {{item.credentials}}</view>
+    <view class="text-certificate" wx:else></view>
+    <view class="text-total">
+      <view class="{{'tag-item-' + formatStyle[form]}}">
+        <text>￥</text>
+        <text class="sum-price">{{commonWXS.toFix(item.orderedPrice, 2)}}</text>
+      </view>
+      <view>
+        <text>x</text>
+        <text class="sum-count">{{item.productCount}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+</view>

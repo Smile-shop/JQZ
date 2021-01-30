@@ -1,0 +1,10 @@
+<!--pages/coupons/index.wxml-->
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <navBar navbarData="{{navbarData}}" />
+  <van-tabs sticky animated swipeable color="{{mainColor}}" titleActiveColor="{{mainColor}}" bind:change="changeTabs">
+    <van-tab title="{{item.title}}" wx:for="{{tabs}}" wx:key="index">
+      <split />
+      <item tabData="{{tabData}}" />
+    </van-tab>
+  </van-tabs>
+</page-meta>

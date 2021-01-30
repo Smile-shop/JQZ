@@ -1,0 +1,18 @@
+{
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "orderStatus": "/components/order/orderStatus",
+    "split": "/components/order/split",
+    "orderInfo": "/components/order/info",
+    "goodsContent": "/components/order/content",
+    "confirm": "/components/confirm",
+    "shopInfo": "/components/order/shopInfo",
+    "address": "/components/order/address",
+    "goodsListInfo": "/components/order/goodsListInfo",
+    "navBar": "/components/navBar",
+    "payPop": "/components/order/payPop"
+  },
+  "navigationBarTitleText": "订单详情",
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom"
+}

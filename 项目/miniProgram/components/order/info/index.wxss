@@ -1,0 +1,32 @@
+/* components/order/info/index.wxss */
+.order-info {
+  padding: 0 30rpx;
+  background: rgba(255,255,255,1);
+}
+
+.info-title {
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size:28rpx;
+  font-weight:600;
+  color:rgba(77,77,77,1);
+}
+
+.info-content {
+  display: inline-block;
+  height: 64rpx;
+  line-height: 64rpx;
+  margin: 2rpx 0;
+  width:96px;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(163,170,183,1);
+  line-height:24px;
+}
+
+.info-text {
+  display: inline-block;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+}

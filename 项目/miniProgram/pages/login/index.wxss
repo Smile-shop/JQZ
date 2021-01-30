@@ -1,0 +1,148 @@
+/* pages/login/index.wxss */
+/* 授权页面 */
+.authorizate-page {
+  background-image: url(http://www.jqzjop.com/ftp_images/01/miniprogram/cloud_wholesale_backgroud_v1_p3.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+}
+.company-name {
+  font-size: 36rpx;
+  color: #4D4D4D ;
+  font-weight: 600;
+  text-align: center;
+  padding: 40vh 0 120rpx 0;
+}
+.authorizate-button {
+  width: 506rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  background-color: #4D4D4D;
+  color: #fff;
+  border-radius: 4rpx;
+}
+.phone-number-button {
+  width: 506rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  background-color: #F5F5F5;
+  color: #4D4D4D;
+  border-radius: 4rpx;
+  margin-top: 40rpx;
+}
+.phone-number-button::after {
+  border: none;
+}
+.cancel-login-button {
+  font-size: 28rpx;
+  color: #A3AAB7;
+  width: 112rpx;
+  margin: 52rpx auto 0;
+  text-align: center;
+  position: relative;
+}
+.cancel-login-button::before {
+  content: '';
+  position: absolute;
+  left: -194rpx;
+  top: 18rpx;
+  width: 166rpx;
+  border-bottom: 1rpx solid #D4D6DC;
+}
+.cancel-login-button::after {
+  content: '';
+  position: absolute;
+  left: 140rpx;
+  top: 18rpx;
+  width: 166rpx;
+  border-bottom: 1rpx solid #D4D6DC;
+}
+/* 登陆页面 */
+.login-container {
+  height: 100vh;
+  background-color: #fff;
+}
+.login-button {
+  width: 654rpx;
+  margin: 80rpx auto;
+}
+.input-field {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #D4D6DC;
+  width: 654rpx;
+  height: 85rpx;
+  margin: 0 auto;
+}
+.input-field-left {
+  width: 85rpx;
+  flex-shrink: 0;
+  font-size: 36rpx;
+}
+.input-field-center {
+  flex-grow: 1;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
+.input-content {
+  flex-grow: 1;
+  font-size: 28rpx;
+  color: #4D4D4D;
+}
+.input-placeholder {
+  font-size: 28rpx;
+  color: #A3AAB7;
+}
+.authorizate-button-1-style{
+  background:rgba(219,176,81,1);
+}
+.login-gold-button-1-style .van-button__text{
+  color:rgba(219,176,81,1);
+}
+.login-gold-button-1-style button{
+  background:rgba(245,245,245,1) !important;
+  border-color: #f5f5f5 !important;
+}
+.login-gold-button-ok-1-style button{
+  background:rgba(219,176,81,1) !important;
+  border-color: #DBB051 !important;
+}
+.login-gold-button-ok-1-style .van-button__text{
+  color:#FFFFFF;
+}
+.gold-divider-box{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 52rpx;
+}
+.gold-divider-line{
+  width: 506rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 28rpx;
+  /* margin: 52rpx auto 0; */
+}
+.gold-divider-line::before, .gold-divider-line::after, .cancel-divider-line::before, .cancel-divider-line::after{
+  display: block;
+  content: '';
+  width: 166rpx;
+  border-top: 2rpx solid #999;
+  box-sizing: border-box;
+}
+.gold-divider-line::before{
+  margin-right: 30rpx;
+}
+.gold-divider-line::after{
+  margin-left: 30rpx;
+}
+.cancel-divider-line::before, .cancel-divider-line::after{
+  border-top-color: #D4D6DC;
+}

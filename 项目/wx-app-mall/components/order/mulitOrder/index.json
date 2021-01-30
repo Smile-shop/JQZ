@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "confirm": "/components/confirm",
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}

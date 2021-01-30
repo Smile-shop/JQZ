@@ -1,0 +1,118 @@
+<!--pages/mine/index.wxml-->
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class="mine-wrapper">
+  <view class="mine-img-box" wx:if="{{globalStyle === '0'}}">
+    <image class="mine-img-bg" src="../../images/mine-bg.png"></image>
+    <view class="mine-vatar">
+      <!-- <view class="mine-tran"></view> -->
+      <!-- <view class="mine-box"></view> -->
+      <view class="mine-img">
+        <view class="m-image {{avatarUrl ? 'm-avatar-url' : ''}}">
+          <image src="{{avatarUrl ? avatarUrl : '../../images/defalut_avator.png'}}"></image>
+        </view>
+        <view class="title" wx:if="{{ hasUserInfo }}">{{nickName ? nickName : '小巷子'}}</view>
+        <button class="title title2" wx:else open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo">请授权</button>
+        <!-- <view class="text">今天也要开心</view> -->
+      </view>
+    </view>
+  </view>
+  <!-- 黄金版 -->
+  <view class="mine-header {{!hasUserInfo ? 'mine-header2' : ''}}" wx:if="{{globalStyle === '1'}}">
+    <view class="mine-bground">
+      <image class="mine-gold-img" src="../../images/global-bg.png"></image>
+    </view>
+    <view class="mine-img-gold img-global-box">
+      <view class="m-image-gold gold-m-image">
+        <image src="{{avatarUrl ? avatarUrl : '../../images/defalut_avator.png'}}"></image>
+      </view>
+      <view class="title title-gold" wx:if="{{ hasUserInfo }}">{{nickName ? nickName : '小巷子'}}</view>
+      <button class="title title2 button-gold {{gs.type('title-noLogin', globalStyle)}}" wx:else open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo">请授权</button>
+    </view>
+  </view>
+  <view class="gold-line" wx:if="{{globalStyle === '1'}}"></view>
+  <view class="{{ globalStyle === '1' ? 'order-container-gold' : 'order-container'}}">
+    <view class="order-title" id="all" bindtap="handleOrder">
+      <view class="order-title-name">我的订单</view>
+      <view class="order-title-all">
+        <text class="order-all-text">查看全部</text>
+        <van-icon name="arrow" custom-style="top:5rpx; color:#A3AAB7" />
+      </view>
+    </view>
+    <view class="order-split"></view>
+    <view class="order-nav">
+      <view class="order-item" id="waiting" bindtap="handleOrder">
+        <view class="order-icon">
+          <view class="{{tag.waiting.tip ? 'tag-num over-plus' : 'tag-num'}}" wx:if="{{tag.waiting.num}}">
+            {{tag.waiting.num}}
+            <span class="plus-unit" wx:if="{{tag.waiting.plus}}">{{maxUnit}}</span>
+          </view>
+          <cover-image src="../../images/waiting.png" />
+        </view>
+        <view class="order-text">待确认</view>
+      </view>
+      <view class="order-item" id="confirm" bindtap="handleOrder">
+        <view class="order-icon">
+          <view class="{{tag.confirm.tip ? 'tag-num over-plus' : 'tag-num'}}" wx:if="{{tag.confirm.num}}">
+            {{tag.confirm.num}}
+            <span class="plus-unit" wx:if="{{tag.confirm.plus}}">{{maxUnit}}</span>
+          </view>
+          <cover-image src="../../images/confirm.png" />
+        </view>
+        <view class="order-text">已确认</view>
+      </view>
+      <view class="order-item" id="increase" bindtap="handleOrder">
+        <view class="order-icon">
+          <view class="{{tag.increase.tip ? 'tag-num over-plus' : 'tag-num'}}" wx:if="{{tag.increase.num}}">
+            {{tag.increase.num}}
+            <span class="plus-unit" wx:if="{{tag.increase.plus}}">{{maxUnit}}</span>
+          </view>
+          <cover-image src="../../images/distributing.png" />
+        </view>
+        <view class="order-text">配货中</view>
+      </view>
+      <view class="order-item" id="cancel" bindtap="handleOrder">
+        <view class="order-icon">
+          <view class="{{tag.cancel.tip ? 'tag-num over-plus' : 'tag-num'}}" wx:if="{{tag.cancel.num}}">
+            {{tag.cancel.num}}
+            <span class="plus-unit" wx:if="{{tag.cancel.plus}}">{{maxUnit}}</span>
+          </view>
+          <cover-image src="../../images/cancel.png" />
+        </view>
+        <view class="order-text">已取消</view>
+      </view>
+      <view class="order-item" id="finish" bindtap="handleOrder">
+        <view class="order-icon">
+          <view class="{{tag.finish.tip ? 'tag-num over-plus' : 'tag-num'}}" wx:if="{{tag.finish.num}}">
+            {{tag.finish.num}}
+            <span class="plus-unit" wx:if="{{tag.finish.plus}}">{{maxUnit}}</span>
+          </view>
+          <cover-image src="../../images/finish.png" />
+        </view>
+        <view class="order-text">已完成</view>
+      </view>
+    </view>
+  </view>
+  <view class="gold-line" wx:if="{{globalStyle === '1'}}"></view>
+  <!-- <view class="mine-inline"></view> -->
+  <!-- 导航列表 -->
+  <view class="mine-nativator {{gs.type('mine-nativator', globalStyle)}}">
+    <van-cell class="{{gs.type('mine-cell', globalStyle)}}" link-type="navigateTo"  url="/pages/mine/myCollection/index"  is-link>
+      <view slot="title">
+        <view class="mine-navigate {{gs.type('mine-navigate-cell', globalStyle)}}">
+          <van-icon  slot="left-icon" size="40rpx" name="like-o" class="custom-icon custom-set {{gs.type('custom-icon', globalStyle)}}" />
+          <!-- <view class="view-icon" wx:if="{{globalStyle === '1'}}"><image src="../../images/like.png"></image></view> -->
+          <text>我的收藏</text>
+        </view>
+      </view>
+    </van-cell>
+    <!-- <view style="height: 64rpx"></view> -->
+    <!-- <van-cell class="mine-navigate"  link-type="navigateTo"  url="/pages/mine/showSetting/index" is-link wx:if="{{editShopmallName === 1}}"></van-cell> -->
+    <van-cell class="mine-navigate {{gs.type('mine-cell', globalStyle)}}"  link-type="navigateTo"  url="/pages/mine/showSetting/index" is-link wx:if="{{editShopmallName === 1}}">
+      <view slot="title">
+        <view class="mine-navigate {{gs.type('mine-navigate-cell', globalStyle)}}">
+        <van-icon  slot="left-icon" size="40rpx" name="setting-o" class="custom-icon custom-set {{gs.type('custom-icon', globalStyle)}}" />
+        <text>商城展示设置</text></view>
+      </view>
+    </van-cell>
+  </view>
+</view>

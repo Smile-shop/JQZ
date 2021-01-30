@@ -1,0 +1,21 @@
+:root {
+  /* 颜色 */
+  --color-primary: #d41010;
+  --color-success: #67c23a;
+  --color-warning: #e6a23c;
+  --color-danger: #f56c6c;
+  --color-info: #909399;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  /* 背景 */
+  --background-color: #F5F7FA;
+
+  /* z-index */
+  --zindex-dropdown: 1000;
+  --zindex-sticky: 1010;
+  --zindex-fixed: 1020;
+  --zindex-popup-backdrop: 1030;
+  --zindex-popup: 1040;
+  --zindex-popover: 1050;
+}

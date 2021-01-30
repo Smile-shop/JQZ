@@ -1,0 +1,38 @@
+.van-radio {
+  padding: .3rem;
+
+  & .van-icon-checked {
+    color: var(--color-theme) !important;
+  }
+
+  & > .van-radio__label {
+    font-size: 1.8rem;
+  }
+}
+
+.van-checkbox {
+  & .van-checkbox__icon--checked {
+    & .van-icon-success {
+       border-color: var(--color-theme) !important;
+       background-color: var(--color-theme) !important;
+     }
+  }
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  width: 100vw;
+  overflow: hidden scroll;
+}
+
+.details {
+  overflow: hidden;
+
+  & img {
+    width: 100%;
+  }
+}

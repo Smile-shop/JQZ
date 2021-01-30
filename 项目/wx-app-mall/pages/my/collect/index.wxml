@@ -1,0 +1,74 @@
+<!--pages/shoppingCart/index.wxml-->
+<wxs src="../../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <navBar navbarData="{{navbarData}}" />
+  <view>
+    <view wx:if="{{ hasShoppingGoods }}">
+      <view class="select-all select-content-title">
+        <!-- <view 
+          data-sort="0" 
+          bindtap="shopppingCartSort" 
+          class="{{ shopppingCartListSort === '0' ? 'title-selected' : 'title-unselect' }} select-content-item">
+          全部
+        </view>
+        <view
+          bindtap="shopppingCartSortPrice" 
+          class="{{ shopppingCartListSort === '2' || shopppingCartListSort === '3' ? 'title-selected' : 'title-unselect' }} select-content-item">
+          售价
+          <image 
+            class="price-image" 
+            wx:if="{{ shopppingCartListSort !== '2' && shopppingCartListSort !== '3' }}" 
+            src="../../images/no-price.png" />
+          <image 
+            class="price-image" 
+            wx:if="{{ shopppingCartListSort === '2' && globalStyle === '0'}}" 
+            src="../../images/price.png" />
+            <image 
+            class="price-image" 
+            wx:if="{{ shopppingCartListSort === '2' && globalStyle === '1'}}" 
+            src="../../images/price-gold.png" />
+          <image 
+            class="price-image" 
+            wx:if="{{ shopppingCartListSort === '3' && globalStyle === '0' }}"
+            src="../../images/price-mini.png" />
+            <image 
+            class="price-image" 
+            wx:if="{{ shopppingCartListSort === '3' && globalStyle === '1' }}"
+            src="../../images/price-gold-mini.png" />
+        </view>
+        <view
+          data-sort="1" 
+          bindtap="shopppingCartSort" 
+          class="{{ shopppingCartListSort === '1' ? 'title-selected' : 'title-unselect' }} select-content-item">
+          分类
+        </view> -->
+        <view class="select-all-info">
+          共<text class="select-all-info-num"> 5 </text>种商品
+        </view>
+        <view class="select-all-edit-btn" bindtap="editShopppingCart">
+          <text>{{ isEditting ? "完成" : "编辑" }}</text>
+          <image mode="widthFix" style="width: 24rpx;margin-left: 10rpx" src="../../../images/edit.png"></image>
+        </view>
+      </view>
+      <view>
+        <irclassify 
+          list="{{ pageList }}"
+          bindupdate="updateList"
+          isEditting="{{ isEditting }}"
+          bindshare="shareLink"
+          id="irclassify"
+          globalStyle="{{globalStyle}}"
+          my-class="{{gs.type('jwelry-number', globalStyle)}}"
+        ></irclassify>
+      </view>
+    </view>
+    <view wx:else class="no-goods">
+      <view class="no-goods-icon">
+        <image 
+          style="width:296rpx;" 
+          src="../../../images/collect-gold-null.png" mode='widthFix'></image>
+      </view>
+      <view class="no-goods-info">目前还没有收藏商品哦</view>
+    </view>
+  </view>
+</page-meta>

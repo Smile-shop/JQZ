@@ -1,0 +1,57 @@
+<!--pages/search/index.wxml-->
+<wxs src="./name.wxs" module="name"></wxs>
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class="search">
+<!-- 搜索框 -->
+  <view class="search-container">
+    <view class="left-content">
+      <image src="../../images/search-icon.png" style="width:32rpx;height:32rpx;margin:0 20rpx;flex-shrink:0"></image>
+      <input 
+        focus
+        type="text"
+        confirm-type="search"
+        bindconfirm="searchMethods"
+        confirm-type="搜索"
+        bindinput="bindKeyInput"
+        value="{{ inputValue }}"
+        class="input-content" 
+        placeholder-class="input-placeholder" 
+        maxlength="{{ 30 }}"
+        placeholder="搜索商品" />
+      <van-icon name="clear" bindtap="clearInput" wx:if="{{ inputValue }}" style="margin-right:20rpx;margin-top:8rpx" />
+    </view>
+    <view class="right-content {{ gs.type('right-content', globalStyle) }}" bindtap="searchMethods" >搜索</view>
+  </view>
+  <!-- 历史搜索 -->
+  <view wx:if="{{ !inputValue }}">
+    <view class="search-history">
+      <view class="search-history-title">历史搜索</view>
+      <view><van-icon name="delete" color="#A3AAB7" bindtap="removeSearchHistory" /></view>
+    </view>
+    <view class="history-list {{ gs.type('history-list', globalStyle) }}"
+      wx:for="{{ historySearchList }}" 
+      wx:key="index"
+      data-history="{{ item }}"
+      bindtap="historySearchMethods"
+    >{{ item.text }}</view>
+  </view>
+  <view wx:else>
+    <scroll-view scroll-y class="search-list">
+      <view 
+        class="search-item" 
+        wx:for="{{ fuzzySearchList }}" 
+        wx:key="index" 
+        data-text="{{ item.name }}" 
+        bindtap="fuzzySearchMethods">
+        <text 
+          wx:for="{{ item.list }}" 
+          wx:key="itemName" 
+          class="{{ name.nameShow(itemName, inputValue) ? 'is-input-value' : '' }}" 
+          wx:for-index="idx" 
+          wx:for-item="itemName"
+           data-text="{{ item.name }}"
+        >{{ itemName }}</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

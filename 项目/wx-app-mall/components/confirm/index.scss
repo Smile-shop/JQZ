@@ -1,0 +1,40 @@
+
+.dialog{
+  width: 560rpx;
+  border-radius: 15rpx;
+  overflow: hidden;
+  top: 45%;
+  .confirm-content{
+    text-align: center;
+    color: #333;
+    &-title{
+      font-size: 32rpx;
+      padding-top: 30rpx;
+    }
+    &-nei{
+      font-size: 28rpx;
+      padding: 30rpx 30rpx 40rpx 30rpx;
+    }
+    & .noTitle{
+      padding: 60rpx;
+    }
+    &-btn{
+      display: flex;
+      border-top: 2rpx solid #eee;
+      color: #333;
+      box-sizing: border-box;
+      .cancel, .confirm{
+        height: 90rpx;
+        width: 50%;
+        box-sizing: border-box;
+        line-height: 90rpx;
+        font-size: 28rpx;
+      }
+      .confirm{
+        color: #fff;
+        background-color: var(--primary-color);
+        border-left:  2rpx solid #eee;
+      }
+    }
+  }
+}

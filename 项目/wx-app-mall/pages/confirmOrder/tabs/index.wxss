@@ -1,0 +1,29 @@
+/* pages/confirmOrder/tabs/index.wxss */
+.tabs{
+  display: flex;
+  justify-content: center;
+}
+.tab-item{
+  width: 50%;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 24rpx;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tab-item:nth-child(2):before{
+  position: absolute;
+  top: 4rpx;
+  left: 0rpx;
+  background-color: #fff;
+  content: "";
+  width: 2rpx;
+  height: 28rpx;
+}
+.active{
+  font-size: 28rpx;
+  font-weight: bold;
+}

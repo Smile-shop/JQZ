@@ -1,0 +1,6 @@
+<!--components/sendModal/index.wxml-->
+<view wx:if="{{show}}">
+  <view class="container">
+    <view class="content">{{msg}}</view>
+  </view>
+</view>

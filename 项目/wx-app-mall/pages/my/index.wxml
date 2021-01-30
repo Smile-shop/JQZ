@@ -1,0 +1,185 @@
+<!--pages/mine/index.wxml-->
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <view class="mine-wrapper" style="height:{{ safeArea.height }}">
+    <view class="top-bck"></view>
+    <view class="mine-img-box">
+      <!-- <image class="mine-img-bg" src="../../images/mine-bg.png"></image> -->
+      <view class="mine-vatar">
+        <view class="mine-vatar-wrapper">
+        <view class="mine-img"  bindtap="handleMyContent">
+          <view class="m-image {{avatarUrl ? 'm-avatar-url' : ''}}" catchtap="handleLoginRegitser">
+            <image src="{{avatarUrl ? avatarUrl : '../../images/defalut_avator.png'}}"></image>
+          </view>
+          <!-- <view class="title" wx:if="{{ hasUserInfo }}">{{nickName ? nickName : '小巷子'}}</view> -->
+          <view class="avatar-title">
+            <view class="title" wx:if="{{ hasUserInfo }}">
+              <text class="nickName-left">{{nickName ? nickName : '昵称'}}</text>
+              <text class="avatar-vip">普通会员</text>
+            </view>
+            <!-- <button class="title title2" wx:else open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo">请授权</button> -->
+            <view class="login-register" wx:if="{{ !hasUserInfo }}" catchtap="handleLoginRegitser">登录/注册</view>
+            <view class="login-register-tip" wx:if="{{ !hasUserInfo }}" catchtap="handleLoginRegitser">点击登录享受更多精彩信息</view>
+            <view wx:if="{{hasUserInfo}}"><view class="bind-phone" catchtap="handleBindPhone" wx:if="{{!phone}}">绑定手机享受更多精彩信息</view></view>
+            <view wx:if="{{hasUserInfo && phone}}" class="avatar-text">专属客服: -</view>
+            <view wx:if="{{ hasUserInfo && shop }}" class="avatar-text">服务门店: {{shop}}</view>
+          </view>
+          <view class="arrow">
+            <van-icon name="arrow" />
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 收藏 积分 优惠券 -->
+    <view class="my-collection-box">
+      <view class="my-collection-wrap" bindtap="goCollection">
+        <view class="my-col-num">{{maketCount.collectNum}}</view>
+        <view class="my-col-title">收藏</view>
+      </view>
+      <view class="my-collection-wrap" bindtap="handleRecord">
+        <view class="my-col-num">{{maketCount.point}}</view>
+        <view class="my-col-title">可用积分</view>
+      </view>
+      <view class="my-collection-wrap" bindtap="handleCoupons">
+        <view class="my-col-num">{{maketCount.couponNum}}</view>
+        <view class="my-col-title">优惠券</view>
+      </view>
+    </view>
+    <!-- 我的订单 -->
+    <view class="my-order-box">
+      <view class="order-container">
+        <view class="order-title" id="all" bindtap="handleOrder">
+          <view class="order-title-name">我的订单</view>
+          <view class="order-title-all">
+            <text class="order-all-text">查看全部</text>
+            <van-icon name="arrow" custom-style="top:5rpx; color:#999999;font-size: 24rpx;" />
+          </view>
+        </view>
+        <view class="order-split"></view>
+        <view class="order-nav">
+          <view class="order-item" id="waiting" bindtap="handleOrder">
+            <view class="order-icon">
+              <view class="{{tag.waiting.tip ? 'tag-num over-plus' : 'tag-num'}}" wx:if="{{tag.waiting.num}}">
+                {{tag.waiting.num}}
+                <span class="plus-unit" wx:if="{{tag.waiting.plus}}">{{maxUnit}}</span>
+              </view>
+              <cover-image src="../../images/waiting.png" />
+            </view>
+            <view class="order-text">待付款</view>
+          </view>
+          <view class="order-item" id="confirm" bindtap="handleOrder">
+            <view class="order-icon">
+              <view class="{{tag.confirm.tip ? 'tag-num over-plus' : 'tag-num'}}" wx:if="{{tag.confirm.num}}">
+                {{tag.confirm.num}}
+                <span class="plus-unit" wx:if="{{tag.confirm.plus}}">{{maxUnit}}</span>
+              </view>
+              <cover-image src="../../images/confirm.png" />
+            </view>
+            <view class="order-text">待发货</view>
+          </view>
+          <view class="order-item" id="increase" bindtap="handleOrder">
+            <view class="order-icon">
+              <view class="{{tag.increase.tip ? 'tag-num over-plus' : 'tag-num'}}" wx:if="{{tag.increase.num}}">
+                {{tag.increase.num}}
+                <span class="plus-unit" wx:if="{{tag.increase.plus}}">{{maxUnit}}</span>
+              </view>
+              <cover-image src="../../images/distributing.png" />
+            </view>
+            <view class="order-text">待收货</view>
+          </view>
+          <view class="order-item" id="cancel" bindtap="handleOrder">
+            <view class="order-icon">
+              <view class="{{tag.cancel.tip ? 'tag-num over-plus' : 'tag-num'}}" wx:if="{{tag.cancel.num}}">
+                {{tag.cancel.num}}
+                <span class="plus-unit" wx:if="{{tag.cancel.plus}}">{{maxUnit}}</span>
+              </view>
+              <cover-image src="../../images/cancel.png" />
+            </view>
+            <view class="order-text">退货/款</view>
+          </view>
+        </view>
+      </view>
+      <!-- 导航列表 -->
+      <view class="mine-nativator">
+        <van-cell class="mine-link" link-type="navigateTo" bindtap="handleAddress">
+          <view slot="title">
+            <view class="mine-navigate">
+              <!-- <van-icon  slot="left-icon" size="40rpx" name="like-o" class="custom-icon custom-set" /> -->
+              <view class="icon-left">
+                <image mode="aspectFit" src="../../images/address.png"></image>
+              </view>
+              <text class="nav-text">收货地址</text>
+            </view>
+          </view>
+          <view slot="icon" class="icon-arrow">
+            <van-icon color="#999999" size="28rpx" name="arrow" />
+          </view>
+        </van-cell>
+        <!-- <van-cell class="mine-navigate"  link-type="navigateTo"  url="/pages/mine/showSetting/index" is-link wx:if="{{editShopmallName === 1}}">
+          <view slot="title">
+            <view class="mine-link mine-navigate">
+            <van-icon  slot="left-icon" size="40rpx" name="setting-o" class="custom-icon custom-set" />
+            <text>我的拼团</text>
+            </view>
+          </view>
+        </van-cell> -->
+        <!-- <van-cell class="mine-link" link-type="navigateTo"  url="/pages/mine/myCollection/index"  is-link>
+          <view slot="title">
+            <view class="mine-navigate">
+              <van-icon  slot="left-icon" size="40rpx" name="like-o" class="custom-icon custom-set" />
+              <text>推广赚钱</text>
+            </view>
+          </view>
+        </van-cell> -->
+        <!-- <van-cell class="mine-link" link-type="navigateTo"  url="/pages/mine/myCollection/index"  is-link>
+          <view slot="title">
+            <view class="mine-navigate">
+              <van-icon  slot="left-icon" size="40rpx" name="like-o" class="custom-icon custom-set" />
+              <view class="icon-left">
+                <image src="../../images/link-customer.png"></image>
+              </view>
+              <text>联系客服</text>
+            </view>
+          </view>
+        </van-cell> -->
+        <button open-type="{{linkCustomer}}" bindtap="bindcontact" class="linkCustomer" style="width: 100%" hover-class="customer-bkg">
+          <view class="mine-navigate">
+              <view class="icon-left">
+                <image mode="aspectFit" src="../../images/link-customer.png"></image>
+              </view>
+              <text class="nav-text">联系客服</text>
+          </view>
+          <view class="icon-right"> 
+            <!-- <image mode="aspectFit" src='../../images/right-arrow.png' /> -->
+            <van-icon color="#999999" size="28rpx" name="arrow" />
+          </view>
+        </button>
+        <van-cell class="mine-link" link-type="navigateTo"  url="/pages/my/helpCenter/index">
+          <view slot="title">
+            <view class="mine-navigate">
+              <!-- <van-icon  slot="left-icon" size="40rpx" name="like-o" class="custom-icon custom-set" /> -->
+              <view class="icon-left">
+                <image mode="aspectFit" src="../../images/help.png"></image>
+              </view>
+              <text class="nav-text">帮助中心</text>
+            </view>
+          </view>
+          <view slot="icon" class="icon-arrow">
+            <van-icon color="#999999" size="28rpx" name="arrow" />
+          </view>
+        </van-cell>
+        <!-- <van-cell class="mine-link" link-type="navigateTo" bindtap="changeColor" is-link>
+          <view slot="title">
+            <view class="mine-navigate">
+              <van-icon  slot="left-icon" size="40rpx" name="like-o" class="custom-icon custom-set" />
+              <text>改变主题(测试)</text>
+            </view>
+          </view>
+        </van-cell> -->
+      </view>
+      <!-- 占位 -->
+      <view style="height:180rpx"></view>
+    </view>
+  </view>
+</page-meta>

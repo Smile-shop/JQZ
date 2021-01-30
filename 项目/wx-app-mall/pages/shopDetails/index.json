@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "navBar": "/components/navBar/index"
+  },
+  "navigationBarTitleText": "店铺详情",
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom"
+}

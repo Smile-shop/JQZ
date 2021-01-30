@@ -1,0 +1,32 @@
+/* components/share/index.wxss */
+.action-item-box {
+  padding: 70rpx 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.action-item-sub {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.action-item-text {
+  font-size: 24rpx;
+  color: #4D4D4D;
+  font-weight: 400;
+  margin-top: 20rpx;
+}
+.action-item-btn {
+  background-color: #fff;
+  line-height: inherit;
+}
+.action-item-btn::after {
+  border: none
+}
+.action-item-icon {
+  width: 100rpx;
+  height: 100rpx;
+}

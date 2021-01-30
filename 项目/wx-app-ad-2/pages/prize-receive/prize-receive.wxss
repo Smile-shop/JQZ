@@ -1,0 +1,178 @@
+.container {
+  padding: 4vw;
+}
+
+.prize {
+  margin-bottom: 4vw;
+  display: flex;
+}
+
+.prize > .left {
+  flex-shrink: 0;
+  margin-right: 3.2vw;
+}
+
+.prize > .left > image {
+  height: 21.33vw;
+  width: 21.33vw;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 2vw;
+}
+
+.prize > .right > view:not(:last-of-type) {
+  margin-bottom: 2vw;
+}
+
+.prize > .right > .name {
+  font-size: 3.7vw;
+  color: #4D4D4D;
+  font-weight: bold;
+}
+
+.prize > .right > .attribute {
+  font-size: 3.2vw;
+  color: #999999;
+}
+
+.tip {
+  padding: 3vw;
+  text-align: center;
+  font-size: 3vw;
+  color: #D07E3C;
+  background-color: #FFF4DB;
+}
+
+.form > .form-item {
+  display: flex;
+  align-items: center;
+  padding: 3vw 0;
+  border-bottom: 1px solid #EEEEEE;
+}
+
+.form > .form-item > .left {
+  font-size: 3.5vw;
+  width: 20vw;
+  color: #4D4D4D;
+  font-weight: bold;
+}
+
+.form > .form-item > .right {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.form > .form-item > .right > .control {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  color: #4D4D4D;
+  font-size: 3.5vw;
+  height: 10vw;
+  margin-right: 2vw;
+}
+
+.form > .form-item > .right > .iconfont {
+  font-size: 3vw;
+  color: #CCCCCC;
+}
+
+.form > .form-item > .right > button {
+  width: auto;
+  flex-shrink: 0;
+  background: none;
+  font-size: 3.5vw;
+  color: #FC5543;
+  padding: 2.5vw 0vw;
+}
+
+.form > .controls {
+  margin-top: 5.4vw;
+}
+
+.form > .controls > button {
+  padding: 2.9vw;
+  width: auto;
+  font-size: 4.3vw;
+  background: linear-gradient(180deg, #FD6452 0%, #DC2E1C 100%);
+  box-shadow: 0vw 1vw 2vw 0vw rgba(255,190,182,1);
+  border-radius: 6vw;
+  color: #FFE898;
+}
+
+.dialog {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.dialog .radio-list {
+  border-radius: 5vw 5vw 0 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #FFF;
+  height: 70vh;
+}
+
+.dialog .radio-list .radio-list-item {
+  display: flex;
+  padding: 4vw;
+  border-bottom: 1px solid #EEEEEE;
+}
+
+.dialog .radio-list .radio-list-item > .left  {
+  flex-grow: 1;
+  margin-right: 5vw;
+}
+.dialog .radio-list .radio-list-item > .left > .title {
+  margin-bottom: 3vw;
+  font-size: 3.7vw;
+  font-weight: bold;
+  color: #000;
+}
+
+.dialog .radio-list .radio-list-item > .left > .attribute:not(:last-of-type) {
+  margin-bottom: 2.5vw;
+}
+
+.dialog .radio-list .radio-list-item > .left > .attribute {
+  display: flex;
+  align-items: center;
+  font-size: 3.2vw;
+  color: #999999;
+}
+
+.dialog > .radio-list .radio-list-item > .left > .attribute > .iconfont{
+  margin-right: 2.4vw;
+  font-size: 4vw;
+  color: #C2C2C2;
+}
+
+.dialog > .radio-list .radio-list-item > .right {
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 2.7vw;
+  color: #999999;
+}
+
+.dialog > .radio-list .radio-list-item > .right > .distance {
+  margin-bottom: 4vw;
+}
+
+.dialog > .radio-list .radio-list-item > .right > radio {
+  width: 4.7vw;
+}
+
+.dialog > .radio-list .radio-list-item > .right > radio .wx-radio-input {
+  width: 4.7vw;
+  height: 4.7vw;
+}

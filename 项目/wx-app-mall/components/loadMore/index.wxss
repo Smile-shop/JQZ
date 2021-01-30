@@ -1,0 +1,28 @@
+.loadMore {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15rpx;
+}
+
+.loadMore-icon {
+  width: 33rpx;
+  transform: rotate(360deg);
+  animation: rotation 1s infinite;
+}
+
+.loadMore-text {
+  font-size: 24rpx;
+  color: #AAA;
+  margin-left: 10rpx;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

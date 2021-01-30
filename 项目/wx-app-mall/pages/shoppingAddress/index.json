@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "empty": "./empty",
+    "list": "./list",
+    "navBar": "/components/navBar"
+  },
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom"
+}

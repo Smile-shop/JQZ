@@ -1,0 +1,47 @@
+.check {
+  height: calc(100vh - 100rpx);
+  background: #F5F5F5;
+}
+
+.check-content {
+  padding: 0 30rpx 30rpx 30rpx;
+  background-color: #fff;
+}
+
+.check-content-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  line-height: 44px;
+  text-align: center;
+}
+
+.check-content-item {
+  margin-bottom: 50rpx;
+}
+
+.check-content-item-title {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.check-content-item-content {
+  font-size: 24rpx;
+  color: #999;
+  line-height: 50rpx;
+}
+
+.check-btn {
+  position: fixed;
+  width: 100vw;
+  background-color: var(--primary-color);
+  text-align: center;
+  color: #fff;
+  line-height: 100rpx;
+  height: 100rpx;
+  bottom: 0;
+  padding: 0;
+  border-radius: 0;
+  font-weight: normal;
+  font-size: 28rpx;
+}

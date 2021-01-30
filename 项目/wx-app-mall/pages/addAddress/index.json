@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-switch": "@vant/weapp/switch/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "address": "./address",
+    "navBar": "/components/navBar",
+    "confirm": "/components/confirm"
+  },
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom"
+}

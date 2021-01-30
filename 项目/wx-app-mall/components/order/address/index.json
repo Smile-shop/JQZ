@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "addressLine": "../addressLine/index",
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}

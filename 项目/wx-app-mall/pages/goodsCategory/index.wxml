@@ -1,0 +1,24 @@
+<!--pages/goodsCategory/index.wxml-->
+
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <view class="goodsCategory test">
+
+    <view class="goodsCategory-top">
+      
+    </view>
+      
+    <view class="search">
+      <view class="search-container" bindtap="handleSearch">
+        <image class="search-img" src="../../images/search-icon.png"></image>
+        <text class="search-text">搜索</text>
+      </view>
+    </view>
+  <view class="container">
+    <category cateItems = "{{cateItems}}" title ="{{title}}" curNav = "{{curNav}}" />
+  </view>
+  <view class="category-loading" wx:if="{{show}}">
+    <loading show="{{show}}" />
+  </view>
+  </view>
+</page-meta>

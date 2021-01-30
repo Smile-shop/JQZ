@@ -1,0 +1,13 @@
+/* pages/index/search/index.wxss */
+.search-container {
+  color: #A3AAB7;
+  width: 690rpx;
+  height: 72rpx;
+  border-radius: 10rpx;
+  background: rgba(255, 255, 255, 0.2);
+}
+.img{
+  width:32rpx;
+  height:32rpx;
+  margin:20rpx 0 0 20rpx;
+}

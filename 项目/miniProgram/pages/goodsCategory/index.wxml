@@ -1,0 +1,76 @@
+<!--pages/goodsCategory/index.wxml-->
+
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class="goodsCategory test">
+
+  <view class="goodsCategory-top">
+    
+  </view>
+    
+  <view class="search">
+    <view class="search-container" bindtap="handleSearch">
+      <image class="search-img" src="../../images/search-icon.png"></image>
+      <text class="search-text">搜索</text>
+    </view>
+  </view>
+  
+<view class="container {{ gs.type('container', globalStyle) }}">
+<!-- 主菜单 -->
+  <view class="category-left {{ gs.type('category-left', globalStyle) }}">
+    <scroll-view scroll-y="true" class="scoll-main" scroll-top="{{mainScroll}}" scroll-with-animation="ture">
+      <block wx:for="{{category}}" wx:key="id">
+       <view class="catgegory-item {{activeId === item.id ? 'active-item' : ''}}" data-id="{{item.id}}" bindtap="clickItem" id="{{item.id}}">
+         <view class="{{activeId === item.id && globalStyle === '0' ? 'catgegory-item-text catgegory-item-letter' : activeId === item.id && globalStyle === '1' ? gs.type('category-active', globalStyle) : activeId !== item.id && globalStyle === '1' ? gs.type('item', globalStyle):'catgegory-item-letter'}}">
+            <text wx:if="{{item.alias}}">{{item.alias}}</text>
+            <text wx:else>{{item.original}}</text>
+         </view>
+       </view>
+      </block>
+    </scroll-view>
+  </view>
+  <!-- 二级展开 -->
+  <view class="category-right {{ gs.type('category-right', globalStyle) }}">
+    <scroll-view scroll-y="true" class="vice-main" scroll-into-view="{{toView}}" scroll-with-animation="ture" bindscroll="scroll">
+      <view class="categoty-detail">
+      <block wx:for="{{category}}" wx:key="id">
+        <view class="catefory-main {{ gs.type('category-main', globalStyle)}} {{item.alias ? gs.type('category-title-item', globalStyle) : ''}} ">
+          <view class="category-title" id="{{item.id}}">
+            <text wx:if="{{item.alias}}" class="category-title-item ">{{item.alias}}</text>
+            <text wx:else class="category-title-item">{{item.original}}</text>
+          </view>
+          <view class="category-content {{ gs.type('category-content', globalStyle)}}">
+              <view class="content-item {{ gs.type('content-item', globalStyle)}} {{i.selected  ? gs.type('item-selected', globalStyle) : ''}}" wx:for="{{item.subclassList}}" bindtap="handleGood" data-item="{{i}}" wx:for-item="i" wx:key="id">
+                <text wx:if="{{i.aliasSubclass}}"  class="{{i.selected  ? 'item-color list_child_selected_item ' : 'item-color'}}">{{i.aliasSubclass}}</text>                                                     
+                <text wx:else data-item="{{i}}" class="{{i.selected ? 'item-color list_child_selected_item ' : 'item-color'}}">{{i.originalSubclass}}</text>
+                <view wx:if="{{i.selected && globalStyle === '0'}}"  class="item-tag"> 
+                  <image src="../../images/tag.png" />
+                </view>
+              </view>
+          </view>
+        </view>
+         <view wx:if="{{item.alias === '筛选条件'}}" class="filter-container {{ gs.type('filter-container', globalStyle)}}" >
+            <block wx:for="{{filters}}" wx:key="id">
+              <view class="row-filter">
+              <view class="row-title {{ gs.type('row-title', globalStyle)}}">
+                <view class="row-titleUnit">{{item.alias || item.original}}{{item.unit}}</view>
+              </view>  
+              <view class="row-content">
+                <input type="digit" class="price-input {{ gs.type('price-input', globalStyle)}}" value="{{ item.mini }}" data-minifilter="{{item}}" bindblur="handleMini" placeholder="最低"  placeholder-style="color:#D4D6DC;" /> 
+                <text class="row-link" wx:if="{{globalStyle === '0'}}">至</text>
+                <text class="row-link" wx:if="{{globalStyle === '1'}}">-</text>
+                <input type="digit" class="price-input {{ gs.type('price-input', globalStyle)}}" value="{{ item.max }}" data-maxfilter="{{item}}" bindblur="handleMax" placeholder="最高" placeholder-style="color:#D4D6DC;" />
+              </view>
+            </view>
+            </block>
+          </view> 
+      </block>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<view class="confirm {{ gs.type('confirm', globalStyle)}}">
+  <view class="reset {{ gs.type('reset', globalStyle)}}" bindtap="resetSelected">重置</view>
+  <view class="confirm-selected {{ gs.type('confirm-selected', globalStyle)}}" bindtap="confirm">确认<text class="goods-text">(已选{{selectedGoods.length}})</text></view>
+</view>
+</view>

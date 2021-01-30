@@ -1,0 +1,27 @@
+<!--components/popup/index.wxml-->
+<view class="popup-container {{animation}}" style="margin-top: {{top}}px" catchtouchmove='ture' wx:if="{{show}}">
+  <view class="blank" catchtap="handleClose"></view>
+  <view class="content" style="height: calc(100vh - {{top}}px)">
+    <view class="only {{ spot ? 'active': ''}}" catchtap="handleStock">仅看有货</view>
+    <view class="container-content">
+      <view class="content-title">价格区间</view>
+      <view class="write-interval">
+        <view class="start">
+          <input class="input-style" type="digit" bindblur="handleMin" placeholder-class="min-input" placeholder="最低" value="{{filerTerm.price.min}}"></input>
+        </view>
+        <view class="horizontal">
+          <text class="line"></text>
+        </view>
+        <view class="end">
+          <input class="input-style" type="digit" bindblur="handleMax" placeholder-class="max-input" placeholder="最高" value="{{filerTerm.price.max}}"></input>
+        </view>
+      </view>
+    </view>
+    <view class="footer1">
+    <view class="inner">
+        <view class="reset" catchtap="handleRest">重置</view>
+        <view class="sure" catchtap="handleSure">确定</view>
+      </view>
+  </view>
+  </view>
+</view>

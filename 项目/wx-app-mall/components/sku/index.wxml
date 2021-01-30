@@ -1,0 +1,71 @@
+<!--components/sku/index.wxml-->
+<wxs src="../../wxsGroup/common.wxs" module="common"></wxs>
+<view class="sku-container {{animation}}" catchtouchmove="true" bindtap="handleColse" wx:if="{{show}}">
+  <view class="content" catchtap="handle">
+    <view class="icon-close" catchtap="handleColse">
+      <image mode="widthFix" style="width: 36rpx; height: 36rpx;" src="/images/closepop.png" bind:click="onclose"></image>
+    </view>
+    <view class="shop-info">
+    <view class="container-img">
+      <!-- <image mode="aspectFill" src="{{selectedAttribute.photo}}"></image> -->
+      <img src = "{{selectedAttribute.photo}}" />
+    </view>
+    <view class="container-text">
+      <view class="spuTitle">{{spuTitle}}</view>
+      <view class="price">
+        <view class="unit">￥</view>
+        <view class="price-int">{{common.cutToFixed(selectedAttribute.price, 0)}}</view>
+        <view class="price-dot">{{common.cutToFixed(selectedAttribute.price, 1)}}</view>
+      </view>
+      <view class="stock">库存: {{selectedAttribute.stock}}</view>
+    </view>
+    </view>
+    <view class="scroll-container">
+    <scroll-view class="" scroll-y="true"
+      bindscrolltoupper="" bindscrolltolower="" bindscroll="">
+    <view class="container">
+      <view class="sku-item" wx:for="{{sku.skuPropList}}" wx:key="name">
+        <view class="item-title">
+          <text>{{item.name}}</text>
+          <text class="prompt" wx:if="{{!item.selected}}">请选择{{item.name}}</text>
+        </view>
+        <view class="sku-item-container" wx:for="{{item.propValue}}" wx:key="item">
+          <view 
+          class="inner-item {{item.selected ? 'selected-item' : ''}} {{item.disabled ? 'disabled' : ''}} {{item.initDisabled ? 'disabled' : ''}}" 
+          catchtap="selectedItem" 
+          data-disabled = "{{item.disabled}}"
+          data-initdisabled="{{item.initDisabled}}"
+          data-obj="{{item.propValue}}"
+          data-total="{{sku}}"
+          data-id="{{item.id}}"
+          data-one="{{item.value}}" >{{item.value}}</view>
+        </view>
+      </view>
+      <view class="num">
+        <view class="num-title">数量</view>
+        <view class="write">
+          <view class="reduce {{number > 1 ? 'add': ''}}" data-num="{{number}}" catchtap="handleReduce">-</view>
+          <view class="fillIn">
+            <text>{{number}}</text>
+          </view>
+          <view class="add {{number >= selectedAttribute.stock ? 'reduce-add': ''}}" data-num = "{{number}}" catchtap="handleAdd">+</view>
+        </view>
+      </view>
+      <view class="now-footer">
+      </view>
+    </view>
+    </scroll-view>
+    </view>
+  </view>
+  <view class="footer">
+    <view wx:if="{{haveStock}}">
+      <view class="addCart" catchtap="handleCart">加入购物车</view>
+      <view class="buy" catchtap="handleBuy">立即购买</view>
+    </view>
+    <view wx:else>
+      <view class="outStock">
+        缺货中，请联系客服
+      </view>
+    </view>
+  </view>
+</view>

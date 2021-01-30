@@ -1,0 +1,126 @@
+/* components/rowList/index.wxss */
+.head-img {
+  position: relative;
+  width:335rpx;
+  height:335rpx;
+  background:rgba(245,245,245,1);
+  border-radius:10rpx;
+  overflow: hidden;
+}
+
+.head-img .img {
+  width: 100%;
+  height: 100%;
+}
+
+.head-img .shop-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255,255,255,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.head-img .shop-tag .shop-text {
+  width: 120rpx;
+  height: 120rpx;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+
+.name {
+  width:328rpx;
+  height:88rpx;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  line-height:44rpx;
+  /* 超过2行显示省略号 */
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.tags {
+  margin: 12rpx 0;
+}
+
+.tag-item {
+  display: inline-block;
+  width:88rpx;
+  height:30rpx;
+  line-height: 30rpx;
+  border-radius:4rpx;
+  font-size:18rpx;
+  font-weight:400;
+  text-align: center;
+  margin-right: 12rpx;
+}
+
+.tag-item:first-child {
+  color:rgba(255,70,70,1);
+  border:1px solid rgba(255,70,70,1);
+}
+
+.tag-item:nth-child(2) {
+  color:rgba(255,178,78,1);
+  border:1px solid rgba(255,178,78,1);
+}
+
+.tag-item:last-child {
+  margin-right: 0;
+}
+
+.origin-price {
+  display: inline-block;
+  height:18rpx;
+  font-size:20rpx;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  line-height:18rpx;
+  margin-left: 12rpx;
+  text-decoration: line-through;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.now-price {
+  display: inline-block;
+  color:rgba(255,70,70,1);
+  font-weight: 600;
+}
+
+.unit, .price-num, .precise {
+  display: inline-block;
+}
+
+.unit, .precise {
+  font-size: 20rpx;
+}
+
+.price-num {
+  font-size: 32rpx;
+}
+
+.cart {
+  display: inline-block;
+  color: rgba(255,70,70,1);
+}

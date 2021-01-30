@@ -1,0 +1,15 @@
+<view class="custom_nav" style="height:{{navbarHeight}}px;">
+  <view class="custom_nav_box" style="height:{{navbarHeight}}px; background: {{navbarData.style == 1 ? '#fff' : 'var(--primary-color)'}};">
+    <view class="custom_nav_bar" style="top:{{statusBarHeight}}px; height:{{cusnavH}}px;">
+      <view class="custom_nav_icon" wx:if="{{haveBack || navbarData.goback || navbarData.gohome}}" style="height:{{navbarBtn.height - 2}}px; top:{{navbarBtn.top}}px; left:{{navbarBtn.right}}px; border-radius: {{navbarBtn.height / 2}}px;background: {{navbarData.style == 1 ? '#fff' : 'rgba(0, 0, 0, 0.1)'}};border: {{navbarData.style == 1 ? '.5rpx solid rgba(0, 0, 0, 0.08)' : '.5rpx solid rgb(255, 255, 255, 0.2)'}}">
+        <view class="goback" wx:if="{{haveBack && navbarData.goback}}" bindtap="goBack" style="height:{{navbarBtn.height - 10}}px;width:{{navbarBtn.height - 10}}px;color: {{navbarData.style == 1 ? '#000' : '#fff'}}; border-right: {{navbarData.style == 1 ? '0.5rpx solid rgba(0, 0, 0, .1)' : '0.5rpx solid rgba(255, 255, 255, .3)'}};">
+          <van-icon name="arrow-left" />
+        </view>
+        <view class="home" bindtap="goHome" wx:if="{{navbarData.gohome}}" style="height:{{navbarBtn.height -10 }}px;width:{{navbarBtn.height - 10}}px;color: {{navbarData.style == 1 ? '#000' : '#fff'}};">
+          <van-icon name="wap-home" />
+        </view>
+      </view>
+      <view class="nav_title" style="height:{{cusnavH}}px; line-height:{{cusnavH}}px;color: {{navbarData.style == 1 ? '#000' : '#fff'}}">{{navbarData.title}}</view>
+    </view>
+  </view>
+</view>

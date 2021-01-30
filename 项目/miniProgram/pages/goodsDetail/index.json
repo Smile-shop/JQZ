@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "van-icon": "../../vant-weapp/icon/index",
+    "van-cell": "../../vant-weapp/cell/index",
+    "van-checkbox": "../../vant-weapp/checkbox/index",
+    "van-toast": "../../vant-weapp/toast/index",
+    "van-stepper": "../../vant-weapp/stepper/index",
+    "wxparser": "plugin://wxparserPlugin/wxparser",
+    "share": "../../components/share/index",
+    "share-post": "../../components/sharePost/index"
+  },
+  "navigationBarTitleText": "首饰详情"
+}

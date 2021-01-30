@@ -1,0 +1,4 @@
+var timer = function(val){
+  return val.split(' ')
+} 
+module.exports.timer = timer;

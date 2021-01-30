@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <skeleton wx:if="{{loading}}" />
+  <notOpen wx:if="{{!isOpen && !loading}}" />
+  <pullRefresh  wx:if="{{isOpen && !loading}}" bindpullrefresh="refresh" bindhandleMore="handleMore" pullRefresh="{{pullRefresh}}" content-style="height: calc(100vh - 50px);height: calc(100vh - 50px - constant(safe-area-inset-bottom));height: calc(100vh - 50px - env(safe-area-inset-bottom));">
+    <view slot="content" class="home-content">
+      <search class="search" />
+      <swipers swiper-list="{{ swiperList }}" />
+      <categoryList category-list="{{ categoryList }}" />
+      <RCD1 rcd1-data="{{ rcd1Data }}" />
+      <RCD2 rcd2-data="{{ rcd2Data }}" />
+      <loadMore wx:if="{{!noMore}}" />
+      <noMore wx:if="{{noMore}}" />
+    </view>
+  </pullRefresh>
+</page-meta>

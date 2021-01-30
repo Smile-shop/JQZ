@@ -1,0 +1,30 @@
+<!--pages/shop/index.wxml-->
+<page-meta page-style="--primary-color:{{mainColor}}">
+   <view class="check">
+      <view class="check-content">
+         <view class="check-content-title">如何查询我的个人信息？</view>
+         <view class="check-content-item">
+            <view class="check-content-item-title">一、功能介绍</view>
+            <view class="check-content-item-content">秒杀是一款针对商品的营销应用工具，您可以通过使用该款营销工具，用超低的价格，吸引更多的会员，带动店铺的整体销量。</view>
+         </view>
+         <view class="check-content-item">
+            <view class="check-content-item-title">二、功能路径</view>
+            <view class="check-content-item-content">微商城电脑端后台-营销-营销概况-秒杀</view>
+         </view>
+         <view class="check-content-item">
+            <view class="check-content-item-title">三、操作流程</view>
+            <view class="check-content-item-content">
+               <view>分销商品不支持参加秒杀活动。</view>  
+               <view>秒杀活动仅支持与支付有礼、订单返现营销活动叠加使用； 秒杀支持分销员功能。</view> 
+               <view>1、设置单规格秒杀 </view>
+               <view>（1）点击 [新建秒杀] 创建秒杀活动，点击添加活动商品</view>
+               <view>（2）选择秒杀商品</view>
+            </view>
+         </view>
+      </view>
+      <button open-type="contact" class="check-btn" style="width: 100%;">
+         <van-icon class="service" name="service-o" />
+         <text>联系客服</text>
+      </button>
+   </view>
+</page-meta>

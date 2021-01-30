@@ -1,0 +1,11 @@
+<!--components/loading/index.wxml-->
+<view class="loading" wx:if="{{show}}">
+  <view class="img-container" style="{{'margin-top: ' + top  + 'rpx'}}">
+    <view class="loading-img">
+      <image class="loading-icon" mode="" src="../../images/get-more.png" />
+    </view>
+  </view>
+  <view class="loading-text">
+    <text>正在努力加载中，请稍后…</text>
+  </view>
+</view>

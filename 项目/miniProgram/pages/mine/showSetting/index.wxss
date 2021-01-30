@@ -1,0 +1,111 @@
+.showSetting-wrapper{
+  padding-left: 28rpx;
+  position: relative;
+  height: 100vh;
+  background: #fff;
+}
+.showSetting-v{
+  height: 70vh;
+  position: relative;
+}
+.showSetting-box{
+  padding-top: 54rpx;
+}
+.showSetting-title{
+  font-size: 28rpx;
+  color: #4D4D4D;
+  margin-bottom: 26rpx;
+}
+.showSetting-input{
+  border-bottom: 2rpx solid #D4D6DC;
+  padding-bottom: 10rpx;
+}
+.showSetting-tip{
+  color: #EC7C68;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+.showSetting-use{
+  margin-top: 80rpx;
+}
+.showSetting-use-tip{
+  margin: 12rpx 0;
+  font-size: 26rpx;
+}
+.showSetting-save{
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+.showSetting-save button{
+  width: 690rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  background: #A3AAB7;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+.showSetting-save .save-button{
+  background: #4D4D4D;
+}
+.showSetting-1-wrapper{
+  padding-right: 28rpx;
+  height: auto;
+  background: #fff;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}
+.showSetting-1-v{
+  height: 40vh;
+}
+.showSetting-1-box{
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  align-items: center;
+  border-bottom: 2rpx solid #F5F5F5;
+
+}
+.showSetting-1-title{
+  width: 210rpx;
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+.showSetting-1-input{
+  flex: 1;
+}
+.showSetting-1-save{
+  bottom: -115rpx;
+}
+.showSetting-save  .save-1-button{
+  background:linear-gradient(90deg,rgba(221,178,127,1) 0%,rgba(219,176,81,1) 100%);
+}
+.save-1-button::after{
+  border: none;
+}
+.showSetting-1-tip{
+  color: #C11111;
+}
+.showSetting-use-1-title{
+  font-size:28rpx;
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+  position: relative;
+}
+.showSetting-use-1-title:after{
+  width:168rpx;
+  height:6rpx;
+  position: absolute;
+  content: '';
+  background:rgba(219,176,81,0.8);
+  bottom: 2rpx;
+  left: 0;
+  right:0;
+  margin: auto;
+}
+.showSetting-use-1-tip{
+  color: #666666;
+}

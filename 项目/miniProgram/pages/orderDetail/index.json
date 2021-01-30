@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-icon": "../../vant-weapp/icon/index",
+    "orderStatus": "../../components/order/orderStatus",
+    "split": "../../components/order/split",
+    "orderInfo": "../../components/order/info",
+    "goodsContent": "../../components/order/content",
+    "confirm": "../../components/order/confirm"
+  },
+  "navigationBarTitleText": "我的订单"
+}

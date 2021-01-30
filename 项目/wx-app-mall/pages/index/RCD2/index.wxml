@@ -1,0 +1,18 @@
+<!--pages/index/RCD2/index.wxml-->
+<view class="rcd2">
+  <view class="rcd2-title" style="margin-top:40rpx" wx:if="{{ rcd2Data && rcd2Data.spuList.records.length > 0 }}">
+    <view class="rcd2-title-name">
+      <image class="rcd2-title-name-icon" src="/images/hot.png" mode="widthFix"></image>
+      {{ rcd2Data.title }}
+    </view>
+    <view class="rcd2-title-more" bindtap="getMore">
+      更多
+      <image class="rcd2-title-more-icon" src="/images/more.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="rcd2-content">
+    <view class="rcd2-content-goods" wx:for="{{ rcd2Data && rcd2Data.spuList.records }}" wx:key="index">
+      <likeGoods hotGoodsInfo="{{ item }}" data-item="{{ item }}" bindgoodsDetail="goodsDetail"></likeGoods>
+    </view>
+  </view>
+</view>

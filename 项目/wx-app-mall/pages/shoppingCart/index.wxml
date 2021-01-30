@@ -1,0 +1,31 @@
+<!--pages/shoppingCart/index.wxml-->
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <view>
+    <view wx:if="{{ hasGoods && !loading }}">
+      <view class="select-all select-content-title">
+        <view class="select-all-info">
+          共<text class="select-all-info-num"> {{selectGoodsNum}} </text>种商品
+        </view>
+        <view class="select-all-edit-btn" bindtap="editShopppingCart">
+          <text>{{ isEditting ? "完成" : "编辑" }}</text>
+          <image mode="widthFix" style="width: 24rpx;margin-left: 10rpx" src="/images/edit.png"></image>
+        </view>
+      </view>
+      <view>
+      <split />
+        <irclassify 
+          list="{{ pageList }}"
+          isEditting="{{ isEditting }}"
+          bind:getSelectGoods="getSelectGoods"
+          bindupDateCarGoods="upDateCarGoods"
+          id="irclassify"
+          bindupdateList="getCartGoods"
+          pullRefresh="{{pullRefresh}}"
+        ></irclassify>
+      </view>
+    </view>
+    <loading top="{{420}}" wx:if="{{ loading }}" />
+    <empty wx:if="{{ !hasGoods && !loading}}" />
+  </view>
+</page-meta>

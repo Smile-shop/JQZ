@@ -1,0 +1,18 @@
+{
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "split": "/components/order/split",
+    "shopInfo": "/components/order/shopInfo",
+    "address": "/components/order/address",
+    "goodsListInfo": "/components/order/goodsListInfo",
+    "tabs": "./tabs",
+    "remark": "./remark",
+    "van-cell": "@vant/weapp/cell/index",
+    "couponsPopup": "./couponsPopup",
+    "navBar": "/components/navBar",
+    "payPop": "/components/order/payPop"
+  },
+  "navigationBarTitleText": "确认订单",
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom"
+}

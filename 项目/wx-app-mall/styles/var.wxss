@@ -1,0 +1,4 @@
+page {
+  --primary-color: #4BC99B;
+  --cart-btn-color: #F8BB3E;
+}

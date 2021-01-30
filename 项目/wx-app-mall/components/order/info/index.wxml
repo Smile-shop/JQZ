@@ -1,0 +1,21 @@
+<!--components/order/orderInfo/index.wxml-->
+<view class="order-info">
+    <view class="info-container">
+      <view class="info-content">订单编号</view>
+      <view class="info-text">{{ info.number }}
+        <text class="copy" bindtap="copy" wx:if="{{info.number}}">复制</text>
+      </view>
+    </view>
+    <view class="info-container">
+      <view class="info-content">配送方式</view>
+      <view class="info-text">{{ info.recvMannerStr || '快递配送' }}</view>
+    </view>
+    <view class="info-container">
+      <view class="info-content">下单时间</view>
+      <view class="info-text">{{info.createTime}}</view>
+    </view>
+    <view class="info-container info-cancel">
+      <view class="info-content info-cancel-content">下单备注</view>
+      <view class="info-text info-cancel-text">{{info.remark || ''}}</view>
+    </view>
+  </view>

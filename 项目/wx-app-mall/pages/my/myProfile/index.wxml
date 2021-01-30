@@ -1,0 +1,39 @@
+<!--pages/shop/index.wxml-->
+<wxs src="../../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<page-meta
+  page-style="--primary-color:{{mainColor}}"
+  scroll-top="{{scrollTop}}"
+>
+<navBar navbarData="{{navbarData}}" />
+<view class="bak-top" style="height: calc(100vw + {{navbarHeight}}rpx)"></view>
+<view class="user-info" style="margin-top: {{navbarHeight + 2}}rpx">
+  <view class="m-image">
+    <image src="{{avatarUrl ? avatarUrl : '../../../images/defalut_avator.png'}}"></image>
+  </view>
+</view>
+<view class="mine-wrapper" style="margin-top: calc({{navbarHeight}} - 10)rpx">
+   <view class="content-view">
+      <view class="mine-img">
+        <!-- <view class="m-image {{avatarUrl ? 'm-avatar-url' : ''}}">
+          <image src="{{avatarUrl ? avatarUrl : '../../../images/defalut_avator.png'}}"></image>
+        </view> -->
+      </view>
+       <view class="title">{{nickname}}</view>
+       <view class="member-level">普通会员</view>
+   </view>
+   <view class="item">
+    <view class="info-item">
+      <text class="info-item-title">手机号码</text>
+      <text class="info-item-content">{{phone}}</text>
+    </view>
+    <view class="info-item shop-item">
+      <text class="info-item-title">服务门店</text>
+      <text class="info-item-content">{{shop}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-item-title">专属客服</text>
+      <text class="info-item-content">-</text>
+    </view>
+   </view>
+</view>
+</page-meta>

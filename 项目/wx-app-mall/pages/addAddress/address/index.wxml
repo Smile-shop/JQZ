@@ -1,0 +1,13 @@
+<!--pages/addAddress/address/index.wxml-->
+<view class="wrapper">
+  <view class="title">请选择所在地区</view>
+  <van-tabs id="tabs" type="line" border="{{ false }}" tab-class="vant-tab" animated swipeable bind:change="change" color="var(--primary-color)" active="{{ active }}">
+    <van-tab title="{{item.name}}" title-style="font-size: 24rpx;" name="{{index}}" wx:for="{{dataList}}" wx:for-index="index" wx:key="index">
+      <view class="cityBox">
+        <view class="cityitem {{item.selectedIndex == index1 ? 'seleted' : ''}}" wx:for="{{item.data}}" wx:for-index="index1" wx:for-item="i" wx:key="index1" bindtap="select" data-item="{{i}}" data-index="{{index1}}">
+          {{i.name}}
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>

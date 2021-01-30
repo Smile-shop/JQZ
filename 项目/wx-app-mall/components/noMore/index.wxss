@@ -1,0 +1,35 @@
+.recommend {
+  text-align: center;
+  height: 50rpx;
+  margin-top: 10rpx;
+  padding: 30rpx;
+}
+
+.recommend-title {
+  width: 100%;
+  line-height: 50rpx;
+  white-space: nowrap;
+  border-spacing: 2rem 0;
+  font-size: 24rpx;
+  color: #aaa;
+  position: relative;
+}
+
+.recommend-title::before,
+.recommend-title::after {
+  position: absolute;
+  top: 50%;
+  margin-top: -1rpx;
+  content: "";
+  width: 40rpx;
+  height: 2rpx;
+  background: #aaa;
+}
+
+.recommend-title::before {
+  left: -60rpx;
+}
+
+.recommend-title::after {
+  right: -55rpx;
+}

@@ -1,0 +1,45 @@
+.success-box {
+  text-align: center;
+  padding: 30rpx;
+}
+
+.success-box-icon-box-icon {
+  font-size: 100rpx;
+  color: #1DB475;
+}
+
+.success-box-paystatus {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 55rpx;
+}
+
+.success-box-money-before {
+  font-size: 24rpx;
+}
+
+.success-box-money-after {
+  font-size: 60rpx;
+}
+
+.success-box-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+
+.success-box-btn .btn {
+  width: 260rpx;
+  font-size: 28rpx;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+}
+
+.success-box-btn .btn:nth-child(2) {
+  margin-left: 56rpx;
+  background-color: var(--primary-color);
+  color: #fff;
+}

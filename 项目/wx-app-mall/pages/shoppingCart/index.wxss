@@ -1,0 +1,93 @@
+/* pages/shoppingCart/index.wxss */
+.select-all {
+  background-color: #fff;
+  display: flex;
+}
+.select-content-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28rpx;
+  height: 100rpx;
+}
+.select-all-info{
+  font-size: 28rpx;
+  color: #666;
+}
+.select-all-info-num{
+  color: var(--primary-color)
+}
+.select-all-edit-btn {
+  width: 90rpx;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #666;
+}
+.edit-icon{
+  font-size: 30rpx;
+}
+.title-selected {
+  color: var(--primary-color);
+  position: relative;
+  font-weight: bold;
+  font-size: 24rpx;
+}
+.title-selected:after {
+  position: absolute;
+  top: 80rpx;
+  left: 52rpx;
+  background-color: var(--primary-color);
+  content: "";
+  width: 48rpx;
+  height: 6rpx;
+}
+  
+.title-unselect {
+  color: #666;
+  font-size: 24rpx;
+}
+.select-content-item {
+  width: 150rpx;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.price-image {
+  width: 12rpx;
+  height: 22rpx;
+  margin-left: 10rpx;
+}
+.data-loading {  
+  height: 50rpx;  
+  line-height: 50rpx;  
+  background-color: #eee;  
+  text-align: center;  
+  font-size: 24rpx;  
+} 
+.van-stepper__minus,.van-stepper__plus{
+  color: var(--primary-color)!important;
+  border: 1px solid var(--primary-color)!important;
+  border-radius: 5rpx!important;
+  width: 36rpx!important;
+  height: 36rpx!important;
+  padding: 0!important;
+  background-color: transparent!important;
+}
+.van-stepper__input{
+  background-color: transparent!important;
+}
+.van-stepper__minus:after,.van-stepper__minus:before,.van-stepper__plus:after,.van-stepper__plus:before {
+  background-color: var(--primary-color)!important;
+}
+.van-stepper__minus--disabled, .van-stepper__plus--disabled {
+  border: 1px solid #c8c9cc!important;
+  border-radius: 5rpx!important;
+  width: 36rpx!important;
+  height: 36rpx!important;
+  padding: 0!important;
+  background-color: transparent!important;
+}
+.van-stepper__minus--disabled:after,.van-stepper__minus--disabled:before,.van-stepper__plus--disabled:after,.van-stepper__plus--disabled:before {
+  background-color:  #c8c9cc!important;
+}

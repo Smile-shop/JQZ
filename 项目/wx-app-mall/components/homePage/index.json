@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-button": "@vant/weapp/button",
+    "van-search": "@vant/weapp/search/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "hotGoods": "/components/local/hotGoods/index",
+    "likeGoods": "/components/local/like/index",
+    "goldPrice": "/components/local/goldPrice/index"
+  }
+}

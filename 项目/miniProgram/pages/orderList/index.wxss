@@ -1,0 +1,229 @@
+/* pages/orderList/index.wxss */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 92rpx;
+  line-height: 92rpx;
+  background:rgba(255,255,255,1);
+  z-index: 99;
+}
+.case {
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(163,170,183,1);
+}
+.activeItem {
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(77,77,77,1);
+}
+.price-icon {
+  display: inline-block;
+  width: 12rpx;
+  height: 22rpx;
+  margin-left: 16rpx;
+}
+.price-icon image {
+  width: 100%;
+  height: 100%;
+}
+.scroll-container {
+  margin-top: 92rpx;
+  padding-bottom: 198rpx;
+}
+.split {
+  height:20rpx;
+  background:rgba(245,245,245,1);
+}
+.list {
+  background:rgba(255,255,255,1);
+}
+.list-content-container {
+  /* display: inline-block; */
+}
+.list-name-title {
+  margin: 22rpx auto 22rpx 30rpx;
+  height:40rpx;
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(77,77,77,1);
+  line-height:40rpx;
+}
+.list-name-num {
+  margin: 22rpx 30rpx 22rpx auto;
+  height:40rpx;
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(77,77,77,1);
+  line-height:40rpx;
+}
+.child-title {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 1);
+}
+.child-list {
+  /* display: inline-block; */
+}
+.list-content {
+  display: flex;
+  justify-content: flex-start;
+}
+.container-img {
+  position: relative;
+  width:216rpx;
+  height:216rpx;
+  background:rgba(245,245,245,1);
+  border-radius:12rpx;
+  border:2rpx solid rgba(245,245,245,1);
+  margin: 22rpx 30rpx 34rpx 30rpx;
+}
+.content-text {
+  margin-top: 22rpx;
+}
+.text-name {
+  height:40rpx;
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(77,77,77,1);
+  line-height:40pxr;
+  margin-top: 4rpx;
+  margin-bottom: 6rpx;
+}
+.text-code {
+  height:34rpx;
+  font-size:24rpx;
+  font-weight:500;
+  color:rgba(163,170,183,1);
+  line-height:34rpx;
+  margin-bottom: 6rpx;
+}
+.text-arg {
+  height:34rpx;
+  font-size:24rpx;
+  font-weight:500;
+  color:rgba(163,170,183,1);
+  line-height:34rpx;
+  margin-bottom: 6rpx;
+}
+.text-certificate {
+  height:34rpx;
+  font-size:20rpx;
+  font-weight:500;
+  color:rgba(163,170,183,1);
+  line-height:28rpx;
+  margin-bottom: 16rpx;
+}
+.text-total {
+  height:40rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(77,77,77,1);
+  line-height:34rpx;
+}
+.bottom-split {
+  height:1px;
+  background:rgba(238,238,238,1);
+}
+.page-total {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 198rpx;
+  line-height: 98rpx;
+  text-align: right;
+  background:rgba(255,255,255,1);
+}
+.pagination {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height:100rpx;
+  background:rgba(245,245,245,1);
+}
+.pre, .next {
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(204,204,204,1);
+}
+.turn-page-info {
+  width:160rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  background:rgba(255,255,255,1);
+  border-radius:50rpx;
+  text-align: center;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(163,170,183,1);
+}
+.turn-page-num {
+  margin-right: 12rpx;
+}
+.page-info {
+  margin-right: 30rpx;
+}
+.activePage {
+  width:72rpx;
+  height:34rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(77,77,77,1);
+  line-height:34rpx;
+}
+
+.sum-price {
+  display: inline-block;
+  margin-left: 16rpx;
+}
+
+.placeholder {
+  height: 30rpx;
+  background-color: #fff;
+}
+
+/* 钻石版 */
+.activeItem-diamand {
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(219,176,81,1);
+}
+
+.price-unit-diamand, .sum-totalPrice-diamand {
+  color:rgba(77,77,77,1);
+}
+
+.sum-totalPrice-diamand {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+/* 黄金版 */
+.nav-gold {
+  border-radius:0px 0px 20rpx 20rpx;
+  overflow: hidden;
+}
+.list-gold {
+  border-radius: 20rpx;
+  overflow: hidden;
+  background-color: rgba(245,245,245,1);
+}
+.activeItem-gold {
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(219,176,81,1);
+}
+
+.price-unit-gold, .sum-totalPrice-gold {
+  color:rgba(193,17,17,1);
+}
+
+.sum-totalPrice-gold {
+  font-size: 36rpx;
+  font-weight: 600;
+}

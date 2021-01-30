@@ -1,0 +1,25 @@
+*, *::before, *::after {
+  line-height: 1.2;
+  -webkit-overflow-scrolling: touch；
+}
+
+body {
+  user-select:none;
+}
+
+button {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  pointer-events: all;
+}
+
+.iconfont {
+  font-size: inherit;
+}

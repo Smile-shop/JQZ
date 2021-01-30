@@ -1,0 +1,36 @@
+/* components/order/orderStatus/index.wxss */
+.head, .goods, .order-info {
+  background: var(--primary-color);
+}
+
+.head {
+  display: flex;
+  height: 200rpx;
+}
+
+.icon {
+  font-size: 59rpx;
+  color: #fff;
+  margin: 42rpx 30rpx 30rpx 30rpx;
+}
+.icon-img{
+  width: 59rpx;
+}
+
+.head-title {
+  height:36rpx;
+  font-size:36rpx;
+  color:#fff;
+  line-height:36rpx;
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.head-info {
+  height:24rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:#fff;
+  line-height:24rpx;
+  margin-bottom: 40rpx;
+}

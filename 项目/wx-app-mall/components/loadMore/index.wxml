@@ -1,0 +1,5 @@
+<!--components/loadMore/index.wxml-->
+<view class="loadMore">
+    <image class="loadMore-icon" src="/images/get-more.png" mode="widthFix"></image>
+    <text wx:if="{{needText}}" class="loadMore-text">{{text}}</text>
+</view>

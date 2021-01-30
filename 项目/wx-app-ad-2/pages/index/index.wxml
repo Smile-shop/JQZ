@@ -1,0 +1,322 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="skeleton" wx:if="{{pageData.wxMemberSummary.activeId == 0}}">
+    <view class="skeleton-header">
+      <view class="time"></view>
+      <view class="swiper"></view>
+    </view>
+    <view class="skeleton-main">
+      <view class="user">
+        <view class="user-avatar"></view>
+        <view class="user-props">
+          <view class="user-props-item"></view>
+          <view class="user-props-item"></view>
+        </view>
+      </view>
+      <view class="conten">
+        <view class="header">
+          <view></view>
+          <view></view>
+        </view>
+        <view class="list">
+          <view class="item">
+            <view class="img"></view>
+            <view class="props">
+              <view class="props-item"></view>
+              <view class="props-item"></view>
+              <view class="props-item"></view>
+            </view>
+            <view class="button"></view>
+          </view>
+          <view class="item">
+            <view class="img"></view>
+            <view class="props">
+              <view class="props-item"></view>
+              <view class="props-item"></view>
+              <view class="props-item"></view>
+            </view>
+            <view class="button"></view>
+          </view>
+          <view class="item">
+            <view class="img"></view>
+            <view class="props">
+              <view class="props-item"></view>
+              <view class="props-item"></view>
+              <view class="props-item"></view>
+            </view>
+            <view class="button"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="content">
+    <view class="header">
+      <view
+        class="time"
+        wx:if="{{pageData.activeMainBaseInfo.isShowCountdown == 1}}"
+      >
+        <view
+          wx:if="{{pageData.activeMainBaseInfo.isOver == 0 && activityTime.status != 1}}"
+          class="left"
+        >
+          <span 
+            wx:if="{{activityTime.status == 0}}"
+          >
+            距开始
+          </span>
+          <span
+            wx:elif="{{activityTime.status == 2}}"
+          >
+            距结束
+          </span>
+          <span class="number">{{activityTime.day}}</span>天
+          <span class="number">{{activityTime.hour}}</span>时
+          <span class="number">{{activityTime.minute}}</span>分
+          <span class="number">{{activityTime.second}}</span>秒
+        </view>
+        <view
+          wx:else
+          class="left"
+        >
+          活动已结束
+        </view>
+        <view
+          wx:if="{{pageData.activeMainBaseInfo.isAddVirUserNum == 1}}"
+          class="right"
+        >
+          已有{{pageData.participationNum + pageData.activeMainBaseInfo.addVirUserNum}}人参与
+        </view>
+      </view>
+      <view
+        wx:if="{{pageData.activeMainBaseInfo.isShowCountdown == 1}}"
+        class="barrage"
+      >
+        <view
+          wx:for="{{pageData.wxMemberGift}}"
+          wx:key="index"
+          style="animation-delay: {{index * 4}}s; top: {{(index % 5) * 10}}vw;"
+          class="barrage-item"
+        >
+          <image src="{{item.wicon}}"></image>
+          {{item.wname}}兑换了{{item.giftName}}
+        </view>
+      </view>
+      <swiper
+        indicator-dots
+        indicator-color="rgba(0, 0, 0, 0.4)"
+        indicator-active-color="rgba(255, 255, 255)"
+        autoplay
+        style="height: 85vw"
+      >
+        <swiper-item
+          wx:for="{{pageData.bannerList}}"
+          wx:key="index"
+        >
+          <image class="swiper-item-image" src="{{item}}"></image>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="main">
+      <view
+        wx:if="{{isNeedLogin}}"
+        class="user"
+      >
+        <view class="left">
+          <image
+            src="/assets/img/avatar.png"
+            class="avatar"
+          >
+          </image>
+        </view>
+        <view bindtap="showLogin" class="middle">
+          <view class="name">
+            立即登录
+          </view>
+          <view class="info-list">
+            <span class="info-list-item">
+              人气值:
+              <span class="value">
+                --
+              </span>
+            </span>
+            <span class="info-list-item">
+              当前排名:
+              <span class="value">
+                --
+              </span>
+            </span>
+          </view>
+        </view>
+        <navigator url="/pages/top/top" class="right">
+          <i class="iconfont icon-paihangbang"></i>
+          排行榜
+          <i class="iconfont icon-fanhui"></i>
+        </navigator>
+      </view>
+      <view wx:else class="user">
+        <view class="left">
+          <image
+            src="{{pageData.wxMemberSummary.wicon}}"
+            class="avatar"
+          >
+          </image>
+        </view>
+        <view class="middle">
+          <view class="name">
+            {{pageData.wxMemberSummary.wname}}
+          </view>
+          <view class="info-list">
+            <span class="info-list-item">
+              人气值:
+              <span class="value">
+                {{pageData.wxMemberSummary.popularValue}}
+              </span>
+            </span>
+            <span class="info-list-item">
+              当前排名:
+              <span class="value">
+                {{pageData.wxMemberSummary.ranking}}
+              </span>
+            </span>
+          </view>
+        </view>
+        <navigator url="/pages/top/top" class="right">
+          <i class="iconfont icon-paihangbang"></i>
+          排行榜
+          <i class="iconfont icon-fanhui"></i>
+        </navigator>
+      </view>
+      <view class="prize">
+        <view class="header">
+          <view class="left">
+            <i class="iconfont icon-lipin"></i>
+            活动奖品
+          </view>
+          <navigator wx:if="{{!isNeedLogin}}" url="/pages/my-prize/my-prize" class="right">
+            我的奖品
+            <i class="iconfont icon-you"></i>
+          </navigator>
+        </view>
+        <view class="prize-list">
+          <view
+            wx:for="{{pageData.activeGiftList}}"
+            wx:key="index"
+            class="prize-list-item"
+          >
+            <view class="left">
+              <image src="{{item.icon || '/assets/img/img-error.png'}}"></image>
+            </view>
+            <view class="middle">
+              <view class="name">
+                {{item.giftName}}
+              </view>
+              <view class="property">
+                <span class="key">
+                  需人气值：
+                </span>
+                <span class="value">
+                  {{item.popularValue}}
+                </span>
+              </view>
+              <view wx:if="{{pageData.activeMainBaseInfo.isShowRemainStock == 1}}" class="property">
+                <span class="key">
+                  剩余库存：
+                </span>
+                {{item.activeStorageNum}}件
+              </view>
+              <view
+                wx:if="{{!isNeedLogin}}"
+                class="popularity"
+              >
+                <view
+                  wx:if="{{item.status == '未达标'}}"
+                  class="describe"
+                >
+                  还差{{item.popularValue - pageData.wxMemberSummary.popularValue}}个人气值
+                </view>
+                <view
+                  wx:else
+                  class="describe"
+                >
+                  人气已达标
+                </view>
+                <progress
+                  percent="{{item.status != '未达标' ? 100 : (pageData.wxMemberSummary.popularValue / item.popularValue) * 100}}"
+                  border-radius="10"
+                  activeColor="#FC4C39"
+                  backgroundColor="#FFC7C2"
+                  stroke-width="4"
+                >
+                </progress>
+              </view>
+            </view>
+            <view class="right">
+              <image wx:if="{{item.status == '已达标'}}" src="/assets/img/completed.png"></image>
+              <button
+                wx:if="{{item.activeStorageNum <= 0}}"
+                disabled
+              >
+                已兑完
+              </button>
+              <button
+                wx:elif="{{item.status == '未达标'}}"
+                disabled
+              >
+                立即兑换
+              </button>
+              <button
+                wx:elif="{{item.status == '已达标'}}"
+                data-id="{{item.giftId}}"
+                bindtap="toPrizeReceivePage"
+                disabled="{{pageData.activeMainBaseInfo.isOver == 1}}"
+              >
+                立即兑换
+              </button>
+              <button
+                wx:elif="{{item.status == '已兑换' || item.status == '已领取'}}"
+                disabled
+              >
+                已兑换
+              </button>
+              <!-- 1: 未达标,2: 已达标,3: 已兑换,4: 已领取 -->
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="rule">
+        <view class="header">
+          <image src="/assets/img/wave.png"></image>
+          <span class="title">
+            活动规则
+          </span>
+          <image src="/assets/img/wave.png"></image>
+        </view>
+        <rich-text nodes="{{pageData.activeMainBaseInfo.detail}}"></rich-text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{isShowLogin}}" class="dialog">
+    <view class="content">
+      <image src="/assets/img/unauthorized.png"></image>
+      <text>
+        授权登录后可查看更多活动信息
+      </text>
+      <view class="control">
+        <button
+          bindtap="hideLogin"
+          class="cancel"
+        >
+          取消
+        </button>
+        <button
+          class="login"
+          bindgetphonenumber="getPhonenumber"
+          open-type="getPhoneNumber"
+        >
+          获取手机号
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

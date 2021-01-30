@@ -1,0 +1,11 @@
+<!--pages/pageSuccess/recommend/index.wxml-->
+<view wx:if="{{ recommendList.length }}">
+  <view class='recommend'>
+    <text class='recommend-title'>继续剁手</text>
+  </view>
+  <view class="recommend-goods-list">
+    <view class="recommend-goods" wx:for="{{ recommendList }}" wx:key="id">
+      <likeGoods hotGoodsInfo="{{ item }}" data-item="{{ item }}" bindgoodsDetail="goodsDetail"></likeGoods>
+    </view>
+  </view>
+</view>

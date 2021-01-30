@@ -1,0 +1,22 @@
+<!--components/global/modal/index.wxml-->
+<wxs src="../../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class="modal-container" wx:if="{{ show }}">
+  <view class="modal">
+    <view class="modal-content">
+      <view class="content">{{ content }}</view>
+    </view>
+    <view class="modal-button-list">
+      <view 
+        class="modal-button" 
+        data-type="{{ false }}" 
+        bindtap="modalButtonClick" 
+        wx:if="{{ hasCancelBtn }}"
+      >取消</view>
+      <view 
+        data-type="{{ true }}" 
+        bindtap="modalButtonClick" 
+        class="modal-button confirm-button {{ hasCancelBtn ? 'has-cancel-button' : 'no-cancel-button'}} {{gs.type('gold-modal-button', globalStyle)}}"
+      >确定</view>
+    </view>
+  </view>
+</view>

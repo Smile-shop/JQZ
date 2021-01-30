@@ -1,0 +1,46 @@
+.dialog {
+  width: 560rpx;
+  border-radius: 15rpx;
+  overflow: hidden;
+  top: 45%;
+}
+
+.dialog .confirm-content {
+  text-align: center;
+  color: #333;
+}
+
+.dialog .confirm-content-title {
+  font-size: 32rpx;
+  padding-top: 30rpx;
+}
+
+.dialog .confirm-content-nei {
+  font-size: 28rpx;
+  padding: 30rpx 30rpx 40rpx 30rpx;
+}
+
+.dialog .confirm-content .noTitle {
+  padding: 60rpx;
+}
+
+.dialog .confirm-content-btn {
+  display: flex;
+  border-top: 2rpx solid #eee;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.dialog .confirm-content-btn .cancel, .dialog .confirm-content-btn .confirm {
+  height: 90rpx;
+  width: 50%;
+  box-sizing: border-box;
+  line-height: 90rpx;
+  font-size: 28rpx;
+}
+
+.dialog .confirm-content-btn .confirm {
+  color: #fff;
+  background-color: var(--primary-color);
+  border-left: 2rpx solid #eee;
+}

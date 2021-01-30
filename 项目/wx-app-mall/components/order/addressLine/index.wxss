@@ -1,0 +1,17 @@
+/* components/order/addressLine/index.wxss */
+.line-main{
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+.line-main-item{
+  width: 34rpx;
+  height: 4rpx;
+  background-color: #3078F6;
+}
+.line-main-item:not(:first-child){
+  margin-left: 4rpx;
+}
+.line-main-item:nth-child(even){
+  background-color: #EF6D6B;
+}

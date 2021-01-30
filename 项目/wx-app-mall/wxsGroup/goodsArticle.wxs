@@ -1,0 +1,84 @@
+// 商品信息展示
+var goodsArticle = function (goldWeightStart, goldWeightEnd) {
+  const goldWeight = goldWeightStart + '~' +goldWeightEnd + 'g'
+  return goldWeight
+}
+
+var goodsTag = function(number, max) {
+  var isOrder = true
+  if (max + 0) {
+    isOrder = number <= max
+  } else {
+    isOrder = number > 0
+  }
+  if (isOrder) {
+    return {
+      title: '现货',
+      color: '#4F989E'
+    }
+  } else {
+    return {
+      title: '预订',
+      color: '#EC7C68'
+    }
+  }
+}
+
+var priceBetween = function(min, max) {
+  if (min && max && min < max) {
+    return min + '~' + max
+  } else {
+    var text = min || max
+    return text
+  }
+}
+
+var overFont = function(font) {
+  if (font) {
+    var str = font.toString().trim()
+    if (str.length > 5) {
+      return str.slice(0, 5) + '...'
+    } else {
+      return str
+    }
+  }
+}
+
+var shopppingCartTag = function (count, stockNum, valid, isNullStock) {
+  // 判断是否强制下架 0：下架，1：上架
+  if (valid == 0) {
+    return {
+      title: '下架',
+      color: ''
+    }
+  } else {
+    // 判断是否零库存下架 0：禁用，1：启用
+    if (isNullStock == 0) {
+      return {
+        title: count <= stockNum ? '现货' : '预订',
+        color: count <= stockNum ? '#4F989E' : '#EC7C68'
+      }
+    } else {
+      // 判断库存是否为0
+      if (stockNum > 0) {
+        return {
+          title: count <= stockNum ? '现货' : '预订',
+          color: count <= stockNum ? '#4F989E' : '#EC7C68'
+        }
+      } else {
+        return {
+          title: '下架',
+          color: ''
+        }
+      }
+    }
+  }
+}
+
+module.exports = {
+  goodsArticle: goodsArticle,
+  goodsTag: goodsTag,
+  priceBetween: priceBetween,
+  shopppingCartTag: shopppingCartTag,
+  overFont: overFont
+}

@@ -1,0 +1,5 @@
+/* pages/untie/index.wxss */
+.untie {
+  margin-top: 100rpx;
+  text-align: center;
+}

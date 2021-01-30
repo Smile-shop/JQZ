@@ -1,0 +1,27 @@
+.title{
+  font-size: 28rpx;
+  color: #333;
+  margin: 20rpx;
+  text-align: center;
+}
+.cityBox{
+  height: 800rpx;
+  padding: 20rpx;
+}
+.cityitem{
+  padding: 20rpx 20rpx 20rpx 30rpx;
+  font-size: 24rpx;
+}
+.seleted{
+  color: var(--primary-color);
+}
+.vant-tab{
+  width: 170rpx;
+  flex: none;
+}
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

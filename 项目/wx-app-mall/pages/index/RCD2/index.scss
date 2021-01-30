@@ -1,0 +1,54 @@
+.rcd2{
+  &-title {
+    display: flex;
+    align-items: center;
+    padding: 28rpx;
+    height: 40rpx;
+    background-color: #fff;
+    &-name {
+      font-size: 36rpx;
+      color: #4D4D4D;
+      font-weight: bold;
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      &-icon{
+        width: 40rpx;
+      }
+    }
+    &-more {
+      font-size: 24rpx;
+      color: #A3AAB7;
+      height: 30rpx;
+      display: flex;
+      align-items: center;
+      &-icon{
+        width: 24rpx;
+        margin-left: 10rpx;
+      }
+    }
+  }
+  &-content {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    &-goods{
+      width: 332rpx;
+      background: rgba(255, 255, 255, 1);
+      border-radius: 12px;
+      box-sizing: border-box;
+      margin-bottom: 32rpx;
+      margin-top: 20rpx;
+    }
+    &-goods:nth-child(1), &-goods:nth-child(2){
+      margin-top: 0;
+    }
+    &-goods:nth-of-type(odd) {
+      margin-left: 28rpx;
+    }
+    &-goods:nth-of-type(even) {
+      margin-left: 30rpx;
+    }
+  }
+}

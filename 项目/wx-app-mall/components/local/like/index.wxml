@@ -1,0 +1,51 @@
+
+<wxs src="../../../wxsGroup/common.wxs" module="common"></wxs>
+<view class="hot-content" bindtap="goodsDetail">
+  <!-- 商品图片 -->
+  <view class="hot-goods-img">
+    <img mode="aspectFill" lazy-load src="{{ hotGoodsInfo.imgUrl }}"></img>
+  </view>
+  <!-- 标签-->
+  <!-- <view 
+    class="hot-goods-tag {{ gs.type('tag', globalStyle) }}" 
+    style="color: {{ goods.goodsTag(hotGoodsInfo.jMPStockCount).color }}"
+    wx:if="{{ goods.goodsTag(hotGoodsInfo.jMPStockCount).title == '预订' }}"
+  >{{ goods.goodsTag(hotGoodsInfo.jMPStockCount).title }}</view> -->
+  <!-- 商品信息 -->
+  <view class="hot-goods-name">{{ hotGoodsInfo.title }}</view>
+  <!-- <view class="hot-goods-info">
+    <view class="hot-goods-info-left" style="font-size:24rpx;color:#A3AAB7;min-height: 32rpx">
+      <text wx:if="{{ hotGoodsInfo.goldWeightStart }}" style="padding-right:12rpx">{{ hotGoodsInfo.goldWeightStart }}g</text>
+      <text wx:if="{{ hotGoodsInfo.mainStoneWeightStart }}" style="padding-right:12rpx">{{ hotGoodsInfo.mainStoneWeightStart }}ct</text>
+      <text wx:if="{{ hotGoodsInfo.mainStoneColor }}" style="padding-right:12rpx">{{ hotGoodsInfo.mainStoneColor }}</text>
+      <text wx:if="{{ hotGoodsInfo.mainStoneQuality }}" style="padding-right:12rpx">{{ hotGoodsInfo.mainStoneQuality }}</text>
+      <text wx:if="{{ hotGoodsInfo.handInch }}">{{ hotGoodsInfo.handInch }}#</text>
+      <text style="padding-right:12rpx">0.22g 0.2ct VVS 18</text>
+      <text style="padding-right:12rpx">0.2ct</text>
+      <text style="padding-right:12rpx">VVS</text>
+      <text >18</text>
+    </view>
+  </view> -->
+  <!-- <view class="hot-goods-info" style="font-size:20rpx;color:#4D4D4D;padding-top:10rpx">
+    <view class="hot-goods-info-left">
+      <text wx:if="{{ type }}">
+        <text class="{{ gs.type('price', globalStyle) }}" style="font-size:24rpx;">￥</text>
+        <text class="{{ gs.type('price', globalStyle) }}" style="font-size:28rpx;font-weight:600">{{ goods.priceBetween(hotGoodsInfo.smallOfflinePrice, hotGoodsInfo.largeOfflinePrice) }}</text>
+      </text>
+    </view>
+  </view> -->
+  <view class="hot-goods-wrap" wx:if="{{hotGoodsInfo.tags}}">
+    <view class="tags-item">限时秒杀</view>
+    <view class="tags-item">国庆狂欢</view>
+  </view>
+  <view class="hot-goods-info">
+    <view class="hot-goods-info-left">
+      <text>
+        <text class="hot-goods-tags">￥</text>
+        <text class="hot-goods-tag2">{{common.cutToFixed(hotGoodsInfo.price, 0)}}</text>
+        <text class="hot-goods-tag3">{{common.cutToFixed(hotGoodsInfo.price, 1)}}</text>
+        <text class="hot-goods-price">¥{{common.cutToFixed(hotGoodsInfo.origPrice, 2)}}</text>
+      </text>
+    </view>
+  </view>
+</view>

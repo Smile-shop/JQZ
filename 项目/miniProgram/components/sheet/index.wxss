@@ -1,0 +1,35 @@
+/* components/sheet/index.wxss */
+.container-sheet {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 600rpx;
+  width: 100%;
+  background: rgba(255, 255, 255, 1);
+}
+.shee-title {
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.cancel {
+  margin-left: 15rpx;
+  margin-right: 30rpx;
+}
+.confirm {
+  margin-right: 15rpx;
+  margin-left: 30rpx;
+}
+.cancel, .confirm {
+  font-size: 28rpx;
+}

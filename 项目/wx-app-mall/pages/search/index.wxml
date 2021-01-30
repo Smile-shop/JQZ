@@ -1,0 +1,60 @@
+<!--pages/search/index.wxml-->
+<wxs src="./name.wxs" module="name"></wxs>
+<page-meta page-style="--primary-color:{{mainColor}}">
+<view class="search">
+<!-- 搜索框 -->
+  <view class="search-container">
+    <view class="left-content">
+      <image src="../../images/search-icon.png" style="width:32rpx;height:32rpx;margin:0 20rpx 0 5rpx;flex-shrink:0"></image>
+      <input 
+        focus
+        type="text"
+        confirm-type="search"
+        bindconfirm="searchMethods"
+        confirm-type="搜索"
+        bindinput="bindKeyInput"
+        bindblur="bindKeyInput"
+        value="{{ inputValue }}"
+        class="input-content" 
+        placeholder-class="input-placeholder" 
+        maxlength="{{ 30 }}"
+        placeholder="搜索" />
+      <van-icon name="clear" bindtap="clearInput" wx:if="{{ inputValue }}" style="margin-right:20rpx;margin-top:8rpx;height:72rpx" />
+    </view>
+    <view class="right-content" bindtap="searchMethods" >搜索</view>
+  </view>
+  <!-- 历史搜索 -->
+  <view wx:if="{{ !inputValue }}">
+    <view class="search-history">
+      <view class="search-history-title">历史搜索</view>
+      <view><van-icon name="delete" color="#A3AAB7" bindtap="removeConfirm" /></view>
+    </view>
+    <view class="history-list"
+      wx:for="{{ historySearchList }}" 
+      wx:key="index"
+      data-history="{{ item }}"
+      bindtap="historySearchMethods"
+    >{{ item.text }}</view>
+  </view>
+  <view wx:else>
+    <scroll-view scroll-y class="search-list">
+      <view 
+        class="search-item" 
+        wx:for="{{ fuzzySearchList }}" 
+        wx:key="index" 
+        data-text="{{ item.name }}" 
+        bindtap="fuzzySearchMethods">
+        <text 
+          wx:for="{{ item.list }}" 
+          wx:key="itemName" 
+          class="{{ name.nameShow(itemName, inputValue) ? 'is-input-value' : '' }}" 
+          wx:for-index="idx" 
+          wx:for-item="itemName"
+           data-text="{{ item.name }}"
+        >{{ itemName }}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <confirm show = "{{show}}" title = "" content = "确定清空历史记录？" async-close bindconfirm="removeSearchHistory"  />
+</view>
+</page-meta>

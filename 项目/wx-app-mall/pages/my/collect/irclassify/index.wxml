@@ -1,0 +1,98 @@
+<!--pages/shoppingCart/irclassify/index.wxml-->
+<wxs src="../../../../wxsGroup/common.wxs" module="commonWXS"></wxs>
+<wxs src="../../../../wxsGroup/goodsArticle.wxs" module="goods"></wxs>
+<wxs src="../../../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<split />
+<scroll-view
+  class="{{isEdit ? 'shopping-cart-hasBtn' : 'shopping-cart'}}"
+  scroll-y
+  bindtouchstart="onCloseSwipe">
+  <!-- 正常商品 -->
+  <view class="shopping-cart-catery">
+    <view class="shoppping-list">
+      <view wx:for="{{ shopppingCartList }}" wx:for-index="idx" wx:for-item="shoppingItem" wx:key="idx">
+        <slide-view right-button-widht="{{146}}">
+          <view class="shopping-item">
+            <van-checkbox
+              style="margin:77rpx 0 0 15rpx"
+              checked-color="var(--primary-color)"
+              data-goodsIndex="{{ idx }}"
+              value="{{ shoppingItem.isSelect }}"
+              bind:change="itemOnChange"
+              id="{{ shoppingItem.id }}"
+              wx:if="{{isEdit}}"
+              />
+            <view catchtap="goodsDetail" data-goods="{{ shoppingItem }}" style="display:flex">
+              <!-- 商品图片 -->
+              <view class="shopping-item-img">
+                <image style="width:100%;height:100%" mode="scaleToFill" lazy-load src="{{ shoppingItem.photo }}"></image>
+                <view
+                  class="shopping-item-img-mask"
+                  wx:if="{{ shoppingItem.valid == 0 || shoppingItem.isNullStock == 1 || shoppingItem.stockNum == 0 }}">
+                  <view class="shopping-item-img-mask-title">{{shoppingItem.valid == 0 ? '已失效' : shoppingItem.stockNum == 0 ? '缺货中' : '已下架' }}</view>
+                </view>
+              </view>
+              </view>
+              <!-- 商品信息 -->
+              <view class="shopping-item-info">
+                <view class="shopping-item-name more-show-ellipsis {{shoppingItem.valid == 0 || shoppingItem.isNullStock == 1 || shoppingItem.stockNum == 0 ? 'shopping-item-name-novalid' : ''}}">
+                  {{ shoppingItem.name }}
+                </view>
+                <!-- <view class="shopping-item-code more-show-ellipsis">
+                  条码号：{{ shoppingItem.code }}
+                </view> -->
+                <view class="shopping-item-detail more-show-ellipsis">
+                  <text
+                    wx:if="{{ shoppingItem.goldWeight }}"
+                    style="padding-right:12rpx">{{ shoppingItem.goldWeight }}g</text>
+                  <text
+                    wx:if="{{ shoppingItem.mainStoneWeight }}"
+                    style="padding-right:12rpx">{{ commonWXS.toFix(shoppingItem.mainStoneWeight, 2) }}ct</text>
+                  <text
+                    wx:if="{{ shoppingItem.mainStoneColor }}"
+                    style="padding-right:12rpx">{{ shoppingItem.mainStoneColor }}</text>
+                  <text
+                    wx:if="{{ shoppingItem.mainStoneQuality }}"
+                    style="padding-right:12rpx">{{ shoppingItem.mainStoneQuality }}</text>
+                  <text
+                    wx:if="{{ shoppingItem.handInch }}">{{ shoppingItem.handInch }}#</text>
+                </view>
+                <view class="shopping-item-credentials more-show-ellipsis" wx:if="{{ shoppingItem.credentials }}">
+                  证书：{{ shoppingItem.credentials }}
+                </view>
+                <view class="item-tags">
+                  <van-tag color="var(--primary-color)" plain type="danger">周年店庆</van-tag>
+                </view>
+            </view>
+            <view class="shopping-item-number collectBox" wx:if="{{shoppingItem.valid == 0 || shoppingItem.isNullStock == 1 || shoppingItem.stockNum == 0}}">
+              <view class="collectBtn" wx:if="{{shoppingItem.stockNum == 0}}">到货通知</view>
+            </view>
+            <view style="width: {{isEdit ? '422rpx' : '470rpx'}}" class="shopping-item-number" wx:else>
+              <view class="item-price">
+                ￥{{ commonWXS.toFix(shoppingItem.orderedPrice, 2) }}
+              </view>
+              <view class="shopping-cart-number"><van-icon name="cart-o" /></view>
+            </view>
+          </view>
+          <view slot="right" class="button" id="{{ 'item' + shoppingItem.id }}" data-goods="{{ shoppingItem }}">
+            <view class="delbtn" bindtap="onSwipeClose">删除</view>
+          </view>
+        </slide-view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="submit-bar" bindtouchstart="onCloseSwipe" wx:if="{{isEdit}}">
+  <view class="submit-bar-select">
+    <van-checkbox
+      checked-color="var(--primary-color)"
+      value="{{ allSelect }}"
+      bind:change="allOnChange"
+    >全选</van-checkbox>
+  </view>
+  <view class="submit-bar-info" wx:if="{{ !isEdit }}">
+    <view class="submit-bar-money">总计：<text class="submit-bar-price">￥{{ commonWXS.toFix(shoppingCartMoney, 2) }}</text></view>
+  </view>
+  <view class="submit-bar-button" bindtap="deleteOrEditMethods">删除</view>
+</view>
+<confirm show="{{showConfirm}}" title="提示" content="是否删除？" bind:confirm="confirm" bind:cancel="cancel" />

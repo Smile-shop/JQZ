@@ -1,0 +1,50 @@
+a {
+  text-decoration: none;
+}
+
+body {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+mark {
+  background-color: inherit;
+}
+
+// 滚动条
+* {
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 2.5px;
+  }
+}
+
+// 上传的图片列表
+.el-form-item__content {
+  .el-upload__tip {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  .el-upload-list__item.is-success {
+    height: auto;
+
+    .el-upload-list__item-thumbnail {
+      width: 100px;
+      height: auto;
+    }
+  }
+}
+
+.el-checkbox {
+  .el-checkbox__inner {
+    border-color: #888;
+  }
+}

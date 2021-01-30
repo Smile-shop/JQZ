@@ -1,0 +1,91 @@
+<!--pages/login/index.wxml-->
+<wxs src="./button-text.wxs" module="m"></wxs>
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class='authorizate-page' wx:if="{{ hasUserInfo }}">
+  <view class='company-name'>JOP云展厅</view>
+  <view>
+    <button class="authorizate-button {{gs.type('authorizate-button', globalStyle)}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信授权登录</button>
+    <button class='phone-number-button' bindtap="phoneLogin">手机号登录</button>
+    <block wx:if="{{globalStyle === '0'}}">
+      <view wx:if="{{globalShare == '1'}}" class="cancel-login-button cancel-divider-line" bindtap="visitorGo">游客访问</view>
+      <view wx:else class="cancel-login-button cancel-divider-line" bindtap="cancelLogin">取消登录</view>
+    </block>
+    <view class="gold-divider-box" wx:if="{{globalStyle === '1'}}">
+      <view wx:if="{{globalShare == '1'}}" class="gold-divider-line" bindtap="visitorGo">游客访问</view>
+      <view wx:else class="gold-divider-line" bindtap="cancelLogin">取消登录</view>
+    </view>
+  </view>
+</view>
+<view class="login-container" wx:else>
+  <view class="input-field" style="padding-top:120rpx">
+    <view class="input-field-left">
+      <text class="icon ICONshouji"></text>
+    </view>
+    <view class="input-field-center">
+      <input 
+        class="input-content"
+        placeholder="输入手机号码"
+        placeholder-class="input-placeholder"
+        type="number"
+        maxlength="11"
+        data-type="phone" 
+        bindinput="fieldInput"
+        value="{{ phone }}"
+      ></input>
+      <van-icon 
+        wx:if="{{ phone }}" 
+        data-type="phone" 
+        bindtap="clearInput" 
+        style="padding: 8rpx 0 0 12rpx" 
+        color="#A3AAB7" 
+        name="clear" />
+    </view>
+    <view class="input-field-right"></view>
+  </view>
+  <view class="input-field" style="margin-top:80rpx">
+    <view class="input-field-left">
+      <text class="icon ICONmima"></text>
+    </view>
+    <view class="input-field-center">
+      <input 
+        class="input-content"
+        placeholder="短信验证码"
+        placeholder-class="input-placeholder"
+        type="number"
+        maxlength="6"
+        data-type="verifyCode"
+        bindinput="fieldInput"
+        value="{{ verifyCode }}"
+      ></input>
+      <van-icon 
+        wx:if="{{ verifyCode }}" 
+        data-type="verifyCode" 
+        bindtap="clearInput" 
+        style="padding: 8rpx 26rpx 0 12rpx" 
+        color="#A3AAB7" 
+        name="clear" />
+    </view>
+    <view class="input-field-right">
+      <van-button 
+        slot="button" 
+        size="small" 
+        color="#D4D6DC" 
+        type="primary" 
+        bind:click="sendSMS"
+      >
+        {{ isSendSMS ? m.buttonText(sendMSMBtnTime) : '发送验证码' }}
+      </van-button>
+    </view>
+  </view>
+  <view class="login-button">
+    <van-button
+      class="{{m.isLogin(verifyCode, isLogin) ? gs.type('login-gold-button', globalStyle) : gs.type('login-gold-button-ok', globalStyle)}}" 
+      type="primary" 
+      color="#4D4D4D" 
+      block 
+      disabled="{{ m.isLogin(verifyCode, isLogin) }}"
+      bind:click="login"
+    >登录</van-button>
+  </view>
+</view>
+<modal globalStyle="{{globalStyle}}" content="{{ modal.content }}" show="{{ modal.show }}" hasCancelBtn="{{ modal.hasCancelBtn }}"></modal>

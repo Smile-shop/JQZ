@@ -1,0 +1,5 @@
+<!--components/local/goodsDetail/index.wxml-->
+<view class="goods-detail">
+  <wxparser rich-text="{{desc}}" />
+  <view class="rich-bottom" wx:if="{{!desc}}"></view>
+</view>

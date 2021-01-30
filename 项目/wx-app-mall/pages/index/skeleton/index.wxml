@@ -1,0 +1,20 @@
+<!--pages/index/skeleton/index.wxml-->
+<!-- 骨架屏 -->
+<view class="skeleton-screen">
+  <view class="skeleton-swiper">
+    <view class="skeleton-swiper-input"></view>
+  </view>
+  <view class="skeleton-classify-container">
+    <view wx:for="{{ 10 }}" wx:key="index" class="skeleton-classify-item">
+      <view class="skeleton-classify-item-circle"></view>
+      <view class="skeleton-classify-item-div"></view>
+    </view>
+  </view>
+  <view class="skeleton-hot">
+    <view class="skeleton-hot-top">
+      <view class="skeleton-hot-top-left"></view>
+      <view class="skeleton-hot-top-right"></view>
+    </view>
+    <view class="skeleton-hot-content"></view>
+  </view>
+</view>

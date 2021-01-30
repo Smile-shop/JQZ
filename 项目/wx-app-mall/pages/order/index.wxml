@@ -1,0 +1,106 @@
+<!--pages/order/index.wxml-->
+<wxs src="../../wxsGroup/common.wxs" module="common"></wxs>
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <navBar navbarData="{{navbarData}}" />
+  <view>
+    <scroll-view scroll-x scroll-into-view="{{currentIndex}}">
+      <head catchtap="handleItem" class="header">
+        <view 
+        id="{{item.status}}"
+        data-mode = "{{item.mode}}"
+        data-item="{{'item' + item.mode}}" 
+        class="{{activeItem == item.status ? 'activeItem case': 'case'}}" 
+        wx:for="{{orderNav}}" 
+        wx:key="index">
+        {{item.name}}
+        </view>
+      </head>
+    </scroll-view>
+    <split />
+    <pullRefresh 
+      bindpullrefresh="refresh"
+      bindhandleMore="handleMore"
+      pullRefresh="{{pullRefresh}}"
+      content-style="height: calc(100vh - 112rpx - {{navbarHeight}}px); height: calc(100vh - 112rpx - {{navbarHeight}}px - constant(safe-area-inset-bottom)); height: calc(100vh - 112rpx - {{navbarHeight}}px - env(safe-area-inset-bottom));" 
+      wx:if="{{list.length > 0}}">
+      <view slot="content">
+        <view wx:for="{{list}}" wx:key="title">
+          <!-- <view wx:if="{{item.orderDetailRspVoList.length > 4}}">
+            <mulitOrder bindtap="handleDetail" 
+              list="{{item.orderDetailRspVoList}}" 
+              orderId="{{item.id}}" 
+              price="{{item.amtPayment}}" 
+              status="{{item.statusStr}}"
+              storeName="{{item.storeName}}" />
+              <view>
+                <view class="container-cancel" wx:if="{{item.orderStatus == 0}}">
+                    <view class="time">
+                      <text>支付剩余</text>
+                      <text class="time-text">24:10</text>
+                    </view>
+                  <view class='order-cancel' bindtap="showCancel" data-id="{{orderId}}">取消订单</view>
+                  <view class='order-cancel marginLeft order-pay' bindtap="handleCancelOrder" data-id="{{orderId}}">立即支付</view>
+                </view>
+                <view class="container-cancel" wx:if="{{item.orderStatus == 1}}">
+                  <view class='order-cancel' bindtap="handleCancelOrder" data-id="{{orderId}}">申请售后</view>
+                  <view class='order-cancel marginLeft order-pay' bindtap="remind" data-id="{{orderId}}">提醒发货</view>
+                </view>
+                <view class="container-cancel" wx:if="{{item.orderStatus == 2}}">
+                  <view class='order-cancel' bindtap="handleCancelOrder" data-id="{{orderId}}">申请售后</view>
+                  <view class='order-cancel marginLeft' bindtap="getLogisticsDetail" data-id="{{orderId}}">查看物流</view>
+                  <view class='order-cancel marginLeft order-pay' bindtap="receiveGoods" data-id="{{orderId}}">确认收货</view>
+                </view>
+                <view class="container-cancel" wx:if="{{item.orderStatus == 3}}">
+                    <view class='order-cancel' bindtap="handleCancelOrder" data-id="{{orderId}}">申请售后</view>
+                    <view class='order-cancel' bindtap="handleCancelOrder" data-id="{{orderId}}">删除订单</view>
+                    <view class='order-cancel marginLeft order-remind' bindtap="handleCancelOrder" data-id="{{orderId}}">再次购买</view>
+                </view>
+                <view class="container-cancel" wx:if="{{item.orderStatus == 4}}">
+                  <view class='order-cancel' bindtap="delOrder" data-id="{{orderId}}">删除订单</view>
+                </view>
+              </view>
+          </view> -->
+          <view>
+            <singleOrder list="{{item.orderDetailRspVoList}}" orderId="{{item.id}}" status="{{item.userStatusStr}}" price="{{item.amtPayment}}" storeName="{{item.storeName}}" />
+            <view>
+              <view class="container-cancel" wx:if="{{item.userStatus == 'NOTPAID'}}">
+                <view class="time" wx:if="{{item.countdownTime}}">
+                  <text>支付剩余：</text>
+                  <text class="time-text">{{item.cdTime}}</text>
+                </view>
+                <view class='order-cancel' bindtap="showCancel" data-id="{{item.id}}" data-index="{{index}}">取消订单</view>
+                <view class='order-cancel marginLeft order-pay' bindtap="pay" data-id="{{item.id}}" data-index="{{index}}" data-price="{{item.amtPayment}}">立即支付</view>
+              </view>
+              <view class="container-cancel" wx:if="{{item.userStatus == 'NOTSHIPPED'}}">
+                <view class='order-cancel' bindtap="handleCancelOrder" data-id="{{item.orderId}}">申请售后</view>
+                <view class='order-cancel marginLeft order-pay' bindtap="remind" data-id="{{item.orderId}}">提醒发货</view>
+              </view>
+              <view class="container-cancel" wx:if="{{item.userStatus == 'SHIPPED'}}">
+                <view class='order-cancel' bindtap="handleCancelOrder" data-id="{{item.orderId}}">申请售后</view>
+                <view class='order-cancel marginLeft' bindtap="getLogisticsDetail" data-id="{{item.orderId}}">查看物流</view>
+                <view class='order-cancel marginLeft order-pay' bindtap="receiveGoods" data-id="{{item.id}}" data-index="{{index}}">确认收货</view>
+              </view>
+              <view class="container-cancel" wx:if="{{item.userStatus == 'FINISHED'}}">
+                  <view class='order-cancel' bindtap="handleCancelOrder" data-id="{{item.orderId}}">申请售后</view>
+                <!-- <view class='order-cancel' bindtap="handleCancelOrder" data-id="{{item.orderId}}">删除订单</view>
+                <view class='order-cancel marginLeft order-remind' bindtap="handleCancelOrder" data-id="{{item.orderId}}">再次购买</view> -->
+              </view>
+              <view class="container-cancel" wx:if="{{item.userStatus == 'CANCELED'}}">
+                <view class='order-cancel' bindtap="delOrder" data-id="{{item.id}}" data-index="{{index}}">删除订单</view>
+              </view>
+            </view>
+          </view>
+          <split wx:if="{{index < list.length - 1}}" />
+        </view>
+        <loadMore wx:if="{{!noMore}}" />
+        <noMore wx:if="{{noMore}}" />
+      </view>
+    </pullRefresh>
+    <payPop show="{{showPay}}" from="order" amount="{{common.cutToFixed(amount, 3)}}" bindpay="payment" />
+    <loading top="{{400}}" wx:if="{{loading}}" />
+    <orderEmpty wx:if="{{!list.length && !loading}}" />
+    <confirm show="{{ showConfirm }}" content="是否确定取消此订单？" async-close bindconfirm="confrimCancel" />
+    <confirm show="{{ receiveConfirm }}" content="是否确认收货？" async-close bindconfirm="confrimReceived" />
+    <confirm show="{{ delConfirm }}" content="是否确认删除此订单？" async-close bindconfirm="confirmDel" />
+  </view>
+  </page-meta>

@@ -1,0 +1,282 @@
+<!--pages/goodsDetail/index.wxml-->
+<wxs src="../../wxsGroup/goodsArticle.wxs" module="goods"></wxs>
+
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<wxs src="../../wxsGroup/common.wxs" module="common"></wxs>
+<page-meta page-style="--primary-color:{{mainColor}}">
+<navBar navbarData="{{navbarData}}" />
+<view class="goodsDetail">
+  <view class="goodsDetail-loading" wx:if="{{showLoading}}">
+    <loading show="{{showLoading}}" top = "530" />
+  </view>
+  <!-- <view wx:if="{{shareIdentification !== '1'}}" class="goods-share" bindtap="goShowSheet"><image class="share-img" src="../../images/share-to.png"></image></view> -->
+  <swiper class="images" circular="true" autoplay bindchange="changeSwiper" bindtap="handleSwiper">
+  <block wx:for="{{commdityInfo.imgUrlList}}" wx:key="index">
+    <swiper-item>
+      <!-- <view class="backImg" style="background-image: url({{item}});"></view> -->
+      <img src = "{{item}}" />
+    </swiper-item>
+  </block>
+  </swiper>
+  <text class="swiper-number {{ gs.type('swiper-number', globalStyle) }}" wx:if="{{swiperTotal > 0}}">{{current}}/{{swiperTotal}}</text>
+
+  <!-- 翡翠版 -->
+  <!-- <view class="card-container-2">
+    <view class="card-box {{jewelryParams.stockStatus === 0 ? 'article-card-price card-box-1' : 'article-card-price article-card-price-noBook'}}">
+      <view class="article-tip-text" wx:if="{{jewelryParams.stockStatus === 0}}">
+        <text wx:if="{{jewelryParams.stockStatus ===0}}" class="article-card-tipBook">预订</text>
+      </view>
+      <text class="article-card-unit card-unit">￥</text>
+      <text class="article-card-num card-money" wx:if="{{jewelryParams.smallOrderedPrice > 0}}">{{goods.priceBetween(jewelryParams.smallOrderedPrice)}}</text>
+      <text class="origin-price">¥630</text>
+    </view>
+    <view class="card-right">
+      <view class="card-title">限时秒杀</view>
+      <view class="card-box-time">
+        <text class="card-time-text">距结束还剩</text>
+        <view class="card-time-box">
+          <text class="card-time-num">01</text>
+          <text>:</text>
+          <text class="card-time-num">12</text>
+          <text>:</text>
+          <text class="card-time-num">15</text>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <!-- 限时秒杀 -->
+  <view class="limit-wrap">
+    <!-- <view class="limit-box">
+      <view class="limit-title-box">
+        <view class="limit-box-title">周六福品牌最热</view>
+        <view class="limit-icon limit-share" bindtap="myEventListener"><image class="share-img" src="../../images/share-icon.png"></image></view>
+      </view>
+      <view class="limit-title-box">
+        <view class="limit-box-title limit-box-title2">时尚时尚最时尚，优惠大放送</view>
+        <view class="limit-icon">分享</view>
+      </view>
+    </view> -->
+    <view class="content-share">
+      <view class="shop-name">
+        {{commdityInfo.title}}
+      </view>
+      <view class="shop-share" bindtap="myEventListener">
+        <button open-type="share" class="share-button">
+        <view class="share-icon">
+          <image mode="aspectFit" src="../../images/share-icon.png"></image>
+        </view>
+        <view class="share-text">分享</view>
+        </button>
+      </view>
+    </view>
+    <view class="shop-price">
+      <view class="selling-price">
+        <text class="unit">￥</text>
+        <text class="price-num">{{common.cutToFixed(commdityInfo.price, 0)}}</text>
+        <text class="definition">{{common.cutToFixed(commdityInfo.price, 1)}}</text>
+      </view>
+      <view class="original-price">￥{{common.cutToFixed(commdityInfo.origPrice)}}</view>
+    </view>
+    <view class="tags" wx:if="{{tags.length > 0}}">
+      <block wx:for="{{tags}}" wx:key="index">
+        <text class="tags-item">{{item}}</text>
+      </block>
+    </view>
+  </view>
+  <!-- 规格 -->
+  <view class="standars-wrap">
+    <view class="standars-box" catchtap="arrowshowAction">
+      <text class="standars-text01">规格</text>
+      <view class="norm">
+        <text class="standars-text02" wx:for="{{commdityInfo.curSelectedSku}}" wx:key="index">{{item}}</text>
+      </view>
+      <view class="standars-text03">更多选择 <van-icon name="arrow" custom-style="top:4rpx; color:#ccc" /></view>
+    </view>
+    <!-- <view class="standars-box">
+      <text class="standars-text01">配送说明</text>
+      <text class="standars-text02">预计15个工作日送达</text>
+    </view> -->
+  </view>
+  <!-- 优惠券 -->
+  <view class="coupons-wrap" bindtap="handleCoupons" style="display:none">
+    <view class="coupons-container"> 
+      <view class="coupons-title">优惠券</view>
+      <view class="coupons-content">暂无优惠券可用</view>
+      <view class="coupons-nav">去领券中心 <van-icon name="arrow" custom-style="top:4rpx; color:#ccc" /></view>
+    </view>
+  </view>
+  <!-- 门店信息 -->
+  <view class="shoppingInfo" bindtap="handleShopping">
+    <view class="shopping-left">
+      <view class="shopping-img">
+        <image mode="aspectFit" src="{{storeInfo.logo}}"></image>
+      </view>
+      <view class="shopping-content">
+        <view class="shopping-name">{{storeInfo.name}}</view>
+        <view class="shopping-address">地址：{{storeInfo.address}}</view>
+      </view>
+    </view>
+    <view class="shopping-right">
+      <van-icon name="arrow" custom-style="top:4rpx; color:#ccc" />
+    </view>
+  </view>
+  <!-- 看了这款商品的人也在看 -->
+  <!-- <view class="content-title">
+    <view class="like-name">看了这款商品的人也在看</view>
+  </view>
+  <scroll-view
+    wx:if="{{ hotGoods }}"
+    class="scroll-view_H"
+    scroll-x="true"
+    style="width: 100%"
+  >
+    <view wx:for="{{ hotGoods.productDetaileds }}" wx:key="id" class="scroll-view-item">
+      <likeGoods hotGoodsInfo="{{ item }}" type="{{ type }}" globalStyle="{{globalStyle}}" bindgoodsDetail="goodsDetail"></likeGoods>
+    </view>
+  </scroll-view> -->
+
+  <!-- 商品详情 | 规格参数 | 商品评价(0)tab -->
+  <!-- <view class="goods-detail-box">
+    <van-tabs active="detail" title-active-color="{{mainColor}}" class="tabs-box">
+      <van-tab title="商品详情" name="detail">
+        <goods-detail></goods-detail>
+      </van-tab>
+      <van-tab title="规格参数" name="params">
+        <goods-param></goods-param>
+      </van-tab>
+      <van-tab title="商品评价({{evaluateList}})" name="evaluate">
+        <goods-evaluate dataList="{{evaluateList}}"></goods-evaluate>
+      </van-tab>
+    </van-tabs>
+  </view> -->
+<view class="shopDetail-nav" catchtap="handleVirtue">
+  <view class="detail-item {{ navItem === 1 ? 'nav-active' : ''}}" data-item="detail">
+    商品详情
+    <view class="{{ navItem === 1 ? 'footer-active' : ''}}"></view>
+  </view>
+  <view class="detail-item {{ navItem === 2 ? 'nav-active' : '' }}" data-item="args">
+    规格参数
+    <view class="{{ navItem === 2 ? 'footer-active' : ''}}"></view>
+  </view>
+  <view class="detail-item {{ navItem === 3 ? 'nav-active' : '' }}" data-item="evalation">
+    商品评价
+    <text wx:if="{{evaluateList > 0}}">({{evaluateList}})</text>
+    <view class="{{ navItem === 3 ? 'footer-active' : ''}}"></view>
+  </view>
+</view>
+<view class="split-line"></view>
+<view class="virtue-show">
+  <view wx:if="{{navItem === 1}}">
+  <goods-detail desc="{{commdityAttributes.description}}"></goods-detail>
+  </view>
+  <view wx:if="{{navItem === 2}}">
+  <goods-param list="{{commdityAttributes.basePropList}}"></goods-param>
+  </view>
+  <view wx:if="{{navItem === 3}}">
+    <goods-evaluate dataList="{{evaluateList}}"></goods-evaluate>
+  </view>
+</view>
+  
+
+  <!-- 底部加入购物车立即下单 -->
+  <view class="footer" wx:if="{{shareIdentification !== '1' || shareIdentification =='1' && shareLimit}}">
+    <view class="footer-container">
+      <view class="footer-item footer-collect" bindtap="handleCollection" data-collection = "{{jewelryParams.isCollec}}">
+        <view class="footer-icon ">
+           <!-- <van-icon wx:if="{{jewelryParams.isCollec === 1}}" name="like-o" class="collect-icon default-icon " />
+           <van-icon wx:if="{{jewelryParams.isCollec !== 1}}" name='like-o' class="collect-icon " /> -->
+           <image mode="widthFix" style="width: 36rpx; height: 36rpx" src="{{jewelryParams.isCollec === 1 ? '/images/like-o.png' : '/images/like.png'}}"></image>
+        </view>
+        <view class="footer-text">收藏</view>
+      </view>
+      <view class="footer-item"  bindtap="goCustomer">
+        <button class="footer-customer" open-type="contact">
+          <view class="footer-icon">
+            <!-- <van-icon name='chat-o' class="collect-icon default-icon"/> -->
+            <image mode="widthFix" style="width: 36rpx; height: 36rpx" src="/images/customer-detail.png"></image>
+          </view>
+          <view class="footer-text">客服</view>
+        </button>
+      </view>
+      <view class="footer-item"  catchtap="goCart">
+        <view class="tag-num" wx:if="{{shopCount.num}}">{{shopCount.num}}</view>
+        <view class="footer-icon">
+          <!-- <van-icon name='cart-o' class="cart-icon" info="{{shopCount.num >= 99 ? '99+' : shopCount.num}}" /> -->
+            <text class="icon-number">{{shopCount.num >= 99 ? '99+' : shopCount.num}}</text>
+            <image mode="widthFix" style="width: 36rpx; height: 36rpx" src="/images/cart-detail.png"></image>
+        </view>
+        <view class="footer-text">购物车</view>
+      </view>
+      <view class="footer-item">
+        <view class="addCart" catchtap="handleCart" wx:if="{{haveStock}}">
+          <view class="add-shopcart" id ="cart">
+            加入购物车
+          </view>
+          <view class="order-now" id="order" catchtap="onshowAction">
+            立即购买
+          </view>
+        </view>
+        <view class="outStock" wx:else>
+          缺货中，请联系客服
+        </view>
+      </view>
+    </view>
+  </view>
+<!-- 购物车收藏 -->
+<view wx:if="{{showTip}}" class="collection-tip">
+  <view class="collection-icon">
+    <van-icon name='like' class="selected-icon" />
+  </view>
+  <view class="top-text">{{collectionTip}}</view>
+</view>
+
+<view wx:if="{{successTip}}" class="success-tip">
+  <view class="success-icon">
+    <image mode="aspectFit" src="../../images/success.png" />
+  </view>
+  <view class="success-text">{{successTipText}}</view>
+</view>
+
+<!--商品规格 -->
+<!-- <commodity showAction="{{showAction}}"></commodity> -->
+<sku 
+animation = "{{animation}}" 
+show = "{{showAction}}" 
+number = "{{number}}" 
+sku="{{skuAndStock}}"
+haveStock="{{haveStock}}"
+selectedAttribute="{{selectedAttribute}}"
+spuTitle="{{spuTitle}}"
+bind:addShopCart="skuaddShopCart"
+bind:buyNow="skuBuyNow"
+bind:closeSku = "handleCoseSku" 
+bind:reduceNum = "changeNum"
+bind:handleSku = "handleSku"
+bind:addNum = "changeNum" />
+
+<!-- 轮播详情展示 -->
+<view class="{{showSwiper ? 'swiperBigShow': 'swiperBigHidden'}}">
+ <view class="wrapper">
+   <view class="top-item" style="top: {{ navbarHeight + 20 }}px">
+     {{current}}
+    <text class="split-swiper">/</text>
+     {{swiperTotal}}
+   </view>
+   <view class="swiper-content">
+      <swiper class="images" autoplay="{{autoplay}}" circular="true" bindchange="changeSwiper" bindtap="closeSwiper">
+        <block wx:for="{{commdityInfo.imgUrlList}}" wx:key="index">
+          <swiper-item>
+            <image mode="aspectFit" lazy-load src="{{item}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+   </view>
+ </view>
+</view>
+<!-- 分享海报 -->
+<share-post globalStyle="{{globalStyle}}" showSharePost="{{showSharePost}}" postList="{{postList}}"></share-post>
+</view>
+<!-- 分享弹窗面板 -->
+<share globalStyle="{{globalStyle}}" showActionsheet="{{showSheet}}" bindgetPostList="getPostList" bindcustomevent="myEventListener"></share>
+<van-toast id="van-toast" />
+</page-meta>

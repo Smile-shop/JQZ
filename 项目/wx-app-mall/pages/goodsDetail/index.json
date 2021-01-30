@@ -1,0 +1,24 @@
+{
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-stepper": "@vant/weapp/stepper/index",
+    "likeGoods": "/components/local/like/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "goods-detail": "/components/local/goodsDetail/index",
+    "goods-param": "/components/local/goodsParam/index",
+    "goods-evaluate": "/components/local/goodsEvaluate/index",
+    "share-post": "/components/sharePost/index",
+    "commodity": "/components//local/commodity/index",
+    "sku": "/components/sku/index",
+    "navBar": "/components/navBar/index",
+    "loading": "/components/loading/index",
+    "img": "/components/img"
+  },
+  "navigationBarTitleText": "首饰详情",
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom"
+}

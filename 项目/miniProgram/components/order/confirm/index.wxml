@@ -1,0 +1,23 @@
+<!--components/order/confirm/index.wxml-->
+<view class="confirm-mask" catchtouchmove='ture'>
+  <view class="modal">
+    <view class="modal-title">您确定要取消订单吗？</view>
+    <view class="modal-input">  
+      <textarea 
+        class="" 
+        value="{{noteInfo}}" 
+        maxlength="50"
+        placeholder="填写备注" 
+        placeholder-class="input-placeholder" 
+        bindinput="wirteInput" >
+      </textarea>
+      <text class="total-input">{{writeNum}}/50</text>
+      <!-- <textarea type="text" placeholder-class="input-placeholder" maxlength="50" placeholder="填写备注" bindinput="wirteInput" value="{{noteInfo}}" /> -->
+    </view>
+    <view class="modal-split"></view>
+    <view class="modal-operating">
+      <view class="modal-cancel" bindtap="handleCancel">我再想想</view>
+      <view class="modal-confirm {{'modal-confirm-' + formatStyle[form]}}" bindtap="handleConfirm">取消订单</view>
+    </view>
+  </view>
+</view>

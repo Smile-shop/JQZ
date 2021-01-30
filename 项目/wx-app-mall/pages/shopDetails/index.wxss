@@ -1,0 +1,120 @@
+page {
+  background: #F5F5F5;
+}
+
+.shopDetail {
+  position: relative;
+}
+
+.shopDetail-bac {
+  width: 200vw;
+  height: 100vw;
+  background-color: var(--primary-color);
+  border-radius: 0 0 200vw 200vw;
+  position: fixed;
+  margin-left: -50vw;
+  top: -40vw;
+}
+
+.shopDetail-content {
+  border-radius: 15rpx;
+  padding: 30rpx;
+  background: #fff;
+  margin: 0 auto;
+  width: 80%;
+  position: relative;
+  z-index: 1;
+  margin-top: 30rpx;
+}
+
+.shopDetail-content:nth-last-child(1) {
+  margin-bottom: 60rpx;
+}
+
+.shopDetail-content-logo {
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  top: -60rpx;
+  left: 50%;
+  margin-left: -60rpx;
+  background: #fff;
+  border-radius: 120rpx;
+  overflow: hidden;
+}
+
+.shopDetail-content-logo-img {
+  width: 100%;
+}
+
+.shopDetail-content-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #000000;
+  line-height: 48rpx;
+  text-align: center;
+  margin-top: 60rpx;
+  font-weight: bold;
+}
+
+.shopDetail-content-jianjie {
+  font-size: 28rpx;
+  color: #333;
+  position: relative;
+  margin: 0 0 15rpx 18rpx;
+}
+
+.shopDetail-content-jianjie::before {
+  display: inline-block;
+  width: 6rpx;
+  height: 24rpx;
+  background: var(--primary-color);
+  content: '';
+  position: absolute;
+  top: 10rpx;
+  left: -15rpx;
+}
+
+.shopDetail-content .jianjie {
+  margin: 30rpx 0 20rpx 18rpx;
+}
+
+.shopDetail-content-mi {
+  font-size: 20rpx;
+  color: #999;
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+}
+
+.shopDetail-content-neirong {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #999999;
+  line-height: 48rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.shopDetail-content-neirong-icon {
+  border-radius: 60rpx;
+  width: 60rpx;
+  height: 60rpx;
+  background: #F5F5F5;
+  text-align: center;
+}
+
+.shopDetail-content-neirong-icon-d {
+  font-size: 40rpx;
+  color: var(--primary-color);
+  margin-top: 10rpx;
+}
+
+.shopDetail-content-neirong-address {
+  flex: 1;
+  padding-right: 48rpx;
+}
+
+.shopDetail-content:nth-child(2) {
+  margin-top: 100rpx;
+}

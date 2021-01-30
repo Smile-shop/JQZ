@@ -1,0 +1,132 @@
+.coupons {
+  padding: 30rpx;
+}
+
+.coupons-item {
+  margin-bottom: 20rpx;
+}
+
+.coupons-item-top {
+  height: 190rpx;
+  display: flex;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #eeeeee;
+}
+
+.coupons-item-top-left {
+  width: 240rpx;
+  background-color: var(--primary-color);
+  position: relative;
+  margin: 0 auto;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coupons-item-top-left:before {
+  left: -12rpx;
+}
+
+.coupons-item-top-left:before {
+  content: '';
+  display: block;
+  width: 30rpx;
+  height: 100%;
+  background-size: 24rpx 24rpx;
+  background-repeat: repeat-y;
+  background-image: radial-gradient(#fff 8rpx, transparent 8rpx);
+  position: absolute;
+  top: 0;
+}
+
+.coupons-item-top-left-mb {
+  font-size: 36rpx;
+}
+
+.coupons-item-top-left-money {
+  font-size: 80rpx;
+}
+
+.coupons-item-top-left-tiao {
+  font-size: 24rpx;
+  position: relative;
+  top: -15rpx;
+}
+
+.coupons-item-top .used {
+  background-color: #ccc;
+}
+
+.coupons-item-top-right {
+  flex: 1;
+  padding: 10rpx 20rpx 20rpx 20rpx;
+}
+
+.coupons-item-top-right-title {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.coupons-item-top-right-mid {
+  font-size: 20rpx;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.coupons-item-top-right-mid:nth-child(2) {
+  margin-top: 10rpx;
+}
+
+.coupons-item-top-right-mid:nth-child(3) {
+  margin: 10rpx 0;
+}
+
+.coupons-item-top-right-bottom {
+  display: flex;
+  align-items: center;
+  font-size: 20rpx;
+}
+
+.coupons-item-top-right-bottom-left {
+  flex: 1;
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.coupons-item-top-right-bottom-right {
+  width: 108rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 5rpx;
+  border: 1rpx solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.coupons-item-top-right .checkBox {
+  justify-content: flex-end;
+}
+
+.coupons-item-bottom {
+  font-size: 22rpx;
+  color: #999;
+  line-height: 45rpx;
+  padding: 20rpx;
+  background: #fff;
+  border: 1rpx solid #eeeeee;
+  border-top: none;
+}

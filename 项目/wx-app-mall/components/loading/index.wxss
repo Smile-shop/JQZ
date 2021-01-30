@@ -1,0 +1,55 @@
+/* components/loading/index.wxss */
+.loading {
+  width: 100%;
+  height: 100%;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.loading-img {
+  width: 64rpx;
+  height: 62rpx;
+}
+
+.loading .loading-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.loading-icon {
+  animation: 1s loading infinite;
+}
+
+.loading-text {
+  display: flex;
+  justify-content: center;
+  margin-top: 30rpx;
+  height:34rpx;
+  font-size:24rpx;
+  font-weight:400;
+  color:rgba(170,170,170,1);
+  line-height:34rpx;
+}
+
+@keyframes loading
+{
+    from {
+       transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+ 
+@-webkit-keyframes loading 
+{
+    from {
+       transform: rotate(0deg);
+    }
+    to {
+       transform: rotate(360deg);
+    }
+}

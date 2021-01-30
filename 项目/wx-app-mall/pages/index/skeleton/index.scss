@@ -1,0 +1,69 @@
+/* 骨架屏 */
+.skeleton-screen {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  background-color: #fff;
+}
+.skeleton-swiper {
+  height: 414rpx;
+  padding: 20rpx;
+  background-color: #F7F7F9;
+  &-input {
+    width: 696rpx;
+    height: 72rpx;
+    border-radius: 10rpx;
+    background-color: #000000;
+    opacity: .03;
+    margin: 0 auto;
+  }
+}
+.skeleton-classify{
+  &-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &-item {
+    width: 150rpx;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    padding-top: 58rpx;
+    &-circle {
+      width: 100rpx;
+      height: 100rpx;
+      border-radius: 50%;
+      background-color: #F5F5F5;
+      margin: 0 auto;
+    }
+    &-div {
+      width: 100rpx;
+      height: 32rpx;
+      background-color: #F5F5F5;
+      margin: 16rpx auto;
+    }
+  }
+}
+.skeleton-hot{
+  margin-top: 30rpx;
+  padding: 30rpx;
+  &-content{
+    height: 500rpx;
+    background-color: #F5F5F5;
+    border-radius: 5rpx;
+    margin-top: 30rpx;
+  }
+  &-top{
+    display: flex;
+    justify-content: space-between;
+    &-left{
+      width: 200rpx;
+      height: 32rpx;
+      background-color: #F5F5F5;
+    }
+    &-right{
+      width: 100rpx;
+      height: 32rpx;
+      background-color: #F5F5F5;
+    }
+  }
+}

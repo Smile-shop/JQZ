@@ -1,0 +1,12 @@
+<!--pages/home/index.wxml-->
+<!-- <slide height="150" show="{{ false }}" slideWidth="60">
+  <view style="color:red;font-size:50rpx;">123123132</view>
+  <view slot="right">删除</view>
+</slide> -->
+<homePage
+  bindtoLogin="toLogin"
+  pageData="{{ homePageData }}"
+  type="{{ true }}"
+  globalStyle="{{globalStyle}}"
+>
+</homePage>

@@ -1,0 +1,13 @@
+var buttonText = function (data) {
+  return data + 's重新获取'
+}
+
+var isLogin = function(hasValue, loginning) {
+  if (hasValue) return loginning
+  if (!hasValue) return true
+}
+
+module.exports = {
+  buttonText: buttonText,
+  isLogin: isLogin
+}

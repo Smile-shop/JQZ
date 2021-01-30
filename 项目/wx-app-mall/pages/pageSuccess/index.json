@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "success": "./success",
+    "recommend": "./recommend",
+    "navBar": "/components/navBar",
+    "split": "/components/order/split"
+  },
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom"
+}

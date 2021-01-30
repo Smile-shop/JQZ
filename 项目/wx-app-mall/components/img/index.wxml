@@ -1,0 +1,41 @@
+<!--components/img/index.wxml-->
+<wxs module="changeMode">
+    module.exports = {
+      change: function(val) {
+        switch(val){
+          case 'center':
+            return 'none'
+            break
+          case 'scaleToFill':
+            return 'fill'
+            break
+          case 'aspectFill':
+            return 'cover'
+            break
+          case 'aspectFit':
+            return 'contain'
+            break
+          case 'widthFix':
+            return 'widthFix'
+            break
+          case 'heightFix':
+            return 'heightFix'
+            break
+        }
+      }
+    }
+</wxs>
+<van-image 
+  fit="{{ changeMode.change(mode) }}" 
+  custom-class="{{ customClass }} customClass" 
+  use-loading-slot="{{ useLoadingSlot }}" 
+  use-error-slot="{{ useErrorSlot }}" 
+  src="{{ src || '1' }}" 
+  lazy-load="{{ lazyLoad }}" 
+  height="{{ height }}"
+  width="{{ width }}" 
+  show-menu-by-longpress="{{ showMenuByLongpress }}"
+>
+  <image mode="heightFix" class="icon" slot="loading" src="/images/img-icon.png"></image>
+  <image mode="heightFix" class="icon" slot="error" src="/images/img-error.png"></image>
+</van-image>

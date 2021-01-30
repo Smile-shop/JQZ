@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="dialog">
+    <view class="tip">
+      此服务已失效，请联系服务商家处理
+    </view>
+    <view class="control">
+      <navigator target="miniProgram" open-type="exit">
+        退出
+      </navigator>
+    </view>
+  </view>
+</view>

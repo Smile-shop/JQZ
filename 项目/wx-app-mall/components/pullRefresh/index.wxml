@@ -1,0 +1,32 @@
+<!--pages/pullRefresh/index.wxml-->
+<wxs module="refresh">
+  module.exports = {
+    onPulling: function(evt, instance) {
+      console.log(evt, instance)
+      var p = Math.min(evt.detail.dy / 50, 1)
+      var view = instance.selectComponent('.refresh-container')
+      view.setStyle({
+        opacity: p,
+        transform: "scale(" + p + ")"
+      })
+    }
+  }
+</wxs>
+<scroll-view
+    scroll-y
+    class = 'scroll-container'
+    style=" {{ contentStyle }}"
+    bindscrolltolower="handleMore"
+    refresher-enabled
+    refresher-triggered="{{ pullRefresh }}"
+    refresher-threshold="{{ height }}"
+    refresher-default-style="none"
+    refresher-background="{{ background }}"
+    bindrefresherrefresh="refresh"
+    bindrefresherpulling="{{ refresh.onPulling }}"
+    >
+    <view slot="refresher" style="height: {{ height }}px;" class="refresh-container">
+      <loadMore needText="{{false}}" />
+    </view>
+    <slot name="content" />
+</scroll-view>

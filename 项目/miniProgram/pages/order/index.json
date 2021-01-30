@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "singleOrder": "../../components/order/singleOrder",
+    "mulitOrder": "../../components/order/mulitOrder",
+    "split": "../../components/order/split",
+    "orderEmpty": "../../components/order/empty",
+    "confirm": "../../components/order/confirm"
+  },
+  "navigationBarTitleText": "我的订单"
+}

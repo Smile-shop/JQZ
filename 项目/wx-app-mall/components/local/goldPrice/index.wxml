@@ -1,0 +1,12 @@
+<!--components/local/goldPrice/index.wxml-->
+<wxs src="../../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<!-- <view class="glod-price-title">今日金价: </view> -->
+<view class="glod-price {{ gs.type('box', globalStyle) }}">
+  <view class="glod-price-title" wx:if="{{globalStyle === '0'}}">今日金价: </view>
+  <view class="glod-price-title {{ gs.type('bg', globalStyle) }}" wx:if="{{globalStyle === '1'}}">今日金价 </view>
+  <view class="glod-price-list" id="move-container">
+    <view class="list-move" id="move-content" animation="{{ animationData }}" bindtransitionend="reAnimation">
+      <text>{{ goldPriceText }}</text> 
+    </view>
+  </view>
+</view>

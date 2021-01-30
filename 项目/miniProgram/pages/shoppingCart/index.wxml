@@ -1,0 +1,84 @@
+<!--pages/shoppingCart/index.wxml-->
+<wxs src="../../wxsGroup/common.wxs" module="commonWXS"></wxs>
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view>
+  <view class="select-all select-content-title {{gs.type('select-all', globalStyle)}}">
+    <view 
+      data-sort="0" 
+      bindtap="shopppingCartSort" 
+      class="{{ shopppingCartListSort === '0' ? 'title-selected' : 'title-unselect' }} select-content-item">
+      分类
+    </view>
+    <view
+      data-sort="1" 
+      bindtap="shopppingCartSort" 
+      class="{{ shopppingCartListSort === '1' ? 'title-selected' : 'title-unselect' }} select-content-item">
+      现货
+    </view>
+    <view
+      bindtap="shopppingCartSortPrice" 
+      class="{{ shopppingCartListSort === '2' || shopppingCartListSort === '3' ? 'title-selected' : 'title-unselect' }} select-content-item">
+      价格
+      <image 
+        class="price-image" 
+        wx:if="{{ shopppingCartListSort !== '2' && shopppingCartListSort !== '3' }}" 
+        src="../../images/no-price.png" />
+      <image 
+        class="price-image" 
+        wx:if="{{ shopppingCartListSort === '2' && globalStyle === '0'}}" 
+        src="../../images/price.png" />
+        <image 
+        class="price-image" 
+        wx:if="{{ shopppingCartListSort === '2' && globalStyle === '1'}}" 
+        src="../../images/price-gold.png" />
+      <image 
+        class="price-image" 
+        wx:if="{{ shopppingCartListSort === '3' && globalStyle === '0' }}"
+        src="../../images/price-mini.png" />
+        <image 
+        class="price-image" 
+        wx:if="{{ shopppingCartListSort === '3' && globalStyle === '1' }}"
+        src="../../images/price-gold-mini.png" />
+    </view>
+    <view class="select-all-edit-btn" bindtap="editShopppingCart">
+      <text 
+        style="font-size:32rpx;padding-right:12rpx;" 
+        class="icon ICONbianji"></text>
+      <text>{{ isEditting ? "完成" : "编辑" }}</text>
+    </view>
+  </view>
+  <view wx:if="{{ hasShoppingGoods }}">
+    <classify 
+      wx:if="{{ shopppingCartListSort === '0' }}"
+      list="{{ pageList }}"
+      bindupdate="updateList"
+      isEditting="{{ isEditting }}"
+      bindshare="shareLink"
+      id="classify"
+      globalStyle="{{globalStyle}}"
+      my-class="{{gs.type('jwelry-number', globalStyle)}}"
+    ></classify>
+    <irclassify 
+      wx:else
+      list="{{ pageList }}"
+      bindupdate="updateList"
+      isEditting="{{ isEditting }}"
+      bindshare="shareLink"
+      id="irclassify"
+      globalStyle="{{globalStyle}}"
+      my-class="{{gs.type('jwelry-number', globalStyle)}}"
+    ></irclassify>
+  </view>
+  <view wx:else class="no-goods">
+    <view class="no-goods-icon">
+      <!-- <van-icon name="shopping-cart-o" /> -->
+      <image 
+        style="width:536rpx;height:378rpx" 
+        src="../../images/no-goods.png"></image>
+    </view>
+    <view class="no-goods-info">购物车空空如也~</view>
+    <button class="go-shopping-button {{gs.type('go-shopping-button', globalStyle)}}" bindtap="shoppping">马上去选购</button>
+  </view>
+</view>
+
+<modal content="{{ modal.content }}" show="{{ modal.show }}" data="{{ modal.data }}" bindbtnClick="modalbtnClick"></modal>

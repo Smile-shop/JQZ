@@ -1,0 +1,8 @@
+<!--pages/shoppingCart/empty/index.wxml-->
+<view class="no-goods">
+  <view class="no-goods-icon">
+    <image style="width:296rpx;" src="/images/no-goods.png" mode='widthFix'></image>
+  </view>
+  <view class="no-goods-info">购物车空空如也~</view>
+  <button class="go-shopping-button" bindtap="shoppping">马上去选购</button>
+</view>

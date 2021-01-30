@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "goodsInfo": "./goodsInfo",
+    "split": "../../components/order/split",
+    "steps": "./logistics"
+  }
+}

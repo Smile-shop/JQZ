@@ -1,0 +1,3 @@
+@import "./var.wxss";
+@import "./global.wxss";
+@import "./icon.wxss";

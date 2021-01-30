@@ -1,0 +1,5 @@
+<!--pages/shoppingAddress/empty/empty.wxml-->
+<view class="empty">
+  <image class="empty-img" src="../../../images/no-address.png" mode="widthFix"></image>
+  <view class="empty-text">目前没有收货地址哦</view>
+</view>

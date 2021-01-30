@@ -1,0 +1,28 @@
+<!--pages/shop/index.wxml-->
+<wxs src="../../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<view class="mine-wrapper" style="height:{{ safeArea.height }}">
+  <view class="newuser-cellgroup">
+    <van-cell-group >
+      <van-cell title="新手上路" style="font-weight: bold;"/>
+      <van-cell title="如何查询我的个人信息？" link-type="navigateTo" url="/pages/my/helpContent/index"  is-link/>
+      <van-cell title="如何验证/绑定手机？" is-link/>
+      <van-cell title="我的退款会给我退到哪里？" is-link/>
+      <van-cell title="支付方式有哪些？如何支付？" is-link/>
+      <van-cell title="如何查询物流信息？" is-link/>
+    </van-cell-group>
+  </view>
+  <view class="newuser-cellgroup">
+    <van-cell-group>
+      <van-cell title="购物指南"  style="font-weight: bold;"/>
+      <van-cell title="如何购买下单？" is-link/>
+      <van-cell title="购物车常见问题和购物技巧" is-link/>
+    </van-cell-group>
+  </view>
+    <view class="newuser-cellgroup">
+      <van-cell-group>
+      <van-cell title="支付/配送方式"  style="font-weight: bold;"/>
+      <van-cell title="订单已提交成功，什么时候可以发货？" is-link/>
+      <van-cell title="订单已提交成功，如何付款？" is-link/>
+    </van-cell-group>
+  </view>
+</view>

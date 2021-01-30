@@ -1,0 +1,21 @@
+<!--components/order/shopInfo/index.wxml-->
+<view class="shopInfo">
+  <view class="shopName">
+    <text class="shopName-name" wx:if="{{showType}}">{{message.shopName}}</text>
+    <text class="shopName-title" wx:else>自提门店</text>
+    <text wx:if="{{showType}}" class="shopInfo-mi">{{message.distance}}m</text>
+  </view>
+  <view wx:if="{{!showType}}" class="shoInfo-item">
+    <text class="shopInfo-item-left">门店：</text>
+    <text class="shopInfo-item-right">{{message.shopName}}</text>
+  </view>
+  <view class="shoInfo-item">
+    <text class="shopInfo-item-left">电话：</text>
+    <text class="shopInfo-item-right">{{message.tel}}</text>
+    <van-icon class="arrow" name="arrow" />
+  </view>
+  <view class="shoInfo-item">
+    <text class="shopInfo-item-left">地址：</text>
+    <text class="shopInfo-item-right">{{message.address}}</text>
+  </view>
+</view>

@@ -1,0 +1,125 @@
+/* pages/order/index.wxss */
+
+head {
+  display: block;
+  white-space:nowrap;
+}
+.header {
+  height: 92rpx;
+  line-height: 92rpx;
+  background:rgba(255,255,255,1);
+}
+.case {
+  display: inline-block;
+  text-align: center;
+  width: 20%;
+  font-size:28rpx;
+  color:#666;
+}
+
+.scroll-container {
+  height: calc(100vh - 92rpx);
+  height: calc(100vh - 92rpx - constant(safe-area-inset-bottom));
+  height: calc(100vh - 92rpx - env(safe-area-inset-bottom));
+}
+.order {
+  height:460rpx;
+  background:rgba(255,255,255,1);
+}
+.order-header {
+  display: flex;
+  align-items: center;
+  height: 87rpx;
+  line-height: 87rpx;
+  margin: 0 30rpx;
+}
+.order-mark {
+  display: inline-block;
+  width:6rpx;
+  height:20rpx;
+  background:rgba(77,77,77,1);
+  margin-right: 30rpx;
+}
+.order-num {
+  display: inline-block;
+  height:24rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(77,77,77,1);
+  line-height:24rpx;
+}
+.order-status {
+  height:24rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(236,124,104,1);
+  line-height:24rpx;
+  margin-left: auto;
+}
+.line {
+  height:1px;
+  background:rgba(238,238,238,1);
+  margin: 0 30rpx;
+}
+
+.activeItem {
+  color: var(--primary-color);
+  position: relative;
+  font-weight: 400;
+  font-size: 28rpx;
+}
+.activeItem:after {
+  position: absolute;
+  top: 80rpx;
+  left: 49rpx;
+  background-color: var(--primary-color);
+  content: "";
+  width: 56rpx;
+  height: 6rpx;
+}
+
+.container-cancel {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 30rpx 30rpx 30rpx;
+}
+.order-cancel {
+  width:146rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  background:rgba(255,255,255,1);
+  border-radius: 8rpx;
+  border:1rpx solid rgba(204,204,204,1);
+  text-align: center;
+  font-size:24rpx;
+  color:#333;
+}
+.marginLeft{
+  margin-left: 20rpx;
+}
+.order-pay{
+  background-color: var(--primary-color);
+  border: 1rpx solid var(--primary-color);
+  color: #fff;
+}
+.order-remind{
+  border: 1rpx solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.time{
+  font-size: 24rpx;
+  color: #333;
+  position: relative;
+  left: -50rpx;
+  width: 330rpx;
+}
+.time-text{
+  color: var(--primary-color);
+  margin-left: 10rpx;
+  position: absolute;
+  left: 108rpx;
+}

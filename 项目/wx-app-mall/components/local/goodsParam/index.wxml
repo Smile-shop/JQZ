@@ -1,0 +1,11 @@
+<!--components/local/goodsParam/index.wxml-->
+<view class="goods-param">
+  <view class="goods-box">
+    <view class="goods-wrapper">
+      <view class="goods-tr" wx:for="{{list}}" wx:key="index">
+        <view class="goods-td goods-td-title">{{item.name}}</view>
+        <view class="goods-td goods-td-content">{{item.propValue}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,18 @@
+{
+  "usingComponents": {
+    "singleOrder": "/components/order/singleOrder",
+    "mulitOrder": "/components/order/mulitOrder",
+    "split": "/components/order/split",
+    "orderEmpty": "/components/order/empty",
+    "confirm": "/components/confirm",
+    "pullRefresh": "/components/pullRefresh",
+    "loadMore": "/components/loadMore",
+    "noMore": "/components/noMore",
+    "loading": "/components/loading",
+    "navBar": "/components/navBar",
+    "payPop": "/components/order/payPop"
+  },
+  "navigationBarTitleText": "订单详情",
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom"
+}

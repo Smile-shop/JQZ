@@ -1,0 +1,31 @@
+
+.classify-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  padding-top: 30rpx;
+  &-item {
+    width: 150rpx;
+    height: 180rpx;
+    font-size: 22rpx;
+    color: #A3AAB7;
+    text-align: center;
+    
+    &-img {
+      margin: 16rpx auto;
+      width: 100rpx;
+      height: 100rpx;
+      border-radius: 50%;
+      background-color: #F5F5F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    &-text{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

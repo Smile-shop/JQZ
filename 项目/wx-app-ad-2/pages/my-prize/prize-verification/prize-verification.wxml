@@ -1,0 +1,93 @@
+<view class="container">
+  <view class="prize">
+    <image src="{{order.giftIcon || '/assets/img/img-error.png'}}"></image>
+    <view class="name">
+      {{order.giftName}}
+    </view>
+  </view>
+  <view class="verification-code {{order.giftOrder.status == 'CFD' ? 'authenticated' : ''}}">
+    <view class="bar-code">
+      <image src="{{barcode}}"></image>
+      <view class="number">
+        {{order.giftOrder.orderId}}
+      </view>
+    </view>
+    <view class="qr-code">
+      <image src="{{qrcode}}"></image>
+      <view wx:if="{{order.giftOrder.status == 'NEW'}}" class="number">
+        请将兑奖码出示给营业员
+      </view>
+      <view wx:elif="{{order.giftOrder.status == 'CFD'}}" class="number">
+        领取时间: {{order.giftOrder.cfdTime}}
+      </view>
+    </view>
+    <image wx:if="{{order.giftOrder.status == 'CFD'}}" class="authenticated" src="/assets/img/authenticated.png"></image>
+  </view>
+  <view class="get-info">
+    <view class="get-info-group">
+      <view class="title">
+        领奖人
+      </view>
+      <view class="list">
+        <view class="list-item">
+          <span class="key">
+            姓名：
+          </span>
+          <span class="value">
+            {{order.giftOrder.username}}
+          </span>
+        </view>
+        <view class="list-item">
+          <span class="key">
+            电话：
+          </span>
+          <span class="value">
+            {{order.giftOrder.mobile}}
+          </span>
+        </view>
+      </view>
+    </view>
+    <view class="get-info-group">
+      <view class="title">
+        领取门店
+      </view>
+      <view class="list">
+        <view class="list-item">
+          <span class="key">
+            门店：
+          </span>
+          <span wx:if="{{isShowOutShopName == 1}}" class="value">
+            {{order.shopNameOut}}
+          </span>
+          <span wx:else class="value">
+            {{order.giftOrder.shopName || order.shopNameOut}}
+          </span>
+        </view>
+        <view class="list-item">
+          <span class="key">
+            电话：
+          </span>
+          <span class="value">
+            {{order.shopPhone}}
+          </span>
+        </view>
+        <view class="list-item">
+          <span class="key">
+            地址：
+          </span>
+          <span class="value">
+            {{order.shopAddress}}
+          </span>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{order.mobileVer == 'Y' && order.giftOrder.status == 'NEW'}}" class="confirm">
+    <button bindtap="confirmOrder" wx:if="{{order.giftOrder.offlineStorageNum > 0}}">
+      确认领取
+    </button>
+    <button disabled wx:else>
+      商家备货中
+    </button>
+  </view>
+</view>

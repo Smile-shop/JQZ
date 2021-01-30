@@ -1,0 +1,78 @@
+/* pages/search/index.wxss */
+/* 搜索框 */
+.search {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+}
+.search-container {
+  width: calc(750rpx - 60rpx);
+  margin: 0 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20rpx;
+}
+.left-content {
+  flex-grow: 1;
+  border-radius: 10rpx;
+  height: 72rpx;
+  background-color: #F5F5F5;
+  color: #A3AAB7;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+}
+.right-content {
+  font-size: 28rpx;
+  color: var(--primary-color);
+  margin-left: 30rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+}
+.input-content {
+  font-size: 24rpx;
+  color: #4D4D4D;
+  width: 90%;
+}
+.input-placeholder {
+  font-size: 24rpx;
+  color: #A3AAB7;
+}
+/* 历史搜索 */
+.search-history {
+  width: calc(750rpx - 60rpx);
+  margin: 40rpx 30rpx 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.search-history-title {
+  font-size: 28rpx;
+  color: #333;
+}
+.history-list {
+  display: inline-block;
+  background-color: rgba(245,245,245,1);
+  border-radius: 4rpx;
+  font-size: 24rpx;
+  color: #4D4D4D;
+  padding: 8rpx 30rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  max-width: 140rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 模糊搜索结果列表 */
+.search-list {
+  padding: 20rpx 30rpx;
+  height: calc(100vh - 132rpx);
+}
+.search-item {
+  margin-bottom: 24rpx;
+  color: #A3AAB7;
+}
+.is-input-value {
+  color: var(--primary-color);
+}

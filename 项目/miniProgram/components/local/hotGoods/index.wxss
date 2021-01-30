@@ -1,0 +1,65 @@
+/* components/local/hotGoods/index.wxss */
+.hot-content {
+  font-size: 0;
+  position: relative;
+  padding-bottom: 20rpx;
+}
+.hot-goods-img {
+  width: 100%;
+  height: 332rpx;
+  border-radius: 10rpx 10rpx 0 0;
+  background-color: #F5F5F5;
+  font-size: 0;
+}
+.hot-goods-tag {
+  position: absolute;
+  top: 12rpx;
+  left: 12rpx;
+  width: 80rpx;
+  height: 34rpx;
+  border-radius: 18rpx;
+  background-color: #fff;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 34rpx;
+}
+.hot-goods-name {
+  font-size: 28rpx;
+  color: #4D4D4D;
+  line-height: 50rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 5rpx 0 10rpx;
+}
+.hot-goods-info {
+  display: flex;
+  font-size: 24rpx;
+  font-weight: 400;
+  justify-content: space-between;
+}
+.hot-goods-info-left {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 10rpx;
+}
+.hot-goods-info-right {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 20rpx;
+}
+.hot-goods-number {
+  font-size: 24rpx;
+}
+.price-1-style{
+  color:rgba(193,17,17,1);
+}
+.tag-1-style{
+  top: 149px;
+  left: 0;
+  border-radius: 2rpx;
+  background: rgba(212,109,104,1);
+  color: #fff !important;
+}

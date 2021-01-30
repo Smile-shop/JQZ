@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index",
+    "shopCard": "./shopCard",
+    "loadMore": "/components/loadMore",
+    "noMore": "/components/noMore",
+    "pullRefresh": "/components/pullRefresh",
+    "empty": "./empty",
+    "loading": "/components/loading",
+    "van-icon": "@vant/weapp/icon/index"
+  },
+  "navigationBarTitleText": "店铺",
+  "enablePullDownRefresh": false
+}

@@ -1,0 +1,217 @@
+## 云展厅-微信小程序
+云展厅-微信小程序是基于微信小程序开发的一款小程序。用于展示首饰和饰品(由后台配置)。依赖的库有，有赞 vant-weapp(UI库)、wxParser-plugin(解析富文本)。
+
+## 启动
+使用微信开发者工具打开云展厅-微信小程序
+
+## 目录结构
+* components -- 公共组件
+  * global -- 全局组件
+    * common -- 公共组件
+      * index.js -- 公共组件逻辑
+      * index.json -- 公共组件配置
+      * index.wxml -- 公共组件展示
+      * index.wxss -- 公共组件样式
+    * modal -- 对话框组件
+      * index.js -- 对话框组件逻辑
+      * index.json -- 对话框组件配置
+      * index.wxml -- 对话框组件展示
+      * index.wxss -- 对话框组件样式
+    * toast -- 提示组件
+      * index.js -- 提示组件逻辑
+      * index.json -- 提示组件配置
+      * index.wxml -- 提示组件展示
+      * index.wxss -- 提示组件样式
+  * homePage -- 首页组件
+    * index.js -- 首页组件逻辑
+    * index.json -- 首页组件配置
+    * index.wxml -- 首页组件展示
+    * index.wxss -- 首页组件样式
+  * local -- 本地组件
+    * goldPrice -- 今日金价组件
+      * index.js -- 今日金价组件逻辑
+      * index.json -- 今日金价组件配置
+      * index.wxml -- 今日金价组件展示
+      * index.wxss -- 今日金价组件样式
+    * hotGoods -- 热门商品组件
+      * index.js --  热门商品组件逻辑
+      * index.json -- 热门商品组件配置
+      * index.wxml --  热门商品组件展示
+      * index.wxss --  热门商品组件样式
+    * slide -- 滑动组件
+      * index.js -- 滑动组件逻辑
+      * index.json -- 滑动组件配置
+      * index.wxml -- 滑动组件展示
+      * index.wxss -- 滑动组件样式
+  * order -- 订单组件
+    * confirm -- 订单对话框组件
+      * index.js -- 订单对话框组件页面逻辑
+      * index.json -- 订单对话框组件页面配置
+      * index.wxml -- 订单对话框组件页面展示
+      * index.wxss -- 订单对话框组件页面样式
+    * content -- 订单内容组件
+      * index.js -- 订单内容组件页面逻辑
+      * index.json -- 订单内容组件页面配置
+      * index.wxml -- 订单内容组件页面展示
+      * index.wxss -- 订单内容组件页面样式
+    * empty -- 订单无内容组件
+      * index.js -- 订单无内容组件逻辑
+      * index.json -- 订单无内容组件配置
+      * index.wxml -- 订单无内容组件展示
+      * index.wxss -- 订单无内容组件样式
+    * info -- 订单信息组件
+      * index.js -- 订单信息组件页面逻辑
+      * index.json -- 订单信息组件页面配置
+      * index.wxml -- 订单信息组件页面展示
+      * index.wxss -- 订单信息组件页面样式
+    * mulitOrder -- 订单多品组件
+      * index.js -- 订单多品组件页面逻辑
+      * index.json -- 订单多品组件页面配置
+      * index.wxml -- 订单多品组件页面展示
+      * index.wxss -- 订单多品组件页面样式
+    * orderStatus -- 订单状态组件
+      * index.js -- 订单状态组件页面逻辑
+      * index.json -- 订单状态组件页面配置
+      * index.wxml -- 订单状态组件页面展示
+      * index.wxss -- 订单状态组件页面样式
+    * SingleOrder -- 订单单品组件
+      * index.js -- 订单单品组件页面逻辑
+      * index.json -- 订单单品组件页面配置
+      * index.wxml -- 订单单品组件页面展示
+      * index.wxss -- 订单单品组件页面样式
+    * split -- 订单分割线组件
+      * index.js -- 订单分割线页面逻辑
+      * index.json -- 订单分割线页面配置
+      * index.wxml -- 订单分割线页面展示
+      * index.wxss -- 订单分割线页样式
+  * share -- 分享给好友组件
+    * index.js -- 分享给好友页面逻辑
+    * index.json -- 分享给好友页面配置
+    * index.wxml -- 分享给好友页面展示
+    * index.wxss -- 分享给好友页面样式
+  * sharePost -- 分享海报组件
+    * index.js -- 分享海报页面逻辑
+    * index.json -- 分享海报页面配置
+    * index.wxml -- 分享海报页面展示
+    * index.wxss -- 分享海报页面样式
+  * shee -- 分页组件
+* images -- 项目图标和图片
+* miniprogram_npm -- 项目使用的 npm 包
+* node_modules -- 依赖包
+* models -- 统一管理请求接口
+  * server -- API 目录
+* pages -- 项目页面
+  * goodsCategory -- 分类
+    * index.js -- 分类逻辑
+    * index.json -- 分类页面配置
+    * index.wxml -- 分类页面展示
+    * index.wxss -- 分类页面样式
+  * goodsCategoryNbar -- 分类(无导航)
+    * inex.js -- 分类逻辑
+    * index.json -- 分类页面配置
+    * index.wxml -- 分类页面展示
+    * index.wxss -- 分类页面样式
+  * goodsDetail -- 详情
+    * inex.js -- 详情逻辑
+    * index.json -- 详情页面配置
+    * index.wxml -- 详情页面展示
+    * index.wxss -- 详情页面样式
+  * goodsList -- 列表
+    * inex.js -- 列表逻辑
+    * index.json -- 列表页面配置
+    * index.wxml -- 列表页面展示
+    * index.wxss -- 列表页面样式
+  * home -- 首页
+    * inex.js -- 首页逻辑
+    * index.json -- 首页页面配置
+    * index.wxml -- 首页页面展示
+    * index.wxss -- 首页页面样式
+  * index -- 首页(微信审核)
+    * inex.js -- 首页逻辑
+    * index.json -- 首页页面配置
+    * index.wxml -- 首页页面展示
+    * index.wxss -- 首页页面样式
+  * login -- 登录
+    * button-text.wxs --登录状态不同按钮状态不同逻辑
+    * inex.js -- 登录逻辑
+    * index.json -- 登录页面配置
+    * index.wxml -- 登录页面展示
+    * index.wxss -- 登录页面样式
+  * mine -- 我的
+    * myCollection -- 我的收藏
+      * index.js -- 我的收藏逻辑
+      * index.json -- 我的收藏页面配置
+      * index.wxml -- 我的收藏页面展示
+      * index.wxss -- 我的收藏页面样式
+    * showSetting -- 展示设置
+      * index.js -- 展示设置逻辑
+      * index.json -- 展示设置页面配置
+      * index.wxml -- 展示设置页面展示
+      * index.wxss -- 展示设置页面样式
+    * inex.js -- 我的逻辑
+    * index.json -- 我的页面配置
+    * index.wxml -- 我的页面展示
+    * index.wxss -- 我的页面样式
+  * order -- 订单
+    * index.js -- 订单页面逻辑
+    * index.json -- 订单页面配置
+    * index.wxml -- 订单页面展示
+    * index.wxss -- 订单页面样式
+  * orderDetail -- 订单详情
+    * index.js -- 订单详情页面逻辑
+    * index.json -- 订单详情页面配置
+    * index.wxml -- 订单详情页面展示
+    * index.wxss -- 订单详情页面样式
+  * orderList -- 订单列表
+    * index.js -- 订单列表页面逻辑
+    * index.json -- 订单列表页面配置
+    * index.wxml -- 订单列表页面展示
+    * index.wxss -- 订单列表页面样式
+  * scrollList -- 滚动列表(有子饰品或首饰)
+    * inex.js -- 滚动逻辑
+    * index.json -- 滚动页面配置
+    * index.wxml -- 滚动页面展示
+    * index.wxss -- 滚动页面样式
+  * search -- 搜索
+    * inex.js -- 搜索逻辑
+    * index.json -- 搜索页面配置
+    * index.wxml -- 搜索页面展示
+    * index.wxss -- 搜索页面样式
+  * shoppingCart -- 购物车
+    * classify -- 购物车有首饰或饰品
+      * index.js -- 购物车有首饰或饰品逻辑
+      * index.json -- 购物车有首饰或饰品页面配置
+      * index.wxml -- 购物车有首饰或饰品页面展示
+      * index.wxss -- 购物车有首饰或饰品页面样式
+    * irclassify -- 购物车无饰品或首饰
+      * index.js -- 购物车无饰品或首饰逻辑
+      * index.json -- 购物车无饰品或首饰页面配置
+      * index.wxml -- 购物车无饰品或首饰页面展示
+      * index.wxss -- 购物车无饰品或首饰页面样式
+    * inex.js -- 购物车逻辑
+    * index.json -- 购物车页面配置
+    * index.wxml -- 购物车页面展示
+    * index.wxss -- 购物车页面样式
+  * writeOrder -- 填写订单
+    * index.js -- 填写订单页面逻辑
+    * index.json -- 填写订单页面配置
+    * index.wxml -- 填写订页面展示
+    * index.wxss -- 填写订单页面样式
+* static -- 项目静态文件
+* utils -- 项目工具
+  * auth.js -- 授权逻辑封装
+  * http.js -- 请求方法封装
+  * util.js -- 格式化工具封装
+* vant-weapp -- 有赞库
+* wxsGroup -- 微信私有扩展
+  * common.wxs -- 格式化扩展
+  * globalStyle.wxs -- 样式扩展
+  * goodsArticle.wxs -- 商品信息扩展
+* app.js -- 项目逻辑入口
+* app.json -- 项目公共配置
+* app.wxss -- 项目公共样式
+* config.js -- 项目请求地址可配置化
+* ext.json -- 第三方开发配置
+* project.config.json -- 项目工具配置
+* README.md -- 项目文档
+* sitemap.json -- 项目引用配置

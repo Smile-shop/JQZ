@@ -1,0 +1,58 @@
+.dialog{
+  width: 560rpx;
+  border-radius: 15rpx;
+  overflow: hidden;
+  top: 40%!important;
+  .confirm-content{
+    text-align: center;
+    color: #333;
+    &-title{
+      font-size: 32rpx;
+      padding-top: 30rpx;
+    }
+    &-amount{
+      font-size: 72rpx;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #333333;
+      padding: 20rpx 0;
+    }
+    &-con{
+      display: flex;
+      justify-content: space-between;
+      padding: 0 30rpx;
+      font-size: 28rpx;
+      color: #333;
+      &-payType{
+        display: flex;
+        align-items: center;
+        &-arrow{
+          margin-left: 10rpx;
+          font-size: 22rpx;
+        }
+      }
+    }
+  }
+  .pwd_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30rpx 0;
+    .itemStyle{
+      width:80rpx;height:80rpx;background:#fff;border:1rpx solid #dadada;overflow: hidden;position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 1rpx;
+      .PwdStyle{
+        width:20rpx;height:20rpx;background:black;border-radius:10rpx;
+      }
+      &:not(:first-child){
+        border-left: none;
+      }
+    }
+  }
+  .pas_input {
+    width: 0; height: 0;
+  }
+}

@@ -1,0 +1,11 @@
+<!--components/order/orderStatus/index.wxml-->
+<view class="{{format == gold ? 'head-gold': 'head'}}">
+  <view class="icon">
+    <cover-image class="" src="{{'../../../images/' + goldImg[mark] + '.png'}}" bindload="" binderror="" wx:if="{{format == gold}}"></cover-image>
+    <cover-image class="" src="{{'../../../images/' + statusImg[mark] + '.png'}}" bindload="" binderror="" wx:else></cover-image>
+  </view>
+  <view class="goods-status">
+    <view class="{{ format == gold ? 'head-title-gold': 'head-title'}}">{{titleText[mark]}}</view>
+    <view class="{{ format == gold ? 'head-info-gold' : 'head-info'}}">{{orderTip[mark]}}</view>
+  </view>
+</view>

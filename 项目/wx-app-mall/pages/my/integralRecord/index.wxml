@@ -1,0 +1,67 @@
+<!--pages/shop/index.wxml-->
+<wxs src="../../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+<page-meta
+  page-style="--primary-color:{{mainColor}}"
+  scroll-top="{{scrollTop}}"
+>
+<view class="mine-wrapper" style="height:{{ safeArea.height }}">
+
+  <navBar navbarData="{{navbarData}}" />
+
+   <view class="content-view">
+      <view class="mine-img">
+        <view class="title">{{score}}</view>
+        <view class="m-image {{avatarUrl ? 'm-avatar-url' : ''}}">
+          <image src="{{avatarUrl ? avatarUrl : '../../../images/integral.png'}}"></image>
+          可用积分
+        </view>
+      </view>
+   </view>
+
+
+
+   <view class="content-detail">
+    <view class="middle">
+    <view class="middle-inner"></view>
+   </view>
+    <van-tabs border="{{false}}" active="{{ active }}" bind:change="onChange" color="{{mainColor}}" title-active-color="{{mainColor}}">
+    <van-tab title="全部">
+      <view wx:if="{{show}}">
+      <view wx:for="{{ allTab }}" wx:key="id">
+          <van-cell title="{{item.title}}" value="{{item.score}}" label="{{item.time}}" border="{{ false }}" />
+         </view>
+      </view>
+      <view class="content-item" wx:else>
+        <view class="empty">
+          <image src='../../../images/unintegral.png'></image>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="收入">
+      <view wx:if="{{show}}">
+       <view wx:for="{{ incomeTab }}" wx:key="id">
+          <van-cell title="{{item.title}}" value="{{item.score}}" label="{{item.time}}" border="{{ false }}" />
+        </view>
+      </view>
+      <view class="content-item" wx:else>
+        <view class="empty">
+          <image src='../../../images/unintegral.png'></image>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="支出" > 
+      <view wx:if="{{show}}">
+       <view wx:for="{{ expendTab }}" wx:key="id">
+          <van-cell title="{{item.title}}" value="{{item.score}}" label="{{item.time}}" border="{{ false }}" />
+        </view>
+      </view>
+      <view class="content-item" wx:else>
+        <view class="empty">
+          <image src='../../../images/unintegral.png'></image>
+        </view>
+      </view>
+    </van-tab>
+    </van-tabs>
+   </view>
+</view>
+</page-meta>

@@ -1,0 +1,51 @@
+/* components/modal/index.wxss */
+.modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background:rgba(0,0,0,0.5);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  width:544rpx;
+  height:48rpx;
+  font-size:34rpx;
+  font-weight:500;
+  color:rgba(53,53,53,1);
+  line-height:48rpx;
+  margin: 0 auto;
+  margin-top: 60rpx;
+  text-align: center;
+}
+
+.split {
+  width:610rpx;
+  height:2rpx;
+  background-color: #E5E5E5;
+  margin-top: 58rpx;
+}
+
+.info {
+  width:610rpx;
+  height:276rpx;
+  background:rgba(255,255,255,1);
+  border-radius:20rpx;
+}
+
+.sureModal {
+  width:544rpx;
+  height:48rpx;
+  font-size:34rpx;
+  font-weight:500;
+  color:rgba(87,107,149,1);
+  line-height:48rpx;
+  letter-spacing:1rpx;
+  margin: 30rpx auto;
+  text-align: center;
+}

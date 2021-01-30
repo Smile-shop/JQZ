@@ -1,0 +1,12 @@
+/* pages/shop/index.wxss */
+.mine-wrapper{
+  height: 100vh;
+  background: #F5F5F5;
+  position: relative;
+}
+.newuser-cellgroup{
+   margin-top: 20rpx;
+   position: relative;
+   top: 20rpx;
+   color:rgba(102,102,102,1);
+}

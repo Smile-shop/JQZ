@@ -1,0 +1,39 @@
+<!--components/local/commodity/index.wxml-->
+<view class="commodity-wrapper" catchtouchmove='ture'>
+  <van-action-sheet
+    show="{{ showAction }}"
+  >
+    <view class="commidity-box">
+        <!-- 关闭 -->
+        <view class="commidity-close">
+          <van-icon name="close" bind:click="onclose"/>
+        </view>
+        <view class="commidity-top">
+          <view class="commidity-img">
+            <image src="http://120.78.133.68/LocalUser/7015/Jewel/FC013[1].jpg"></image>
+          </view>
+          <view class="commidity-title-box">
+            <view class="commidity-price">
+              <text>¥</text>5000
+            </view>
+            <view class="commidity-title">周六福品牌最热</view>
+            <view class="commidity-params">已选: {{selectData}}</view>
+          </view>
+        </view>
+        <view class="commidity-content">
+          <view class="commidity-c-name">材质</view>
+          <view class="commidity-text">
+            <text class="{{gindex === index ? 'selectedStyle': ''}}" data-index="{{index}}" data-item="{{item.name}}" bindtap="onSelect" wx:for="{{paramList}}" wx:key="index">{{item.name}}</text>
+          </view>
+        </view>
+        <!-- 数量 -->
+        <view class="commidity-count">
+          <view class="commidity-count-name">数量</view>
+          <view class="commidity-count-number"><van-stepper value="{{ 1 }}" integer /></view>
+        </view>
+    </view>
+    <!-- 确定 -->
+    <button class="commidity-btn">确定</button>
+  </van-action-sheet>
+</view>
+

@@ -1,0 +1,4 @@
+<!--components/order/addressLine/index.wxml-->
+<view class="line-main">
+  <view class="line-main-item" wx:for="{{22}}" wx:key="index"></view>
+</view>

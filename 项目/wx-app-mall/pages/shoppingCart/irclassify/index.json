@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-stepper": "@vant/weapp/stepper/index",
+    "split": "/components/order/split",
+    "confirm": "/components/confirm",
+    "pullRefresh": "/components/pullRefresh",
+    "img": "/components/img",
+    "slide-view": "/components/slide-view"
+  }
+}

@@ -1,0 +1,35 @@
+<!--components/columList/index.wxml-->
+<wxs src="../../../wxsGroup/common.wxs" module="common"></wxs>
+<view class="wrap" bindtap="handleDetail" data-colum="{{colum}}">
+  <view class="container-img">
+    <!-- <image mode="aspectFill" class="shop-img" src="{{colum.imgUrl}}"></image> -->
+    <img src="{{colum.imgUrl}}" />
+    <view class="shop-tag" wx:if="{{!colum.haveStock}}">
+      <view class="shop-text">缺货中</view>
+    </view>
+  </view>
+  <view class="container-content">
+    <view class="name">
+      <text>{{colum.title}}</text>
+    </view>
+    <view class="tags" wx:if="{{tags.length > 0}}">
+      <text class="tag-item" wx:for="{{tags}}" wx:key="index">{{item}}</text>
+    </view>
+    <view class="footer">
+      <view class="price">
+        <view class="now-price">
+          <text class="unit">￥</text>
+          <text class="price-num">{{common.cutToFixed(colum.price, 0)}}</text>
+          <text class="precise">{{common.cutToFixed(colum.price, 1)}}</text>
+        </view>
+        <view class="origin-price">
+          <text>¥{{common.cutToFixed(colum.origPrice)}}</text>
+        </view>
+      </view>
+      <view class="cart">
+        <!-- <van-icon name="cart-o" class="cart-icon"></van-icon> -->
+        <image mode="widthFix" style="width: 36rpx; height: 36rpx;" src="/images/cart.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

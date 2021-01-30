@@ -1,0 +1,35 @@
+<!--components/order/mulitOrder/index.wxml-->
+<wxs src="../../../wxsGroup/common.wxs" module="common"></wxs>
+<view class="order">
+   <view class="order-header" catchtap="handleDetail" data-status="{{title}}" data-id="{{orderId}}">
+     <!-- <view class="order-mark"></view> -->
+     <image class="shop-icon" mode="widthFix" src="/images/shop.png"></image>
+     <view class="order-num">{{storeName}}</view>
+     <view class="order-status">{{titleText[title]}}</view>
+   </view>
+   <view class="line"></view>
+  <scroll-view scroll-x class="order-content" catchtap="handleDetail" data-status="{{title}}" data-id="{{orderId}}">
+    <view class="scroll-region">
+      <view class="content-img" wx:for="{{list}}" wx:key="code">
+        <text class="'tip' {{'tip-' + formatStyle[form]}}" wx:if="{{item.productStatus == 0}}">预订</text>
+        <image mode="scaleToFill" class="" src="{{item.photo}}" />
+      </view>
+      <view class="content-all" catchtap="handleDetail" data-status="{{title}}" data-id="{{orderId}}">
+        <view class="icon-region">
+         <text class="content-all-text">查看全部</text>
+         <van-icon name="arrow" custom-style="top:0; color:#A3AAB7" />
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+    <view class="order-footer">
+     <view class='order-total' catchtap="handleDetail" data-status="{{title}}" data-id="{{orderId}}">
+       <text class="sum-goods">共{{quantity}}件商品 </text>
+       <view class="sum-price">
+         <text>实付金额:</text>
+         <text class="sum-totalPrice">￥</text>
+         <text class="sum-totalPrice">{{common.toFix(price, 2)}}</text>
+       </view>
+     </view>
+   </view>
+ </view>

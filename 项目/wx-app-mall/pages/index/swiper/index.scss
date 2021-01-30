@@ -1,0 +1,33 @@
+.swiper-item {
+  width: 100%;
+  height: 100%;
+  &-img{
+    width: 100%;
+    height: 422rpx;
+  }
+}
+.dots{
+  position: absolute;
+  bottom: 22rpx;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  &-item{
+    width: 20rpx;
+    height: 6rpx;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 7rpx;
+    display: inline-block;
+    margin-left: 6rpx;
+    &:nth-child(1){
+      margin-left: 0;
+    }
+  }
+  .active{
+    width: 40rpx;
+    height: 6rpx;
+    background: #FFFFFF;
+    border-radius: 7rpx;
+  }
+}

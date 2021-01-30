@@ -1,0 +1,41 @@
+<!--pages/coupons/item/index.wxml-->
+<view class="coupons">
+  <empty emptyTop="{{emptyTop}}" wx:if="{{!dataList.length}}" />
+  <view wx:else>
+    <view class="coupons-item" wx:for="{{dataList}}" wx:key="index">
+      <view class="coupons-item-top">
+        <view class="coupons-item-top-left {{item.status == 1 || item.status == 2 ? 'used' : ''}}">
+          <view style="text-align: center" wx:if="{{item.couponType === 1}}">
+            <text class="coupons-item-top-left-mb">￥</text>
+            <text class="coupons-item-top-left-money">500</text>
+            <view class="coupons-item-top-left-tiao">满10000可用</view>
+          </view>
+          <view style="text-align: center" wx:else>
+            <text class="coupons-item-top-left-money">5</text>
+            <text class="coupons-item-top-left-mb">折</text>
+            <view class="coupons-item-top-left-tiao">满10000可用</view>
+          </view>
+        </view>
+        <view class="coupons-item-top-right">
+          <view class="coupons-item-top-right-title">店庆优惠券</view>
+          <view class="coupons-item-top-right-mid">仅限新会员在国庆期间使用，消费满10000</view>
+          <view class="coupons-item-top-right-mid">有效期至: 2020年10月20日</view>
+          <view class="coupons-item-top-right-bottom checkBox" wx:if="{{showCheckBox}}">
+            <van-checkbox value="{{ item.checked }}" checked-color="var(--primary-color)" bind:change="onChange" data-index="{{index}}" />
+          </view>
+          <view class="coupons-item-top-right-bottom" wx:else> 
+            <view class="coupons-item-top-right-bottom-left" bindtap="onShowDetail" data-index="{{index}}">
+              详细信息<van-icon name="{{!item.showDetail ? 'arrow' : 'arrow-down'}}" />
+            </view>
+            <view class="coupons-item-top-right-bottom-right" wx:if="{{item.status == 0 || item.status == 3}}">{{item.status == 0 ? '我要转赠' : '撤销赠送'}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="coupons-item-bottom" wx:if="{{item.showDetail}}">
+        <view wx:if="{{item.couponType === 2}}">折扣说明：说明明</view>
+        <view>限品类：黄金类</view>
+        <view>券编号：1532013248762165</view>
+      </view>
+    </view>
+  </view>
+</view>

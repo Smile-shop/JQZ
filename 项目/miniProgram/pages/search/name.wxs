@@ -1,0 +1,10 @@
+// 名称信息展示
+var nameShow = function (item, name) {
+  var i = item + ''
+  var n = name + ''
+  return n.indexOf(i) > -1
+}
+
+module.exports = {
+  nameShow: nameShow
+}

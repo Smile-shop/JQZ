@@ -1,0 +1,47 @@
+/* components/sharePost/index.wxss */
+.share-post-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background:rgba(0,0,0,0.5); */
+}
+.share-post-content {
+  height: 744rpx;
+  width: 526rpx;
+  margin-bottom: 20rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 188rpx;
+  right: 0;
+  margin: auto;
+  z-index: 99999;
+}
+.post-img {
+  border-radius: 10rpx;
+  width: 100%;
+  height: 100%;
+}
+.post-btn {
+  margin-top: 30rpx;
+  color: #4D4D4D;
+  font-size: 28rpx;
+  border-radius:44rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+.share-bg {
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+.post-btn-1-style{
+  background:linear-gradient(90deg,rgba(221,178,127,1) 0%,rgba(219,176,81,1) 100%);
+  color: #FFFFFF;
+}

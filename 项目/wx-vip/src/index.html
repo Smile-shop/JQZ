@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>首页</title>
+</head>
+<body>
+  <script>
+    const baseUrl = 'http://www.jbfsoft.net';
+
+    function getUrlKey(name) {
+      return window.decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null;
+    }
+
+    function getWxRegisterType(data) {
+      return new Promise((resolve, reject) => {
+        let xhr;
+        if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest();
+        } else {
+          xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        //发送请求
+        xhr.open('POST', `${baseUrl}/jop-web/wxBind/wxRegistType`);
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send(JSON.stringify(data));
+        //异步接受响应
+        xhr.onreadystatechange = function() {
+          if(xhr.readyState === 4 && xhr.status === 200) {
+            const responseData = JSON.parse(xhr.responseText);
+            if(responseData.code === 0 && responseData.data && responseData.data.openCardUrl) {
+              resolve(responseData.data.openCardUrl);
+            } else {
+              reject(`${baseUrl}/login_register/index.html`);
+            }
+          }
+          // resolve(`${baseUrl}/login_register/index.html`);
+        }
+      })
+    }
+
+    function localStorageSet(data) {
+      if(data) {
+        if (`${data.page}` === 'share_register' || `${data.page}` === 'register') {
+          data.page = data.isRegister === '1' ? 'register' : 'login';
+        }
+        const dataStr = JSON.stringify(data);
+        window.localStorage.setItem('urlData', dataStr);
+      }
+    }
+
+    const companyKey = getUrlKey('c');
+    const openid = getUrlKey('o');
+    const headerImg = getUrlKey('i');
+    const page = getUrlKey('childPage') || getUrlKey('p');
+    const register_openid = getUrlKey('shareId');
+    const isRegister = getUrlKey('r');
+
+    const memberCard = getUrlKey('m');
+    const phone = getUrlKey('s');
+
+    const ticket = getUrlKey('p1');
+
+    if(companyKey && openid) {
+      if(ticket) {
+        console.log(ticket,123123)
+        window.localStorage.setItem(`ticket_${companyKey}`, ticket)
+      }
+
+      const data = {
+        openid: openid,
+        companyKey: companyKey,
+        headerImg: headerImg,
+        page: page && page != 'null' && page != '' ? page : 'home',
+        register_openid: register_openid && register_openid != 'null' && register_openid != '' ? register_openid : null,
+        isRegister: isRegister || '1',
+        localUrl: `${baseUrl}/wx_member/home/index.html#/home`,
+        memberCard: memberCard && memberCard != 'null' && memberCard != '' ? memberCard : null,
+        phone: phone && phone != 'null' && phone != '' ? phone : null
+      };
+      localStorageSet(data);
+
+      if (`${data.page}` === 'share_register' || `${data.page}` === 'register') {
+        getWxRegisterType({
+          openid: data.openid,
+          companyKey: data.companyKey
+        }).then(res => {
+          window.location.replace(res);
+        }).catch(err => {
+          window.location.replace(err);
+        })
+        return;
+      } else if (`${data.page}` === 'login' || `${data.page}` === 'active') {
+        const localHref = `${baseUrl}/login_register/index.html`;
+        window.location.replace(localHref);
+      } else if (`${data.page}` === 'share') {
+        const localHref = `${baseUrl}/wx_member/home/index.html#/home`;
+        window.location.replace(localHref);
+      } else {
+        const localHref = `${baseUrl}/wx_member/home/index.html#/${data.memberCard ? data.page : 'home'}`;
+        window.location.replace(localHref);
+      }
+    } else {
+      window.alert('出现未知问题，请退出重新进入！')
+    }
+  </script>
+</body>
+</html>

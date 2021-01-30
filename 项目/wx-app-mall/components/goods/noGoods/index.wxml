@@ -1,0 +1,7 @@
+<!--components/goods/noGoods/index.wxml-->
+<view class="no-goods">
+  <view class="container-imag">
+    <image class="img" mode="aspectFill" src="../../../images/empty-list.png" />
+  </view>
+  <view class="no-text">暂无数据</view>
+</view>

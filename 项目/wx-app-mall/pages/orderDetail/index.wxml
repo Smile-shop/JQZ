@@ -1,0 +1,73 @@
+<!--pages/mine/orderDetail/index.wxml-->
+<wxs src="../../wxsGroup/common.wxs" module="common"></wxs>
+<page-meta page-style="--primary-color:{{mainColor}}">
+  <navBar navbarData="{{navbarData}}" />
+  <view>
+    <orderStatus order-detail='{{orderRspVo}}' />
+    <view class="message">
+      <!-- 自取信息 -->
+      <shopInfo wx:if="{{ orderRspVo.recvManner === 'DIV' }}" />
+      <!-- 快递收货地址信息 -->
+      <address wx:else address="{{ info.address }}" logistics="{{info.logistics}}" />
+      <split />
+      <goodsListInfo bind:goodsList="handleDetail" fromOrder info='{{orderRspVo}}' list="{{orderDetail.orderDetailRspVoList}}" />
+      <view class="concat-box">
+        <button open-type="contact" class="concat" style="width: 100%;">
+          <van-icon class="service" name="service-o" />
+          <text>联系客服</text>
+        </button>
+      </view>
+      <split />
+      <orderInfo info="{{orderRspVo}}" />
+      <split />
+      <view class="order-info">
+        <view class="info-container info-cancel">
+          <view class="info-content info-cancel-content">商品小计（{{quantity}}件）</view>
+          <view class="info-text info-cancel-text allPrice">￥{{common.cutToFixed(orderRspVo.amount || 0, 3)}}</view>
+        </view>
+        <view class="info-container info-cancel">
+          <view class="info-content info-cancel-content">运费</view>
+          <view class="info-text info-cancel-text allPrice">￥0.00</view>
+        </view>
+        <view class="info-container info-cancel">
+          <view class="info-content info-cancel-content">实付金额</view>
+          <view class="info-text info-cancel-text allPrice allPrice1">￥{{common.cutToFixed(orderRspVo.amtPayment || 0, 2)}}</view>
+        </view>
+      </view>
+      <split />
+    </view>
+    <view>
+      <view class="cancel" wx:if="{{orderRspVo.userStatus == 'NOTPAID'}}">
+        <view class="time" wx:if="{{orderRspVo.countdownTime}}">
+          <text>支付剩余：</text>
+          <text class="time-text">{{orderRspVo.cdTime}}</text>
+        </view>
+        <view class='order-cancel' bindtap="showCancel">取消订单</view>
+        <view class='order-cancel marginLeft order-pay' bindtap="pay">立即支付</view>
+      </view>
+      <view class="cancel" wx:if="{{orderRspVo.userStatus == 'NOTSHIPPED'}}">
+        <view class='order-cancel' bindtap="">申请售后</view>
+        <view class='order-cancel marginLeft order-pay' bindtap="remind">提醒发货</view>
+      </view>
+      <view class="cancel" wx:if="{{orderRspVo.userStatus == 'SHIPPED'}}">
+        <view class="time" wx:if="{{orderRspVo.countdownTime}}">
+          <text>剩余：</text>
+          <text class="time-text confirm">{{orderRspVo.cdTime}}</text>
+        </view>
+        <view class='order-cancel' bindtap="">申请售后</view>
+        <view class='order-cancel marginLeft order-pay' bindtap="receiveGoods">确认收货</view>
+      </view>
+      <view class="cancel" wx:if="{{orderRspVo.userStatus == 'FINISHED'}}">
+        <view class='order-cancel' bindtap="">申请售后</view>
+        <!-- <view class='order-cancel marginLeft order-pay'>去评价</view> -->
+      </view>
+      <view class="cancel" wx:if="{{orderRspVo.userStatus == 'CANCELED'}}">
+        <view class='order-cancel' bindtap="delOrder">删除订单</view>
+      </view>
+    </view>
+  </view>
+  <payPop show="{{showPay}}" from="order" amount="{{common.cutToFixed(orderRspVo.amtPayment, 3)}}" bindpay="payment" />
+  <confirm show="{{ showConfirm }}" content="是否确定取消此订单？" async-close bindconfirm="confrimCancel" />
+  <confirm show="{{ receiveConfirm }}" content="是否确认收货？" async-close bindconfirm="confrimReceived" />
+  <confirm show="{{ delConfirm }}" content="是否确认删除此订单？" async-close bindconfirm="confirmDel" />
+</page-meta>

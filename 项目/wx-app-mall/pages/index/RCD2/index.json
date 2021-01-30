@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "likeGoods": "/components/local/like"
+  }
+}

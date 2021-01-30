@@ -1,0 +1,32 @@
+<!--components/order/content/index.wxml-->
+<wxs src="../../../wxsGroup/common.wxs" module="common"></wxs>
+<view class="radius-diamand">
+  <view wx:for="{{list}}" wx:key="code">
+    <view bindtap="handleDetail" data-item="{{ item }}" class="list-content">
+      <view class="container-img">
+        <img class="image" mode="scaleToFill" src="{{item.imgUrl}}" />
+      </view>
+      <view class="content-text">
+        <view class="text-name van-ellipsis">{{item.title || ''}}</view>
+        <view class="text-arg">
+          <text class="tag-item">{{common.join(item.attrList || item.parmJsonList)}}</text>
+        </view>
+        <view class="text-total" style="{{fromOrder ? 'color: #333' : ''}}">
+          <view>
+            <text>￥</text>
+            <text>{{common.cutToFixed(item.price, 3)}}</text>
+          </view>
+          <view>
+            <text class="sum-count">x</text>
+            <text class="sum-count">{{item.quantity}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="goods-box">
+      <view wx:if="{{ info.userStatus == 'FINISHED' }}" class="goods-btn">立即评价</view>
+      <view wx:if="{{seeAssessment}}" class="goods-btn">查看评价</view>
+      <view wx:if="{{takeGood}}" class="goods-btn">我要提货</view>
+    </view>
+  </view>
+</view>

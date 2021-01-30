@@ -1,0 +1,29 @@
+<!--pages/confirmOrder/payPop/index.wxml-->
+<van-popup
+  show="{{ show }}"
+  transition="scale"
+  custom-class="dialog"
+  bind:close="onClose"
+  closeable
+  close-icon-position="top-left"
+>
+  <view class="confirm-content">
+    <view class="confirm-content-title">请输入支付密码</view>
+    <view class="confirm-content-amount">￥{{amount}}</view>
+    <view class="confirm-content-con">
+      <view class="confirm-content-con-type">支付方式</view>
+      <view class="confirm-content-con-payType">
+        <text class="confirm-content-con-payType-text">零用钱</text>
+        <van-icon color="#969799" name="arrow" class="confirm-content-con-payType-arrow" />
+      </view>
+    </view>
+    <input class="pas_input" value="{{passWord}}" type="number" maxlength="6" readonly unselectable="on" focus="{{ isFocus }}" bindinput="onChangeInput" />
+    <view class="pwd_box" bindtap="focus">
+      <block wx:for="{{[0,1,2,3,4,5]}}" wx:key="index">
+        <view class="itemStyle">
+          <view wx:if="{{passWordArr[item] == true}}" class="PwdStyle"></view>
+        </view>
+      </block>
+    </view>
+  </view>
+</van-popup>

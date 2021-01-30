@@ -1,0 +1,61 @@
+.rcd2-title {
+  display: flex;
+  align-items: center;
+  padding: 28rpx;
+  height: 40rpx;
+  background-color: #fff;
+}
+
+.rcd2-title-name {
+  font-size: 36rpx;
+  color: #4D4D4D;
+  font-weight: bold;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rcd2-title-name-icon {
+  width: 40rpx;
+}
+
+.rcd2-title-more {
+  font-size: 24rpx;
+  color: #A3AAB7;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.rcd2-title-more-icon {
+  width: 24rpx;
+  margin-left: 10rpx;
+}
+
+.rcd2-content {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+}
+
+.rcd2-content-goods {
+  width: 332rpx;
+  background: white;
+  border-radius: 12px;
+  box-sizing: border-box;
+  margin-bottom: 32rpx;
+  margin-top: 20rpx;
+}
+
+.rcd2-content-goods:nth-child(1), .rcd2-content-goods:nth-child(2) {
+  margin-top: 0;
+}
+
+.rcd2-content-goods:nth-of-type(odd) {
+  margin-left: 28rpx;
+}
+
+.rcd2-content-goods:nth-of-type(even) {
+  margin-left: 30rpx;
+}

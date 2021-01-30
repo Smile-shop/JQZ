@@ -1,0 +1,7 @@
+var type = function (common, style) {
+  return common + '-' + style + '-style'
+}
+
+module.exports = {
+  type: type
+}

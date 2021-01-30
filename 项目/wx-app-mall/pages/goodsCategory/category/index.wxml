@@ -1,0 +1,33 @@
+<!--pages/goodsCategory/category/index.wxml-->
+<view class="container">
+  <scroll-view class='nav_top' scroll-with-animation scroll-y='true' scroll-top="{{scrollTop}}"	>
+    <block wx:for="{{cateItems}}" wx:key="index">
+      <view class="nav_top_items {{curNav==item.id?'active':''}}" 
+      bindtap="switchRightTab" data-index='{{index}}' 
+      data-id="{{item.id}}" data-title="{{item.name}}">{{item.name}}</view>
+    </block>
+  </scroll-view>
+  <scroll-view class="nav_right" scroll-y="true">
+    <view class="img" wx:if="{{cateItems[curIndex].imgUrl}}">
+      <image mode="widthFix" class="image" src="{{cateItems[curIndex].imgUrl}}"></image>
+    </view>
+    <view  wx:if="{{cateItems[curIndex].level2CategoryList.length>0}}" class='nav_right-titleBox'>
+      <text class='nav_right-titleBox-title'>{{title}}</text>
+    </view>
+    <!--如果有数据，才遍历项-->
+    <view wx:if="{{cateItems[curIndex].level2CategoryList.length>0}}">
+      <block wx:for="{{cateItems[curIndex].level2CategoryList}}" wx:key="index">
+        <view class="nav_right_items" bindtap="toGoodsList" data-detail="{{item}}" data-total="{{cateItems}}">
+            <image class="nav_right_items-image" src="{{item.imgUrl}}"></image>
+            <text class="nav_right_items-text">{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+    <!--如果无数据，则显示无数据-->
+    <view class="nocate" wx:else>
+      <image class="nocate-image" mode="widthFix" src="../../../images/collect-gold-null.png"></image>
+      <text class="nocate-text">该分类暂无数据</text>
+    </view>
+  </scroll-view>
+  </view>
+

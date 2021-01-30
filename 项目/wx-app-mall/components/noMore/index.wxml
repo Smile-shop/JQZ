@@ -1,0 +1,4 @@
+<!--components/noMore/index.wxml-->
+<view class='recommend'>
+  <text class='recommend-title'>已经到底了</text>
+</view>

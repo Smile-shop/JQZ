@@ -1,0 +1,188 @@
+<view class="container">
+  <view class="header">
+    <image src="/assets/img/top-banner.png"></image>
+  </view>
+  <view class="main">
+    <view class="tab">
+      <button data-type="0" bindtap="switchTabType" class="tab-item {{tabType == 0 ? 'active' : ''}}">
+        人气排名
+      </button>
+      <button data-type="1" bindtap="switchTabType" class="tab-item {{tabType == 1 ? 'active' : ''}}">
+        助力好友
+      </button>
+    </view>
+    <view wx:if="{{isLoading && friends.length == 0 && popularitys_0_2.length == 0 }}" class="loading">
+      <i class="iconfont icon-jiazaizhong"></i>
+      <view class="tip">
+        正在努力加载中，请稍候…
+      </view>
+    </view>
+    <scroll-view
+      wx:elif="{{tabType == 0}}"
+      class="tab-view popularity-top"
+      scroll-y="{{true}}"
+      bindscrolltolower="popularitysScrollToLower"
+    >
+      <view wx:if="{{popularitys_0_2.length}}" class="tab-view-content">
+        <view class="winning">
+          <view
+            wx:for="{{popularitys_0_2}}"
+            wx:key="index"
+            class="winning-item top-{{index}}"
+          >
+            <view class="avatar">
+              <image class="crown" src="/assets/img/top-{{index}}.png"></image>
+              <image class="avatar-image" src="{{item.wicon}}"></image>
+              <text>
+                {{item.ranking}}
+              </text>
+            </view>
+            <view class="name">**{{item.wname[item.wname.length - 1]}}</view>
+            <view class="value">人气值 {{item.popularValue}}</view>
+          </view>
+        </view>
+        <view wx:if="{{popularitys_3.length}}" class="top-table">
+          <view class="top-table-header">
+            <view class="ranking">
+              排名
+            </view>
+            <view class="nickname">
+              微信昵称
+            </view>
+            <view class="popularity">
+              人气值
+            </view>
+          </view>
+          <view class="top-table-body">
+            <view
+              wx:for="{{popularitys_3}}"
+              wx:key="index"
+              class="top-table-row"
+            >
+              <view class="ranking">
+                {{item.ranking}}
+              </view>
+              <view class="nickname">
+                <image src="{{item.wicon}}"></image>
+                **{{item.wname[item.wname.length - 1]}}
+              </view>
+              <view class="value">
+                {{item.popularValue}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else class="empty">
+        <image src="/assets/img/empty.png"></image>
+        <view class="tip">
+          没有相关数据哦
+        </view>
+      </view>
+    </scroll-view>
+    <scroll-view
+      wx:elif="{{tabType == 1}}"
+      class="tab-view help"
+      scroll-y="{{true}}"
+      bindscrolltolower="friendsScrollToLower"
+    >
+      <view wx:if="{{friends.length}}" class="tab-view-content help-table">
+        <view class="help-table-header">
+          <view>
+            序号
+          </view>
+          <view>
+            助力好友
+          </view>
+          <view>
+            助力时间
+          </view>
+        </view>
+        <view class="help-table-body">
+          <view
+            wx:for="{{friends}}"
+            wx:key="index"
+            class="help-table-row"
+          >
+            <view class="ranking">
+              {{item.ranking}}
+            </view>
+            <view class="nickname">
+              <image src="{{item.wicon}}"></image>
+              **{{item.wname[item.wname.length - 1]}}
+            </view>
+            <view class="value">
+              {{item.time}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else class="empty">
+        <image src="/assets/img/empty.png"></image>
+        <view class="tip">
+          没有相关数据哦
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view wx:if="{{!globalData.isNeedLogin}}" class="footer">
+    <view class="left">
+      <image src="{{globalData.wxMemberSummary.wicon}}"></image>
+    </view>
+    <view class="middle">
+      <view class="name">
+        {{globalData.wxMemberSummary.wname}}
+      </view>
+      <view class="info-list">
+        <span class="info-list-item">
+          人气值:
+          <span class="value">
+            {{globalData.wxMemberSummary.popularValue}}
+          </span>
+        </span>
+        <span class="info-list-item">
+          当前排名:
+          <span class="value">
+            {{globalData.wxMemberSummary.ranking}}
+          </span>
+        </span>
+      </view>
+    </view>
+    <view class="right">
+      <button
+        wx:if="{{globalData.isNeedLogin}}"
+      >
+        登录
+      </button>
+    </view>
+  </view>
+  <view wx:else class="footer">
+    <view class="left">
+      <image src="/assets/img/avatar.png"></image>
+    </view>
+    <view class="middle">
+      <view class="name">
+        立即登录
+      </view>
+      <view class="info-list">
+        <span class="info-list-item">
+          人气值:
+          <span class="value">
+            --
+          </span>
+        </span>
+        <span class="info-list-item">
+          当前排名:
+          <span class="value">
+            --
+          </span>
+        </span>
+      </view>
+    </view>
+    <view class="right">
+      <button bindgetphonenumber="getPhonenumber" open-type="getPhoneNumber">
+        登录
+      </button>
+    </view>
+  </view>
+</view>

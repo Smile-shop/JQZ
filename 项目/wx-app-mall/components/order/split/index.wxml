@@ -1,0 +1,2 @@
+<!--components/order/split/index.wxml-->
+<view class="split"></view>

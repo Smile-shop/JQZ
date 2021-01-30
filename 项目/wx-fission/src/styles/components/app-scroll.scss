@@ -1,0 +1,12 @@
+.app-scroll {
+  &::-webkit-scrollbar {
+    border-radius: 1vw;
+    width: 1vw;
+    background: #F7F7F7;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 1vw;
+    background: #FC7125;
+  }
+}

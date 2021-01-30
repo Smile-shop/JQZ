@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="referrer" content="never">
+    <link rel="icon" href="<%= BASE_URL %>bitbug_favicon.ico">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1017991_t9wrvw4pmp.css">
+    <title>微客服</title>
+    <style>
+      .loadEffect{
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+        }
+        .loadEffect img{
+          width: 100%;
+        }
+    </style>
+    <script src="./config.js"></script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but wx_chat_system doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <!-- 首屏加载loading -->
+    <div id="app">
+      <div class="loadEffect" id="loading">
+        <img src="./img/loading.gif" alt="loading">
+      </div>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

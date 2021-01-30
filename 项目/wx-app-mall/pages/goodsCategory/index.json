@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "category": "./category",
+    "loading": "/components/loading"
+  },
+  "navigationBarTitleText": "商品分类",
+  "enablePullDownRefresh": false
+}

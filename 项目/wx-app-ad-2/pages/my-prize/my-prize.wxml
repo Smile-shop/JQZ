@@ -1,0 +1,118 @@
+<view id="header">
+  <image src="/assets/img/prize-banner.png"></image>
+</view>
+<view id="tabs">
+  <button
+    class="tabs-item {{tabsType == 0 ? 'active' : ''}}"
+    data-type="0"
+    bindtap="switchTabsType"
+  >
+    待领取
+  </button>
+  <button
+    class="tabs-item {{tabsType == 1 ? 'active' : ''}}"
+    data-type="1"
+    bindtap="switchTabsType"
+  >
+    已领取
+  </button>
+</view>
+<view wx:if="{{isLoading && awaitGetPrizes.length == 0 && haveGetPrizes.length == 0 }}" class="loading">
+  <i class="iconfont icon-jiazaizhong"></i>
+  <view class="tip">
+    正在努力加载中，请稍候…
+  </view>
+</view>
+<view wx:if="{{tabsType == 0}}" id="await-receive">
+  <view wx:if="{{awaitGetPrizes.length}}" class="content">
+    <view
+      wx:for="{{awaitGetPrizes}}"
+      wx:key="index"
+      class="prize-item"
+    >
+      <view class="top">
+        <view class="left">
+          <image src="{{item.giftIcon || '/assets/img/img-error.png'}}"></image>
+        </view>
+        <view class="right">
+          <view class="name">
+            {{item.giftName}}
+          </view>
+          <view class="attribute">
+            需要人气：{{item.popularValue}}
+          </view>
+          <view wx:if="{{isShowOutShopName == 0}}" class="attribute">
+            兑换门店：{{item.giftOrder.shopName}}
+          </view>
+          <view wx:else class="attribute">
+            兑换门店：{{item.shopNameOut || item.giftOrder.shopName}}
+          </view>
+        </view>
+      </view>
+      <view class="bottom">
+        <view class="left">
+          兑换时间：{{item.giftOrder.createTime}}
+        </view>
+        <view class="right">
+          <navigator url="/pages/my-prize/prize-verification/prize-verification?id={{item.giftOrder.orderId}}">
+            <i class="iconfont icon-ico"></i>
+            <span>
+              核销码
+            </span>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="empty">
+    <image src="/assets/img/prize-empty.png"></image>
+    <view class="tip">
+      还没有奖品哦
+    </view>
+  </view>
+</view>
+
+<view wx:else id="received">
+  <view wx:if="{{haveGetPrizes.length}}" class="content">
+    <navigator
+      wx:for="{{haveGetPrizes}}"
+      wx:key="index"
+      class="prize-item"
+      url="/pages/my-prize/prize-verification/prize-verification?id={{item.giftOrder.orderId}}"
+    >
+      <view class="top">
+        <view class="left">
+          <image src="{{item.giftIcon || '/assets/img/img-error.png'}}"></image>
+        </view>
+        <view class="right">
+          <view class="name">
+            {{item.giftName}}
+          </view>
+          <view class="attribute">
+            需要人气：{{item.popularValue}}
+          </view>
+          <view wx:if="{{isShowOutShopName == 0}}" class="attribute">
+            兑换门店：{{item.giftOrder.shopName}}
+          </view>
+          <view wx:else class="attribute">
+            兑换门店：{{item.shopNameOut || item.giftOrder.shopName}}
+          </view>
+        </view>
+      </view>
+      <view class="bottom">
+        <view class="left">
+          领取时间：{{item.giftOrder.exchangeTime}}
+        </view>
+        <view class="right">
+          <image wx src="/assets/img/already-received.png"></image>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view wx:else class="empty">
+    <image src="/assets/img/prize-empty.png"></image>
+    <view class="tip">
+      还没有奖品哦
+    </view>
+  </view>
+</view>

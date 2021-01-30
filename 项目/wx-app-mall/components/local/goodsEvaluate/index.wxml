@@ -1,0 +1,44 @@
+<!--components/local/goodsEvaluate/index.wxml-->
+<view class="evaluate-container">
+<view class="evaluate-wrapper" wx:if = "{{dataList.length >= 0}}">
+  <view class="evaluate-box" wx:for="{{dataList}}" wx:key="index">
+    <view class="evaluate-view">
+      <view class="evaluate-avator">
+        <image class="evaluate-img" src="https://wx.qlogo.cn/mmopen/vi_32/BslRsianAO6wGxEu31xNo2TPjpRWpSCibwNn3bMg1b0SsXA38s1sRMDvia479ibE4Cw9XKuf7QwZ5U6layJbtXQauw/132"></image>
+      </view>
+      <view class="evaluate-right-box">
+        <view class="evaluate-name-box">
+          <view class="evaluate-name">
+            <view class="evaluate-na">小乔</view>
+            <view class="evaluate-star">
+              <van-icon name="star" wx:for="{{5}}" wx:key="index" custom-class="star-icon"/>
+            </view>
+          </view>
+          <view class="evaluate-time">2020-09-09</view>
+        </view>
+        <!-- 评论 -->
+        <view class="comment-box">
+          我觉得商家的服务态度真的很好! 我觉得商家的服务态 度真的很好!
+        </view>
+        <!-- 图片 -->
+        <view class="comment-image-box">
+          <view class="comment-img" wx:for="{{6}}" wx:key="index">
+            <image src="http://120.78.133.68/LocalUser/7015/Jewel/FC013[1].jpg"  bindtap="preview" data-src="{{imgList[0]}}"></image>
+          </view>
+        </view>
+        <!-- 评论 -->
+        <view class="evaluate-saler">
+          <view class="evaluate-txt1">商家回复:</view>
+          <view class="evaluate-txt2">感谢您对我们工作的认可，您的满意就是对我们最大的 动力，期待您的再次光临，我们将一如既往的为您服务， 祝您生活愉快!</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="empty-evaluate">
+  <view class="empty-img">
+    <image mode="aspectFit" src="../../../images/empty-evaluate.png"></image>
+  </view>
+  <view class="empty-text">暂无评价</view>
+</view>
+</view>

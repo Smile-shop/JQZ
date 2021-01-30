@@ -1,0 +1,62 @@
+.box{
+  padding: 30rpx;
+  .shopInfo{
+    background-color: #fff;
+    border-radius: 30rpx;
+    margin-bottom: 30rpx;
+    .shopInfo-box{
+      padding: 30rpx;
+    }
+    &-item{
+      line-height: 55rpx;
+      display: flex;
+      align-items: center;
+      &-left, &-right{
+        font-size: 24rpx;
+        color: #999;
+        display: flex;
+        align-items: center;
+        &-icon{
+          width: 28rpx;
+          height: 28rpx;
+        }
+      }
+      &-right{
+        margin-left: 20rpx;
+      }
+    }
+    .shopName{
+      font-size: 28rpx;
+      color: #333;
+      margin-bottom: 15rpx;
+      display: flex;
+      justify-content: space-between;
+      .shopInfo-mi{
+        color: #999;
+        font-size: 24rpx;
+        float: right;
+      }
+      &-name{
+        padding-right: 20rpx;
+        font-size: 28rpx;
+        font-weight: bold;
+      }
+    }
+    &-btn{
+      border-top: 1rpx solid #eee;
+      box-sizing: border-box;
+      display: flex;
+      .btn{
+        width: 50%;
+        height: 80rpx;
+        line-height: 80rpx;
+        text-align: center;
+        font-size: 24rpx;
+        &:nth-child(2){
+          color: var(--primary-color);
+          border-left: 1rpx solid #eee;
+        }
+      }
+    }
+  }
+}

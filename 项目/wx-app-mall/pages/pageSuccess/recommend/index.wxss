@@ -1,0 +1,64 @@
+@charset "UTF-8";
+/* 推荐款 */
+.recommend-goods-list {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  /* margin-bottom: 104rpx; */
+}
+
+.recommend-goods {
+  width: 332rpx;
+  border-radius: 12px;
+  box-sizing: border-box;
+  margin-bottom: 32rpx;
+}
+
+.recommend-goods:nth-of-type(odd) {
+  margin-left: 28rpx;
+}
+
+.recommend-goods:nth-of-type(even) {
+  margin-left: 30rpx;
+}
+
+.more-show-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recommend {
+  text-align: center;
+  height: 50rpx;
+  margin-top: 10rpx;
+  padding: 30rpx;
+}
+
+.recommend-title {
+  width: 100%;
+  line-height: 50rpx;
+  white-space: nowrap;
+  border-spacing: 2rem 0;
+  font-size: 32rpx;
+  color: #333;
+  position: relative;
+}
+
+.recommend-title::before, .recommend-title::after {
+  position: absolute;
+  top: 50%;
+  margin-top: -1rpx;
+  content: "";
+  width: 40rpx;
+  height: 2rpx;
+  background: #eee;
+}
+
+.recommend-title::before {
+  left: -60rpx;
+}
+
+.recommend-title::after {
+  right: -55rpx;
+}

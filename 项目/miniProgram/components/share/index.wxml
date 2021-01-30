@@ -1,0 +1,40 @@
+<!--components/share/index.wxml-->
+  <view class="ActionSheet" catchtouchmove='ture'>
+    <!-- <action-sheet bindchange="actionsheetChange" hidden="{{showActionsheet}}">
+       <view class="action-item-box">
+          <button class="action-item-sub action-item-btn" open-type="share">
+            <view class="action-item-icon">
+              <image wx:if="{{globalStyle === '0'}}" src="../../images/share.png"></image>
+              <image wx:else src="../../images/share-gold.png"></image>
+            </view>
+            <view class="action-item-text">分享给好友</view>
+          </button>
+          <button class="action-item-sub action-item-btn" catchtap="handleTap">
+            <view class="action-item-icon">
+              <image wx:if="{{globalStyle === '0'}}" src="../../images/share-post.png"></image>
+              <image wx:else src="../../images/share-post-gold.png"></image>
+            </view>
+            <view class="action-item-text">发海报</view>
+          </button>
+       </view>
+    </action-sheet> -->
+
+    <van-popup bind:close="onClose" show="{{showActionsheet}}" position="bottom" custom-style="z-index: 9999">
+       <view class="action-item-box">
+          <button class="action-item-sub action-item-btn" open-type="share" data-id="{{postList.proId}}" data-shelvesRule="{{postList.shelvesRule}}">
+            <view class="action-item-icon">
+              <image wx:if="{{globalStyle === '0'}}" src="../../images/share.png"></image>
+              <image wx:else src="../../images/share-gold.png"></image>
+            </view>
+            <view class="action-item-text">分享给好友</view>
+          </button>
+          <button class="action-item-sub action-item-btn" catchtap="handleTap">
+            <view class="action-item-icon">
+              <image wx:if="{{globalStyle === '0'}}" src="../../images/share-post.png"></image>
+              <image wx:else src="../../images/share-post-gold.png"></image>
+            </view>
+            <view class="action-item-text">发海报</view>
+          </button>
+       </view>
+    </van-popup>
+  </view>

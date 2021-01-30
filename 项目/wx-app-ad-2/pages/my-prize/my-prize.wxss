@@ -1,0 +1,156 @@
+page {
+  background-color: #FEB05C;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30vw 10vw;
+}
+
+.loading > .iconfont {
+  font-size: 8vw;
+  color: #FC4C39;
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform-origin: center center;
+  margin-bottom: 4vw;
+}
+
+.loading > .tip {
+  color: #AAAAAA;
+  font-size: 3.2vw;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18vw 10vw;
+}
+
+.empty > image {
+  width: 67vw;
+  height: 40vw;
+  margin-bottom: 8vw;
+}
+
+.empty > .tip {
+  color: #A25938;
+  font-size: 3.7vw;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#header > image {
+  height: 50vw;
+  width: 100%;
+}
+
+#tabs {
+  display: flex;
+  justify-content: space-between;
+}
+
+#tabs  {
+  display: flex;
+  justify-content: space-between;
+}
+
+#tabs > .tabs-item {
+  padding: 3,2vw;
+  width: 42vw;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAD8A6 100%);
+  box-shadow: 0vw 1vw 2vw 0vw rgba(252,138,29,1);
+  border-radius: 6vw;
+  color: #A25938;
+  font-size: 4vw;
+}
+
+#tabs > .tabs-item.active {
+  color: #FFE898;
+  background: linear-gradient(180deg, #FD6452 0%, #DC2E1C 100%);
+}
+
+#await-receive, #received {
+  padding: 4vw;
+}
+
+.prize-item {
+  padding: 4vw;
+  background: #FFFFFF;
+  box-shadow: 0vw 1vw 3vw 0vw rgba(252,138,29,1);
+  border-radius: 3vw;
+}
+
+.prize-item:not(:last-of-type) {
+  margin-bottom: 4vw;
+}
+
+.prize-item > .top {
+  display: flex;
+}
+
+.prize-item > .top > .left {
+  flex-shrink: 0;
+  margin-right: 3.2vw;
+}
+
+.prize-item > .top > .left > image {
+  height: 21.33vw;
+  width: 21.33vw;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 2vw;
+}
+
+.prize-item > .top > .right > view:not(:last-of-type) {
+  margin-bottom: 2vw;
+}
+
+.prize-item > .top > .right > .name {
+  font-size: 3.7vw;
+  color: #4D4D4D;
+  font-weight: bold;
+}
+
+.prize-item > .top > .right > .attribute {
+  font-size: 3.2vw;
+  color: #999999;
+}
+
+.prize-item > .bottom {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prize-item > .bottom > .left {
+  font-size: 3.2vw;
+  color: #999999;
+}
+
+.prize-item > .bottom > .right > navigator {
+  vertical-align: middle;
+  padding: 1.5vw 2vw;
+  color: #FC4C39;
+  font-size: 3.2vw;
+  border-radius: 4vw;
+  border: 1px solid #FC4C39;
+}
+
+.prize-item > .bottom > .right > image {
+  position: absolute;
+  bottom: 0vw;
+  right: 0vw;
+  height: 17vw;
+  width: 17vw;
+}

@@ -1,0 +1,7 @@
+<!--pages/authorization/authorization.wxml-->
+<homePage
+  bindtoLogin="toLogin"
+  pageData="{{ homePageData }}"
+  type="{{ false }}"
+  globalStyle="{{globalStyle}}"
+></homePage>

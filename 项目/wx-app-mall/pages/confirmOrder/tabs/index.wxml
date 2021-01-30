@@ -1,0 +1,4 @@
+<!--pages/confirmOrder/tabs/index.wxml-->
+<view class="tabs">
+  <view bindtap="onChange" class="tab-item {{index == active ? 'active' : ''}}" wx:for="{{tabs}}" wx:key="index" data-active="{{index}}">{{item.displayName}}</view>
+</view>

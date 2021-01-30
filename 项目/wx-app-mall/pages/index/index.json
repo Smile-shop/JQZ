@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+    "slide": "/components/local/slide/index",
+    "notOpen": "./notOpen",
+    "skeleton": "./skeleton",
+    "loadMore": "/components/loadMore",
+    "noMore": "/components/noMore",
+    "pullRefresh": "/components/pullRefresh",
+    "swipers": "./swiper",
+    "categoryList": "./categoryList",
+    "RCD1": "./RCD1",
+    "RCD2": "./RCD2",
+    "search": "./search"
+  },
+  "enablePullDownRefresh": false
+}

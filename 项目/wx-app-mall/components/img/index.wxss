@@ -1,0 +1,8 @@
+/* components/img/index.wxss */
+.customClass{
+  width: 100%;
+  height: 100%;
+}
+.customClass .icon{
+  height: 40%;
+}

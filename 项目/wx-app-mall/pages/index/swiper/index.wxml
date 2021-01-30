@@ -1,0 +1,34 @@
+<!--pages/index/swiper/index.wxml-->
+<view style="position: relative">
+  <view class="dots">
+    <view data-index="{{ index }}" wx:if="{{ swiperList.length > 0 }}" class="dots-item {{ current == index ? 'active' : '' }}" wx:for="{{ swiperList }}" wx:key="index"></view>
+    <view wx:if="{{ swiperList.length == 0 }}" class="dots-item active"></view>
+  </view>
+  <swiper
+    style='height:422rpx;'
+    autoplay="{{ true }}"
+    interval="3000"
+    duration="500"
+    bindchange="getIndex"
+    circular="{{ true }}"
+  >
+  <swiper-item wx:if="{{ swiperList.length === 0 }}">
+      <view class="swiper-item" bindtap="getGoodsDetail" data-item="{{ item }}">
+        <img
+          mode="scaleToFill"
+          height="422rpx"
+          src="/images/banner.png"></img>
+      </view>
+    </swiper-item>
+    <block wx:if="{{ swiperList.length > 0 }}" wx:for="{{ swiperList }}" wx:key="index">
+      <swiper-item>
+        <view class="swiper-item" bindtap="getGoodsDetail" data-item="{{ item }}">
+          <img
+            mode="scaleToFill"
+            height="422rpx"
+            src="{{ item.imgUrl }}"></img>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

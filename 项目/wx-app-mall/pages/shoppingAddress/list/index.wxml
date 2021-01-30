@@ -1,0 +1,37 @@
+<!--pages/shoppingAddress/list/index.wxml-->
+<view class="list">
+  <van-swipe-cell
+    wx:for="{{list}}"
+    wx:key="index"
+    right-width="{{ 80 }}"
+    left-width="{{ 0 }}"
+    async-close
+    bind:close="onClose"
+    id="{{ 'item-' + item.id }}"
+    data-item="{{ item }}"
+    bind:click="choose"
+  >
+    <view class="list-item">
+      <view class="list-item-left">
+        <view class="list-item-left-top">
+          <text class="list-item-left-top-name">{{item.receiver}}</text>
+          <text style="margin-left: 30rpx">{{item.phone}}</text>
+          <text class="default-tip" wx:if="{{item.isDefault == 'Y'}}">默认</text>
+        </view>
+        <view class="list-item-left-bottom">
+        <text class="address-text" wx:if="{{item.province}}">{{item.province}}</text>
+        <text class="address-text" wx:if="{{item.city}}">{{item.city}}</text>
+        <text class="address-text" wx:if="{{item.district}}">{{item.district}}</text>
+        <text class="address-text" wx:if="{{item.street}}">{{item.street}}</text>
+        <text class="address-text" wx:if="{{item.address}}">{{item.address}}</text>
+        </view>
+      </view>
+      <view class="list-item-right" data-id="{{item.id}}" catchtap="edit">
+        <image mode="widthFix" style="width: 24rpx;margin-left: 10rpx" src="/images/edit.png"></image>
+      </view>
+    </view>
+      <view slot="right" class="list-button">
+        <view data-item="{{ item }}" bindtap="del"> 删除</view>
+     </view>
+  </van-swipe-cell>
+</view>

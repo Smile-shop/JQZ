@@ -1,0 +1,151 @@
+<!--pages/goodsList/index.wxml-->
+<wxs src="../../wxsGroup/goodsArticle.wxs" module="goods"></wxs>
+<wxs src="../../wxsGroup/globalStyle.wxs" module="gs"></wxs>
+
+<view class="goodsList">
+
+ <view class="header">
+    <view class="header-content">
+      <view class="search" catchtap="handleSearch">
+        <image class="search-icon" src="../../images/search-icon.png" />
+        <text class="search-text">{{searchText || '搜索'}}</text>
+      </view>
+      <view class="sequence" catchtap="handleSequence">
+        <view class="squence-img">
+          <image wx:if="{{sort}}" src="../../images/column.png" alt="" srcset="" />
+          <image wx:else src="../../images/sort.png" />
+        </view>
+      </view>
+    </view>
+ </view>
+<!-- 导航 -->
+  <view class="term {{ gs.type('term', globalStyle) }}">
+    <view class="term-item">
+      <view class="news {{ gs.type('news', globalStyle) }} {{selectedItem === 1 ? 'active-item ' + gs.type('active-item', globalStyle) : ''}}" data-case="new" bindtap="handleCase">
+        新品
+      </view>
+      <view class="hot {{ gs.type('news', globalStyle) }} {{selectedItem === 2 ? 'active-item ' + gs.type('active-item', globalStyle) : ''}}" data-case="hot" bindtap="handleCase">
+        爆款
+      </view>
+      <view class="spot {{gs.type('news', globalStyle)}} {{isGroup ? 'active-item-group group-color ' + gs.type('news-active', globalStyle) : ''}}" data-case="isGroup" bindtap="handleCase">
+        只看现货
+      </view>
+      <view class="select {{ gs.type('news', globalStyle) }} {{selectedItem === 4 ? 'active-item' : ''}}" data-case="select" bindtap="handleCase">
+        筛选
+        <image class="filter-icon" src="../../images/filter.png" data-case="select" bindtap="handleCase"  />
+      </view>
+    </view>
+  </view>
+
+<!-- 行展示 -->
+<view class="container-list {{ gs.type('container-list', globalStyle) }}">
+  <scroll-view wx:if="{{sort}}" class="mainScroll" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" 
+    scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
+    bindscrolltoupper="" bindscrolltolower="mainMore" bindscroll="">
+    <view class = "goodsList-item {{ gs.type('goodsList-items', globalStyle) }}" wx:for="{{goodsList}}" wx:key="index">
+      <image mode="aspectFill" class="image-wrapper" src="{{item.photo}}" catchtap="detail" data-detail="{{item}}" />
+    <view class="item-tip {{ gs.type('item-tip-tag', globalStyle) }}" catchtap="detail" data-detail="{{item}}" wx:if="{{item.stockStatus === 0}}">
+        <text wx:if="{{item.stockStatus === 0}}" class="book-tip">预订</text>
+    </view>
+    <view class="rowImage">
+      <view class="rowImage-content">
+        <view class="item-name" catchtap="detail" data-detail="{{item}}">
+          <text class="item-name-text">{{item.name}}</text>
+        </view>
+        <view class="item-distinct" catchtap="detail" data-detail="{{item}}">
+          <view class="row-distinct-text">
+             <text class="row-distinct-textItem" wx:if="{{item.goldWeight}}">{{item.goldWeight}}g</text>
+             <text class="row-distinct-textItem" wx:elif="{{item.largeGoldWeight}}">{{goods.priceBetween(item.smallGoldWeight, item.largeGoldWeight)}}g</text>
+             <text class="row-distinct-textItem" wx:if="{{item.largeMainStoneWeight}}">{{goods.priceBetween(item.smallMainStoneWeight, item.largeMainStoneWeight)}}ct</text>
+             <text class="row-distinct-textItem" wx:if="{{item.mainStoneColor}}">{{item.mainStoneColor || ''}}</text>
+             <text class="row-distinct-textItem" wx:if="{{item.mainStoneQuality}}">{{item.mainStoneQuality || ''}}</text>
+             <text class="row-distinct-textItem" wx:if="{{item.handInch}}">{{item.handInch || ''}}#</text>
+           </view>
+           <view class='row-distinct-number' catchtap="detail" data-detail="{{item}}" wx:if="{{ item.stockNum && globalStyle === '0'}}">
+             <text class="row-distinct-number-stockNum">{{item.stockNum}}</text>件
+           </view>
+        </view>
+      </view>
+      <view class="item-footer {{ gs.type('item-footer', globalStyle) }}">
+        <view class="item-footer-price item-footer-row">
+          <view class="row-price-container" wx:if="{{item.orderedPrice}}" catchtap="detail" data-detail="{{item}}" class="">
+            <text class="row-price-unit {{ gs.type('row-price-item', globalStyle) }}">￥</text>
+            <text class="row-price-item {{ gs.type('row-price-item', globalStyle) }}">{{item.orderedPrice}}</text>
+          </view>
+          <view class="row-price-container" wx:else catchtap="detail" data-detail="{{item}}">
+            <text class="row-price-unit {{ gs.type('row-price-item', globalStyle) }}">￥</text>
+            <text class="row-price-item {{ gs.type('row-price-item', globalStyle) }}">{{goods.priceBetween(item.smallOrderedPrice, item.largeOrderedPrice)}}</text>
+          </view>
+          <!-- 库存 -->
+          <view class="{{gs.type('row-stockNum', globalStyle)}}" catchtap="detail" data-detail="{{item}}" wx:if="{{ item.stockNum && globalStyle === '1'}}">
+            <text class="row-distinct-number-stockNum">库存：{{item.stockNum}}</text>
+          </view>
+        </view>
+        <view class="icon-hot" catchtap="callCart" data-info="{{item}}">
+          <van-icon name="cart-o" class="cart-icon {{gs.type('cart-icon2', globalStyle)}} {{item.stockNum ? gs.type('cart-icon22', globalStyle) : ''}}"></van-icon>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="emptyData" wx:if="{{mainText == childrenText.nodata}}">
+    <image mode="aspectFill" src="{{childrenText.icon}}" alt="" srcset="" />
+  </view>
+  <view class="mainText" bindtap="mainMore">{{mainText}}</view>
+  </scroll-view>
+
+<!-- 列展示 -->
+  <scroll-view wx:else class="mainScroll" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" 
+     scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
+     bindscrolltoupper="" bindscrolltolower="mainMore" bindscroll="">
+      <view class="columList-item" wx:for="{{goodsList}}" wx:key="index">
+      <view class="item-tip {{ gs.type('item-tip', globalStyle) }}" catchtap="detail" data-detail="{{item}}" wx:if="{{item.stockStatus === 0}}">
+        <text wx:if="{{item.stockStatus === 0}}" class="book-tip">预订</text>
+      </view>
+      <image mode="heigthFix" class="columImage" catchtap="detail" data-detail="{{item}}" src="{{item.photo}}" />
+      <view class="columText {{ gs.type('columText', globalStyle) }}">
+        <view class="coloumText-item-name" catchtap="detail" data-detail="{{item}}">{{item.name}}</view>
+        <view class="item-distinct" catchtap="detail" data-detail="{{item}}">
+           <view class="item-distinct-text">
+             <text class="item-distinct-textItem" wx:if="{{item.goldWeight}}">{{item.goldWeight}}g</text>
+             <text class="item-distinct-textItem" wx:elif="{{item.largeGoldWeight}}">{{goods.priceBetween(item.smallGoldWeight, item.largeGoldWeight)}}g</text>
+             <text class="item-distinct-textItem"  wx:if="{{item.largeMainStoneWeight}}">{{goods.priceBetween(item.smallMainStoneWeight, item.largeMainStoneWeight)}}ct</text>
+             <text class="item-distinct-textItem" wx:if="{{item.mainStoneColor}}">{{item.mainStoneColor}}</text>
+             <text class="item-distinct-textItem" wx:if="{{item.mainStoneQuality}}">{{item.mainStoneQuality}}</text>
+             <text class="item-distinct-textItem" wx:if="{{item.handInch}}">{{item.handInch}}#</text>
+           </view>
+           <view class='item-distinct-number' wx:if="{{item.stockNum && globalStyle === '0'}}">
+             <text class="item-distinct-num-site">{{item.stockNum}}</text>件
+           </view>
+        </view>  
+        <view class="item-footer">
+          <view class="item-footer-price">
+            <view wx:if="{{item.orderedPrice}}" catchtap="detail" data-detail="{{item}}" class="price-limit">
+              <text class="item-footer-unit {{ gs.type('item-footer-price', globalStyle) }}">￥</text>
+              <text class="item-footer-price {{ gs.type('item-footer-price', globalStyle) }}">{{item.orderedPrice}}</text>
+            </view>
+            <view wx:else catchtap="detail" data-detail="{{item}}" class="price-limit">
+              <text class="item-footer-unit {{ gs.type('item-footer-price', globalStyle) }}">￥</text>
+              <text class="item-footer-price {{ gs.type('item-footer-price', globalStyle) }}">{{goods.priceBetween(item.smallOrderedPrice, item.largeOrderedPrice)}}</text>
+            </view>
+            <!-- 库存 -->
+            <view class='item-globalStyle' wx:if="{{item.stockNum && globalStyle === '1'}}">
+              <text>库存：{{item.stockNum}}</text>
+            </view>
+          </view>
+          <view class="icon-hot {{ gs.type('icon-hot', globalStyle) }}" catchtap="callCart" data-info="{{item}}">
+            <van-icon name="cart-o" class="cart-icon"></van-icon>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+    <view class="emptyData" wx:if="{{mainText == childrenText.nodata}}">
+      <image mode="aspectFill" src="{{childrenText.icon}}" alt="" srcset="" />
+    </view>
+    <view class="mainText" bindtap="mainMore">{{mainText}}</view>
+  </scroll-view>
+</view>
+
+</view>
+
+<van-toast id="van-toast" />

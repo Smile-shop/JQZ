@@ -1,0 +1,111 @@
+.commodity-wrapper {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+}
+
+.commodity-wrapper .commidity-box {
+  padding: 30rpx;
+  min-height: 900rpx;
+  position: relative;
+}
+
+.commodity-wrapper .commidity-box .commidity-close {
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  font-size: 36rpx;
+}
+
+.commodity-wrapper .commidity-box .commidity-top {
+  display: flex;
+}
+
+.commodity-wrapper .commidity-box .commidity-top .commidity-img {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 8rpx;
+}
+
+.commodity-wrapper .commidity-box .commidity-top .commidity-img image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+}
+
+.commodity-wrapper .commidity-box .commidity-top .commidity-title-box {
+  flex: 1;
+  margin-left: 32rpx;
+  padding-top: 20rpx;
+}
+
+.commodity-wrapper .commidity-box .commidity-top .commidity-title-box .commidity-price {
+  margin-bottom: 10rpx;
+  color: var(--primary-color);
+  font-size: 36rpx;
+}
+
+.commodity-wrapper .commidity-box .commidity-top .commidity-title-box .commidity-price text {
+  font-size: 20rpx;
+}
+
+.commodity-wrapper .commidity-box .commidity-top .commidity-title-box .commidity-title {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.commodity-wrapper .commidity-box .commidity-top .commidity-title-box .commidity-params {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.commodity-wrapper .commidity-box .commidity-content {
+  margin-top: 52rpx;
+}
+
+.commodity-wrapper .commidity-box .commidity-content .commidity-c-name {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.commodity-wrapper .commidity-box .commidity-content .commidity-text text {
+  padding: 14rpx 26rpx;
+  border-radius: 4px;
+  background-color: #F5F5F5;
+  font-size: 20rpx;
+  color: #333;
+  margin-right: 20rpx;
+  border: 2rpx solid transparent;
+  display: inline-block;
+  margin-top: 20rpx;
+}
+
+.commodity-wrapper .commidity-box .commidity-content .commidity-text .selectedStyle {
+  color: var(--primary-color);
+  border: 2rpx solid var(--primary-color);
+}
+
+.commodity-wrapper .commidity-box .commidity-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 44rpx;
+}
+
+.commodity-wrapper .commidity-box .commidity-count .commidity-count-name {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.commodity-wrapper .commidity-btn {
+  width: 100%;
+  height: 100rpx;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: var(--primary-color);
+  line-height: 100rpx !important;
+  border-radius: 0;
+  padding: 0;
+}
